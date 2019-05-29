@@ -1,6 +1,10 @@
+---
+description: Both the easiest and the fastest way to compile your first program.
+---
+
 # Quick start
 
-The easiest way to get started with AssemblyScript is to point npm at the GitHub repository \(for now\):
+To get started with AssemblyScript, switch to a new directory and point [npm](https://www.npmjs.com) at the GitHub repository \(for now\)
 
 ```text
 $> npm install --save-dev AssemblyScript/assemblyscript
