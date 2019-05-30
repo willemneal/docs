@@ -124,6 +124,10 @@ In AssemblyScript, the type assertions `<T>expression` and `expression as T` kno
 
 Compared to TypeScript, type inference in AssemblyScript is limited because the type of each expression must be known in advance. This means that variable and parameter declarations must either have their type annotated or have an initializer. Without a type annotation and only an initializer, AssemblyScript will assume `i32` at first and only reconsider another type if the value doesn't fit \(becomes `i64`\), is a float \(becomes `f64`\) or irrefutably has another type than these, like the type of a variable, the return type of a function or a class type. Furthermore, functions must be annotated with a return type to help the compiler make the correct decisions, for example where a literal is returned or multiple return statements are present.
 
+### Nullability
+
+Basic types cannot be nullable, but class and function types can. Appending `| null` declares a nullable type.
+
 ### Assignability
 
 Assigning a value of one type to a target of another type can be performed without explicit casts where the full range of possible values can be represented in the target type, regardless of interpretation/signedness:

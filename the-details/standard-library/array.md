@@ -18,7 +18,7 @@ description: Represents a sequence of values of a generic type.
 ### Instance
 
 * Array\#**length**: `i32` The length of this array. Setting the length to a value larger than internal capacity will automatically grow the array. Traps if `T` is of a non-nullable reference type and setting length would result in a holey array.
-* Array\#**concat**\(other: `Array<T>`\): `Array<T>` Merges the elements of this and the other array to a new array, in this order.
+* Array\#**concat**\(other: `Array<T>`\): `Array<T>` Concatenates the elements of this and the other array to a new array, in this order.
 * Array\#copyWithin
 * Array\#every
 * Array\#fill
