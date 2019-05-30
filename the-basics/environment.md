@@ -137,12 +137,51 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 * v128.**shuffle**&lt;`T`&gt;\(a: `v128`, b: `v128`, ...lanes: `u8[]`\): `v128` Selects lanes from either 128-bit vector according to the specified lane indexes.
 * v128.**load**\(offset: `usize`, immOffset?: `usize`, immAlign?: `usize`\): `v128` Loads a 128-bit vector from memory.
 * v128.**store**\(offset: `usize`, value: `v128`, immOffset?: `usize`, immAlign?: `usize`\): `void` Stores a 128-bit vector to memory.
-* v128.**add**\(a: `v128`, b: `v128`\): `v128` Adds each lane of two 128-bit vectors.
-* v128.**sub**\(a: `v128`, b: `v128`\): `v128` Subtracts each lane of two 128-bit vectors.
-* v128.**mul**\(a: `v128`, b: `v128`\): `v128` Multiplies each lane of two 128-bit vectors.
-* v128.**div**\(a: `v128`, b: `v128`\): `v128` Divides each lane of two 128-bit vectors.
-* v128.**neg**\(a: `v128`\): `v128` Negates each lane of a 128-bit vector.
-* ...
+* v128.**add**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Adds each lane of two 128-bit vectors.
+* v128.**sub**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Subtracts each lane of two 128-bit vectors.
+* v128.**mul**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Multiplies each lane of two 128-bit vectors.
+* v128.**div**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Divides each lane of two 128-bit vectors.
+* v128.**neg**&lt;`T`&gt;\(a: `v128`\): `v128` Negates each lane of a 128-bit vector.
+* v128.**add\_saturate**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128`
+
+  Adds each lane of two 128-bit vectors using saturation.
+
+* v128.**sub\_saturate**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128`
+
+  Subtracts each lane of two 128-bit vectors using saturation.
+
+* v128.**shl**&lt;`T`&gt;\(a: `v128`, b: `i32`\): `v128`
+
+  Performs a bitwise left shift on each lane of a 128-bit vector by a scalar.
+
+* v128.**shr**&lt;`T`&gt;\(a: `v128`, b: `i32`\): `v128`
+
+  Performs a bitwise right shift on each lane of a 128-bit vector by a scalar.
+
+* v128.**and**\(a: `v128`, b: `v128`\): `v128`
+
+  Performs the bitwise AND operation on each lane of two 128-bit vectors.
+
+* v128.**or**\(a: `v128`, b: `v128`\): `v128`
+
+  Performs the bitwise OR operation on each lane of two 128-bit vectors.
+
+* v128.**xor**\(a: `v128`, b: `v128`\): `v128`
+
+  Performs the bitwise XOR operation on each lane of two 128-bit vectors.
+
+* v128.**not**\(a: `v128`\): `v128`
+
+  Performs the bitwise NOT operation on each lane of a 128-bit vector.
+
+* v128.**bitselect**\(a: `v128`, b: `v128`, mask: `v128`\): `v128`
+
+  Performs the bitwise NOT operation on each lane of a 128-bit vector.  
+  
+  ...
+
+\`\`
 
   
+
 
