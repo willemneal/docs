@@ -64,11 +64,11 @@ class A {
 var a = new A("hello. world");
 ```
 
-AssemblyScript uses `===` for identity comparisons \(means: the exact same object\). Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context. Some like this better, some hate it for portability reasons. Feel free to discuss!
+AssemblyScript uses `===` for identity comparisons \(means: the exact same object\). Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons. Feel free to discuss!
 
 ```typescript
 var s1 = "1";
-var s2 = "1".charAt(0);
+var s2 = "123".substring(0, 1);
 s1 === s1 // true
 s1 === s2 // false
 s2 === s2 // true
