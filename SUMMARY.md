@@ -12,9 +12,17 @@
   * [Memory](the-details/memory.md)
   * [Runtime](the-details/runtime.md)
   * [Portability](the-details/portability.md)
+  * [Debugging](the-details/debugging.md)
 
 ## Community
 
-* [Q&A on StackOverflow](https://stackoverflow.com/search?tab=newest&q=assemblyscript)
 * [Built with AssemblyScript](community/built-with-assemblyscript.md)
+* [AssemblyScript Twitter](https://twitter.com/AssemblyScript)
+* [AssemblyScript Slack](http://assemblyscript.slack.com)
+* [Q&A on StackOverflow](https://stackoverflow.com/search?tab=newest&q=assemblyscript)
+
+## Resources
+
+* [Frequently asked questions](resources/frequently-asked-questions.md)
+* [Contributing guidelines](https://github.com/AssemblyScript/assemblyscript/blob/master/CONTRIBUTING.md)
 

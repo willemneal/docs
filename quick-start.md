@@ -13,7 +13,7 @@ $> npm install --save-dev AssemblyScript/assemblyscript
 followed by scaffolding a new project, for example in the current directory:
 
 ```text
-npx asinit .
+$> npx asinit .
 ```
 
 The `asinit` command automatically creates the recommended directory structure and configuration files, including:

@@ -10,9 +10,9 @@ AssemblyScript compiles a **strictly-typed** subset of [TypeScript](https://www.
 {% code-tabs-item title="fib.ts" %}
 ```typescript
 export function fib(n: i32): i32 {
-  var t: i32, a: i32 = 0, b: i32 = 1;
+  var a = 0, b = 1;
   for (let i = 0; i < n; i++) {
-    t = a + b; a = b; b = t;
+    let t = a + b; a = b; b = t;
   }
   return b;
 }
@@ -24,7 +24,7 @@ export function fib(n: i32): i32 {
 $> asc fib.ts -b fib.wasm -O3
 ```
 
-Its architecture differs from a JavaScript VM in that it compiles a program **ahead of time**, quite similar to other static compilers, while providing both low-level built-ins to access WebAssembly features directly as well as a JavaScript-like standard library on top of a relatively small managed runtime enabling the creation of programs that look and feel much like TypeScript.
+Its architecture differs from a JavaScript VM in that it compiles a program **ahead of time**, quite similar to other static compilers. On top of [WebAssembly types](the-basics/types.md), it provides both [low-level built-ins](the-basics/environment.md) to access WebAssembly features directly as well as a [JavaScript-like standard library](the-details/standard-library.md) on top of a relatively small [managed runtime](the-details/runtime.md) enabling the creation of programs that look and feel much like TypeScript.
 
 For example, on the lowest level, memory can be accessed using the `load<T>(offset)` and `store<T>(offset, value)` built-ins that compile to WebAssembly instructions directly
 
@@ -39,7 +39,7 @@ var view = new Int32Array(12);
 view[2] = view[0] + view[1];
 ```
 
-Certainly, the compiler still has its limitations currently and there still are WebAssembly features undergoing specification \(marked as 🦄\) to make it shine, but it is open source and everyone can contribute. We are getting there.
+Certainly, the compiler still has its limitations and there are WebAssembly features we are waiting for currently undergoing specification \(marked as 🦄 throughout the documentation\) to make it shine. But it is open source and everyone can contribute, so we are getting there.
 
 Sounds appealing to you? Read on!
 

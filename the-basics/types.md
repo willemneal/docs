@@ -4,7 +4,7 @@ description: When one number just doesn't cut it.
 
 # Types
 
-### WebAssembly types
+## WebAssembly types
 
 Instead of using the `number` type for all sorts of numeric values, WebAssembly has more specific integer and floating point types of varying sizes:
 
@@ -18,7 +18,7 @@ Instead of using the `number` type for all sorts of numeric values, WebAssembly 
 
 Native WebAssembly types do not convey the concept of signedness. Instead, WebAssembly uses specific instructions to deal with a value in either signed or unsigned interpretation. For convenience, AssemblyScript wraps this fact into actual signed and unsigned types.
 
-### AssemblyScript types
+## AssemblyScript types
 
 Hence, in addition to interpreting the native WebAssembly types above as signed by default, AssemblyScript introduces the corresponding unsigned types plus their commonly known smaller variants:
 
@@ -112,19 +112,19 @@ Hence, in addition to interpreting the native WebAssembly types above as signed 
 | `number` | `f64` |
 | `boolean` | `bool` |
 
-### Type rules
+## Type rules
 
 With just one numeric type, a JavaScript VM tries to determine the best fitting machine-level instruction automatically, doing conversions silently, possibly leading to code not performing as well as expected. AssemblyScript, on the other hand, lets the developer declare the correct type in advance, and will complain when it sees an implicit conversion that might not actually be intended, quite similar to what a C compiler would do.
 
-#### Casting
+### Casting
 
 In AssemblyScript, the type assertions `<T>expression` and `expression as T` known from TypeScript become explicit type conversions, essentially telling the compiler that the conversion is intended. In addition, each of the type names mentioned above, except aliases, also act as portable conversion built-ins that can be used just like `i32(expression)`. Using portable conversions is especially useful where the exact same code is meant to be compiled to JavaScript with the TypeScript compiler, that otherwise would require the insertion of asm.js-style type coercions like `expression | 0`.
 
-#### Inference
+### Inference
 
 Compared to TypeScript, type inference in AssemblyScript is limited because the type of each expression must be known in advance. This means that variable and parameter declarations must either have their type annotated or have an initializer. Without a type annotation and only an initializer, AssemblyScript will assume `i32` at first and only reconsider another type if the value doesn't fit \(becomes `i64`\), is a float \(becomes `f64`\) or irrefutably has another type than these, like the type of a variable, the return type of a function or a class type. Furthermore, functions must be annotated with a return type to help the compiler make the correct decisions, for example where a literal is returned or multiple return statements are present.
 
-#### Assignability
+### Assignability
 
 Assigning a value of one type to a target of another type can be performed without explicit casts where the full range of possible values can be represented in the target type, regardless of interpretation/signedness:
 
@@ -152,7 +152,7 @@ var f32val : f32 = i8val; // becomes -128.0
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-#### Comparability
+### Comparability
 
 Comparing two values of different types can be performed without an explicit cast under the same rules as outlined in assignability above
 
@@ -161,7 +161,7 @@ Comparing two values of different types can be performed without an explicit cas
 
 because WebAssembly has distinct operations for signed and unsigned comparisons. The comparison uses the larger type and returns `bool`.
 
-#### Bit shifts
+### Bit shifts
 
 The result of a bit shift \(`<<`, `>>`\) is the left type, with the right type implicitly converted to the left type, performing an arithmetic shift if the left type is signed and a logical shift if the left type is unsigned.
 
