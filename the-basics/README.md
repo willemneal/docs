@@ -14,11 +14,11 @@ Combined, this makes it unlikely that an existing TypeScript program can be comp
 
 But what does this mean _exactly_? Well, let there be...
 
-### Differences
+## Differences
 
 For a better understanding of what to expect, let's start with a collection of obviously "not so strictly typed" code snippets, and how to fix them.
 
-There is no `any` or `undefined` for obvious reasons, and there are no union types, ultimately leading to stricter programming patterns:
+There is no `any` or `undefined` for obvious reasons:
 
 ```typescript
 // 😢
@@ -34,6 +34,8 @@ function foo(a?: i32 = 0): i32 {
 }
 ```
 
+There are no union types:
+
 ```typescript
 // 😢
 function foo(a: i32 | string): void {
@@ -43,6 +45,8 @@ function foo(a: i32 | string): void {
 function foo<T>(a: T): void {
 }
 ```
+
+Objects must be strictly typed as well:
 
 ```typescript
 // 😢
@@ -60,7 +64,18 @@ class A {
 var a = new A("hello. world");
 ```
 
-Nonetheless, this still seems fine, doesn't it?
+AssemblyScript uses `===` for identity comparisons \(means: the exact same object\). Idea is that its JavaScript semantics \(same type and value\) are irrelevant in a strict type context anyway. Discuss!
+
+```typescript
+var s1 = "1";
+var s2 = "1".charAt(0);
+s1 === s1 // true
+s1 === s2 // false
+s1 === 1 // compile error
+s1 == s2 // true
+```
+
+### Conclusion
 
 Keeping current [technical limitations](limitations.md) in mind as well, this means it is already possible to create working programs on top of [WebAssembly types](types.md) making use of the provided [environment](environment.md), but it is not as easy as just compiling existing code with another compiler.
 
