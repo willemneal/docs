@@ -6,6 +6,7 @@
   * [Types](the-basics/types.md)
   * [Environment](the-basics/environment.md)
 * [The Details](the-details/README.md)
+  * [Limitations](the-details/limitations.md)
   * [Memory](the-details/memory.md)
   * [Runtime](the-details/runtime.md)
   * [Portability](the-details/portability.md)

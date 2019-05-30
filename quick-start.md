@@ -1,5 +1,5 @@
 ---
-description: Both the easiest and the fastest way to compile your first program.
+description: Paving the way to what might be your first WebAssembly module.
 ---
 
 # Quick start
@@ -20,11 +20,11 @@ The `asinit` command automatically creates the recommended directory structure a
 
 * The `assembly/` directory containing the sources being compiled to WebAssembly, with a `tsconfig.json` telling your editor about AssemblyScript's standard library along an exemplary `index.ts` .
 * The `build/` directory where compiled WebAssembly binaries, source maps, definition files etc. become placed.
-* A `package.json` with AssemblyScript as a development dependency and build tasks to compile both an untouched \(no optimizations yet\) and an optimized version of your program.
+* A `package.json` with AssemblyScript as a development dependency and build tasks to compile both an untouched \(as emitted by the AssemblyScript compiler\) and an optimized \(using Binaryen\) version of your program in both binary and text format.
 
-Afterwards, simply edit the sources an `assembly/`, maybe tweak the build steps in `package.json` to fit your needs, and run `npm run asbuild` to compile your program to WebAssembly.
+Afterwards, edit the sources in `assembly/`, maybe tweak the build steps in `package.json` to fit your needs, and run `npm run asbuild` to compile your program to WebAssembly.
 
-
+Using the exemplary `index.js` in the root directory of your package you'll then be able to `require`the WebAssembly module just like any other node module, with the notable difference that the only values your module's exports understand being integers and floats. That's of course not the end of the story. In fact, we're just getting started.
 
 
 

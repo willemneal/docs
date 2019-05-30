@@ -1,5 +1,5 @@
 ---
-description: When number just doesn't cut it.
+description: When one number just doesn't cut it.
 ---
 
 # Types
@@ -16,7 +16,7 @@ Instead of using the `number` type for all sorts of numeric values, WebAssembly 
 | `f64` | `number` | A 64-bit float. |
 | `v128` |  | A 128-bit vector 🦄. |
 
-Native WebAssembly types do not convey the concept of signedness, but instead require specific instructions to deal with a value in either signed or unsigned interpretation.
+Native WebAssembly types do not convey the concept of signedness. Instead, WebAssembly uses specific instructions to deal with a value in either signed or unsigned interpretation but AssemblyScript is going to wrap this fact into actual signed and unsigned types for convenience.
 
 ### AssemblyScript types
 
@@ -114,7 +114,7 @@ Hence, in addition to interpreting the native WebAssembly types above as signed 
 
 ### Type rules
 
-With just one numeric type, a JavaScript VM tries to determine the correct type of a machine-level operation automatically, doing conversions silently, possibly leading to code not performing as well as expected. AssemblyScript, on the other hand, lets the developer declare the correct type in advance, and will complain when it sees an implicit conversion that might not actually be intended, quite similar to what a C compiler would do.
+With just one numeric type, a JavaScript VM tries to determine the best fitting machine-level instruction automatically, doing conversions silently, possibly leading to code not performing as well as expected. AssemblyScript, on the other hand, lets the developer declare the correct type in advance, and will complain when it sees an implicit conversion that might not actually be intended, quite similar to what a C compiler would do.
 
 #### Casting
 

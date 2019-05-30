@@ -1,6 +1,6 @@
 # Environment
 
-The WebAssembly environment is more limited than a usual browser environment, but AssemblyScript tries to fill the gaps by reimplementing commonly known functionality, besides providing direct access to WebAssembly instructions through built-ins.
+WebAssembly runs in a sandbox, making it's environment more limited than a usual browser environment. AssemblyScript tries to fill the gaps by reimplementing commonly known functionality, besides providing direct access to WebAssembly instructions through built-ins.
 
 ### Common features
 
