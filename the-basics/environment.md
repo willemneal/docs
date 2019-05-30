@@ -8,7 +8,7 @@ WebAssembly runs in a sandbox, making its environment more limited than a usual 
 
 ## Standard library
 
-AssemblyScript comes with [its own standard library](../the-details/standard-library/) very much resembling what developers became used to when writing JavaScript. There is `ArrayBuffer`, the typed arrays, `String`, `Set`, `Map` on so on. Additional rather low-level WebAssembly functionality that the standard library makes extensive use of is described below.
+AssemblyScript comes with [its own standard library](../the-details/standard-library/) very much resembling what developers became used to when writing JavaScript. There is `ArrayBuffer`, the typed arrays, `String`, `Set`, `Map` and so on. Depending on how \(fast\) the relevant WebAssembly specifications for [reference types](https://github.com/WebAssembly/reference-types), [WebIDL bindings](https://github.com/WebAssembly/webidl-bindings) and [GC](https://github.com/WebAssembly/gc) develop, there might be additional features in the future, like importing parts of the standard library from the host. Additional rather low-level WebAssembly functionality that the standard library makes extensive use of is described below.
 
 ## Static type checks
 
