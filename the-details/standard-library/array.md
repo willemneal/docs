@@ -13,7 +13,7 @@ description: Represents a sequence of values of a generic type.
 
 ### Constructor
 
-* new **Array**&lt;`T`&gt;\(capacity?: `i32`\) Constructs a new array. Traps If `T` is a non-nullable reference type and `capacity`is greater than zero because the operation would create a holey array conflicting with its actual type \(use `Array.create` instead\).
+* new **Array**&lt;`T`&gt;\(capacity?: `i32`\) Constructs a new array. Traps If `T` is a non-nullable reference type and `capacity`is greater than zero because the operation would create a holey array \(means: with `null` values\) conflicting with its non-nullable value type \(use `Array.create` instead\).
 
 ### Instance
 
