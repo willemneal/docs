@@ -1,5 +1,5 @@
 ---
-description: Represents a sequence of values of a generic type.
+description: A sequence of values of a generic type.
 ---
 
 # Array

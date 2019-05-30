@@ -1,5 +1,5 @@
 ---
-description: Represents a mapping of generic keys to generic values.
+description: A mapping of generic keys to generic values.
 ---
 
 # Map
@@ -12,6 +12,7 @@ description: Represents a mapping of generic keys to generic values.
 
 ### Instance
 
+* Map\#**clear**\(\): `void` Clears the map, deleting all key-value pairs.
 * Map\#**delete**\(key: `K`\): `bool` Deletes the key-value pair for the corresponding key. Returns `true` if the key did exist, otherwise `false`.
 * Map\#**get**\(key: `K`\): `V` Gets the value corresponding to the specified key. Traps if the key does not exist because "not found" cannot be represented in all cases \(use `Map#has` to check\).
 * Map\#**has**\(key: `K`\): `bool` Tests if the specified key exists.

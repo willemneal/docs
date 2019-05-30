@@ -1,5 +1,5 @@
 ---
-description: Represents a set of unique generic values.
+description: A set of unique generic values.
 ---
 
 # Set

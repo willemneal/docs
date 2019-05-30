@@ -1,7 +1,7 @@
 ---
 description: >-
-  Provides a low-level interface for reading and writing number values in a
-  binary ArrayBuffer, without having to care about the platform's endianness.
+  Provides a low-level interface for reading/writing number values from/to a raw
+  binary ArrayBuffer.
 ---
 
 # DataView

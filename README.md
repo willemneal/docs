@@ -1,5 +1,5 @@
 ---
-description: 'Let''s try the unthinkable, shall we?'
+description: 'Let''s attempt the unthinkable, shall we?'
 ---
 
 # Introduction

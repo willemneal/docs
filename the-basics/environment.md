@@ -1,5 +1,5 @@
 ---
-description: Reinventing the wheel. Again. With a notch.
+description: Reinventing the wheel. Again. But with a notch.
 ---
 
 # Environment
