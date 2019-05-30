@@ -6,16 +6,9 @@ description: Reinventing the wheel. Again. But with a notch.
 
 WebAssembly runs in a sandbox, making its environment more limited than a usual browser environment. AssemblyScript tries to fill the gaps by reimplementing commonly known functionality, besides providing direct access to WebAssembly instructions through built-ins.
 
-## Common features
+## Standard library
 
-* **NaN**: `f32 | f64` Not a number as a 32-bit or 64-bit float depending on context. Compiles to a constant.
-* **Infinity**: `f32 | f64`  Positive infinity as a 32-bit or 64-bit float depending on context. Compiles to a constant.
-* **isNaN**&lt;`f32 | f64`&gt;\(value: `T`\): `bool` Tests if a 32-bit or 64-bit float is `NaN`.
-* **isFinite**&lt;`f32 | f64`&gt;\(value: `T`\): `bool` Tests if a 32-bit or 64-bit float is finite, that is not `NaN` or +/-`Infinity`.
-* **parseInt**\(str: `string`, radix?: `i32`\): `i64` Parses a string to a 64-bit integer. Returns `0` on invalid inputs.
-* **parseFloat**\(str: `string`\): `f64` Parses a string to a 64-bit float. Returns `NaN` on invalid inputs. This is a naive implementation currently.
-
-In addition to these, the standard library provides implementations of `ArrayBuffer`, `String` , the typed array views, `Array<T>`, `Set<K>`, `Map<K,V>` among others.
+AssemblyScript comes with [its own standard library](../the-details/standard-library/) very much resembling what developers became used to when writing JavaScript. There is `ArrayBuffer`, the typed arrays, `String`, `Set`, `Map` on so on. Additional rather low-level WebAssembly functionality that the standard library makes extensive use of is described below.
 
 ## Static type checks
 
