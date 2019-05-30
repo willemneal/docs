@@ -1,5 +1,5 @@
 ---
-description: Never gonna to survive unless we get a little crazy.
+description: AssemblyScript's implementation of the JavaScript standard library.
 ---
 
 # Stdlib

@@ -1,5 +1,5 @@
 ---
-description: Imagine brains without the logic.
+description: 'How to import and export memory, and all the details on its layout.'
 ---
 
 # Memory

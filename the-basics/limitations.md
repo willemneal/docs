@@ -1,5 +1,5 @@
 ---
-description: throw new Error("not implemented")
+description: The mighty throw new Error("not implemented")
 ---
 
 # Limitations

@@ -1,5 +1,5 @@
 ---
-description: The final enemy.
+description: How to use the compiler from the command line or as an API.
 ---
 
 # Compiler
