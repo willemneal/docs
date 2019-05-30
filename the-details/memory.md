@@ -1,3 +1,7 @@
+---
+description: Imagine brains without the logic.
+---
+
 # Memory
 
 Similar to other languages that use linear memory, all data in AssemblyScript becomes stored at a specific memory offset so other parts of the program can read and modify it.

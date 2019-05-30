@@ -10,13 +10,13 @@ Instead of using the `number` type for all sorts of numeric values, WebAssembly 
 
 | WebAssembly type | Closest JavaScript type | Description |
 | :--- | :--- | :--- |
-| `i32` | `number` | A 32-bit signed integer. |
-| `i64` | `BigInt` | A 64-bit signed integer. |
+| `i32` | `number` | A 32-bit \(signed\) integer. |
+| `i64` | `BigInt` | A 64-bit \(signed\) integer. |
 | `f32` | `number` | A 32-bit float. |
 | `f64` | `number` | A 64-bit float. |
 | `v128` |  | A 128-bit vector 🦄. |
 
-Native WebAssembly types do not convey the concept of signedness. Instead, WebAssembly uses specific instructions to deal with a value in either signed or unsigned interpretation but AssemblyScript is going to wrap this fact into actual signed and unsigned types for convenience.
+Native WebAssembly types do not convey the concept of signedness. Instead, WebAssembly uses specific instructions to deal with a value in either signed or unsigned interpretation. For convenience, AssemblyScript wraps this fact into actual signed and unsigned types.
 
 ### AssemblyScript types
 

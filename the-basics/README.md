@@ -4,9 +4,9 @@ description: 'There is something appealing to it, isn''t it?'
 
 # The Basics
 
-Unlike TypeScript, which targets a JavaScript environment with all of its dynamic features, AssemblyScript targets WebAssembly, intentionally avoiding falling back to super dynamic features of JavaScript that cannot be compiled ahead of time _efficiently_.
+Unlike TypeScript, which targets a JavaScript environment with all of its dynamic features, AssemblyScript targets WebAssembly, intentionally avoiding falling back to the dynamicness of JavaScript where it cannot be compiled ahead of time _efficiently_.
 
-WebAssembly's [type system](types.md) differs from JavaScript's in that it has more specific integer \(`i32` and `i64`\) and floating point \(`f32` and `f64`\) types, yet it has no higher level concept of strings or classes. As usually in computer science, higher level functionality can be implemented with just these. One can think of AssemblyScript as if C and JavaScript had a somewhat special child.
+WebAssembly's [type system](types.md) differs from JavaScript's in that it has more specific integer \(`i32` and `i64`\) and floating point \(`f32` and `f64`\) types, yet it has no higher level concept of strings or classes. As usually in computer science, higher level functionality can be implemented with just these. One can think of AssemblyScript as if C and JavaScript had a somewhat special child that tries to be more like JavaScript and less like C.
 
 At this point in time, it must also be noted that WebAssembly runs in a sandbox with no immediate access to the DOM or other JavaScript APIs. Basic parts of the [environment](environment.md) can be implemented on the standard library side, while other parts need to be imported from the host, sometimes requiring a bit of JavaScript glue code to translate between objects and numbers.
 
@@ -60,7 +60,7 @@ class A {
 var a = new A("hello. world");
 ```
 
-Seems doable, doesn't it? 
+But this seems doable, doesn't it? 
 
-Keeping current [technical limitations](../the-details/limitations.md) in mind as well, this means it's already possible to create a working program using just [WebAssembly types](types.md) and the provided [environment](environment.md), but it is not as easy as just compiling existing code with another compiler.
+Keeping current [technical limitations](limitations.md) in mind as well, this means it is already possible to create working programs on top of [WebAssembly types](types.md) making use of the provided [environment](environment.md), but it is not as easy as just compiling existing code with another compiler.
 
