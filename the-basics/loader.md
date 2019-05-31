@@ -37,6 +37,8 @@ and then wants to call `new myModule.Foo(theString)` externally, the `theString`
 ```javascript
 var str = myModule.__retain(myModule.__allocString("my string"));
 var foo = new myModule.Foo(str);
+// do something with foo
+myModule.__release(foo);
 myModule.__release(str);
 ```
 
