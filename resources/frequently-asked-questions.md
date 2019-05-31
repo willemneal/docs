@@ -20,9 +20,11 @@ Or: WebAssembly is great for computational tasks, stuff with numbers, but still 
 
 Bonus: If you are considering another language than AssemblyScript, pick one that doesn't \(currently\) compile an interpreter to WebAssembly to run your code, because that's neither small nor fast.
 
+Bonus: At this point in time, when a tool does WebAssembly⇄JavaScript bindings for you, appreciate its convenience, but also take care of what it actually does. For example, what looks like just passing a function argument might involve allocating/copying memory with implicit conversions like re-encoding a string.
+
 ## Is AssemblyScript _always_ faster?
 
-No, not always. But there are use cases especially well-suited for it, like creating a Game Boy emulator by making use of its low-level capabilities, essentially emitting raw WebAssembly using a nicer syntax. But just by compiling to WebAssembly, code doesn't magically become faster, especially when making extensive use of managed objects that require memory management and garbage collection \(this has its cost in every language\) or talking to the host in structures that WebAssembly isn't currently good at, like strings or more complex objects. Low-level code \(just functions, numbers and math\) is always the best choice when all you care about is raw performance.
+No, not always. But there are use cases especially well-suited for it, like creating a Game Boy emulator by making use of its low-level capabilities, essentially emitting raw WebAssembly using a nicer syntax. But some code doesn't magically become faster just by compiling to WebAssembly, especially when making extensive use of managed objects that require memory management and garbage collection \(this has its cost in every language\) or talking to the host in structures that WebAssembly isn't currently good at, like strings or more complex objects. Low-level code \(just functions, numbers and math\) is always the best choice when all you care about is raw performance.
 
 ## How does AssemblyScript compare/relate to C++/Rust?
 
