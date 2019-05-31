@@ -40,6 +40,10 @@ function add<T>(a: T, b: T): T {
 }
 ```
 
+{% hint style="info" %}
+If you are not going to use low-level WebAssembly in the foreseeable future, feel free to come back to the following paragraphs at a later time and continue at [Limitations](limitations.md) right away.
+{% endhint %}
+
 * **sizeof**&lt;`T`&gt;\(\): `usize` Determines the byte size of the respective basic type. Compiles to a constant.
 * **offsetof**&lt;`T`&gt;\(fieldName?: `string`\): `usize` Determines the offset of the specified field within the given class type. Returns the class type's end offset \(means: where the next field would be located, before alignment\) if field name has been omitted. Compiles to a constant. The `fieldName` argument must be a compile-time constant `string` because there is no information about field names anymore in the final binary. Hence, the field's name must be known at the time the returned constant is computed.
 * **alignof**&lt;`T`&gt;\(\): `usize` Determines the alignment \(log2\) of the specified underlying core type. Compiles to a constant.
