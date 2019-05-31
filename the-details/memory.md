@@ -12,7 +12,7 @@ Internally, there are two regions of memory the compiler is aware of:
 
 ### Static memory
 
-Memory starts with static data, like strings and arrays the compiler encountered while translating the program. Unlike other languages, there is no concept of a stack in AssemblyScript and it instead relies on WebAssembly's execution stack exclusively.
+Memory starts with static data, like strings and arrays \(of constant values\) the compiler encountered while translating the program. Unlike in other languages, there is no concept of a stack in AssemblyScript and it instead relies on WebAssembly's execution stack exclusively. When implementing low-level code, the end of static memory respectively the start of dynamic memory can be obtained by reading the `__heap_base` global.
 
 ### Dynamic memory
 
