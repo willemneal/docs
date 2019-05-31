@@ -27,7 +27,7 @@ The reason for going with our own runtime is that [WebAssembly GC](https://githu
 
 ## Implementation
 
-The memory manager used by AssemblyScript is a variant of [TLSF](http://www.gii.upv.es/tlsf/) \(Two-Level Segregate Fit memory allocator\) and it is accompanied by PureRC \([A Pure Reference Counting Garbage Collector](https://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon03Pure.pdf) devised by David F. Bacon et al.\) with [slight modifications of assumptions](https://github.com/dcodeIO/purerc) to avoid unnecessary work. Essentially, TLSF is responsible for partitioning the memory into chunks that can be used by the various objects, while PureRC keeps track of their lifetimes.
+The memory manager used by AssemblyScript is a variant of [TLSF](http://www.gii.upv.es/tlsf/) \(Two-Level Segregate Fit memory allocator\) and it is accompanied by PureRC \(a variant of [A Pure Reference Counting Garbage Collector](https://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon03Pure.pdf) devised by David F. Bacon et al.\) with [slight modifications of assumptions](https://github.com/dcodeIO/purerc) to avoid unnecessary work. Essentially, TLSF is responsible for partitioning the memory into chunks that can be used by the various objects, while PureRC keeps track of their lifetimes.
 
 The concept is simple: If a reference to an object is established, its reference count is increased by 1 \(retained\), and when a reference is deleted, its reference count is decreased by 1 \(released\). If the reference count of an object reaches 0, it is collected and its memory returned to TLSF for reuse.
 
@@ -39,15 +39,17 @@ It is also likely that our implementations are not as optimized yet as ultimatel
 
 ## Internals
 
+If you are interested in the inner workings, the internal APIs are explained in [the runtime's README file](https://github.com/AssemblyScript/assemblyscript/tree/master/std/assembly/rt) and of course in its sources - feel free to take a look!
+
+#### Notes
+
 Unlike other reference counting implementions, allocating an object starts with a reference count of 0. This is useful in standard library code where memory is first allocated and then assigned to a variable, establishing the first reference.
 
 The compiler does some extra work to evaluate whether an object can potentially become part of a reference cycle. Any object that cannot directly or indirectly reference another object of its kind is considered _inherently acyclic_, so it does not have to be added to the cycle buffer for further evaluation by deferred garbage collection.
 
 Due to the lack of random access to WebAssembly's execution stack \(remember: AssemblyScript does not have a stack on its own\), values returned from a function become pre-retained for the caller, expecting that it will release the reference at the end, or give the reference to its own caller. This also leads to situations where sometimes a reference must be retained on assignment, and sometimes it must not. It also leads to situations where two branches must be unified, for example if there is a pre-retained value in one arm and one that is not in the other. The compiler is taking care of these situations, but it also requires special care when dealing with the reference counting internals within the standard library.
 
-The compiler also utilizes a concept of so called autorelease locals. Essentially, if a reference enters a block of code from somewhere else, is pre-retained but not immediately retained, such a local is added to the current scope to postpone the necessary release until the scope is exited.
+The compiler also utilizes a concept of so called autorelease locals. Essentially, if a reference enters a block of code from somewhere else, is pre-retained but not immediately assigned, such a local is added to the current scope to postpone the necessary release until the scope is exited.
 
 One thing not particularly ideal at this point is that each function is expected to retain the reference-type arguments it is given, and release them again at the end. This is necessary because the compiler does just a single pass and doesn't know whether a variable becomes reassigned beforehand \(no SSA or similar, that's left to Binaryen\). It does already skip this for certain variables like `this` that cannot be reassigned, but there are definitely more optimization opportunities along the way. Due to AssemblyScript essentially being a compiler on top of another compiler \(here: Binaryen\), it is somewhat unclear however where to perform such optimizations. For instance, reimplementing half of Binaryen doesn't seem like a good option.
-
-If you are interested in the inner workings, the internal APIs are explained in [the runtime's README file](https://github.com/AssemblyScript/assemblyscript/tree/master/std/assembly/rt) and of course in its sources - feel free to take a look!
 
