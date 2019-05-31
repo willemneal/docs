@@ -6,7 +6,21 @@ description: 'How to import and export memory, and all the details on its layout
 
 Similar to other languages that use linear memory, all data in AssemblyScript becomes stored at a specific memory offset so other parts of the program can read and modify it.
 
-The [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory) instance used by your program can be imported from the host by using the `--importMemory` flag on the command line. The module will then expect an import named `memory`. Likewise, a module will always export its memory as `memory`.
+## Importing memory
+
+The [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory) instance used by your program can be imported from the host by using the `--importMemory` flag on the command line. The module will then expect an import named `memory` within the `env` module. Likewise, a module always exports its memory as `memory`.
+
+## Accessing memory during instantiation
+
+There is one special case to mention when it comes to accessing memory during instantiation, that is while top-level statements are still executing. Instantiation must return first so one can get a hold of the exported memory instance, hence it is not possible to print a string in top-level statements for example, unless memory has been imported or a function annotated with the `@start` decorator is exported from the entry file:
+
+```typescript
+@start export function main(): void {}
+```
+
+What the `@start` decorator will do is delay all top-level statements until the explicit start function is  called externally, so one can get a hold of the memory early, before top-level statements run, even if it has not been imported.
+
+## Memory regions
 
 Internally, there are two regions of memory the compiler is aware of:
 
@@ -20,7 +34,7 @@ A custom region of memory can be reserved using the `--memoryBase` option. For e
 
 Dynamic memory, commonly known as the heap, is managed by the [AssemblyScript runtime](runtime.md), at runtime. When a chunk of memory is requested by the program, the runtime's memory manager reserves a suitable region and returns a pointer to it to the program. The lifetime of objects allocated from the heap is then tracked by the runtime's garbage collector, and once it is not needed anymore, the object's chunk of memory is returned to the memory manager for reuse.
 
-### Internals
+## Internals
 
 When writing high level AssemblyScript, the above is pretty much everything one needs to know. But there is a low level perspective of course.
 
