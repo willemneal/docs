@@ -12,7 +12,7 @@ The [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ## Accessing memory during instantiation
 
-There is one special case to mention when it comes to accessing memory during instantiation, that is while top-level statements are still executing. Instantiation must return first so one can get a hold of the exported memory instance, hence it is not possible to print a string in top-level statements for example, unless memory has been imported or a function annotated with the `@start` decorator is exported from the entry file:
+There is one special case to mention when it comes to accessing memory while top-level statements are still executing. Instantiation must return first so one can get a hold of the exported memory instance, hence it is not possible to print a string externally before this happens, _unless_ memory has been imported or a function annotated with the `@start` decorator is exported from the entry file:
 
 ```typescript
 @start export function main(): void {}
@@ -28,7 +28,13 @@ Internally, there are two regions of memory the compiler is aware of:
 
 Memory starts with static data, like strings and arrays \(of constant values\) the compiler encountered while translating the program. Unlike in other languages, there is no concept of a stack in AssemblyScript and it instead relies on WebAssembly's execution stack exclusively.
 
-A custom region of memory can be reserved using the `--memoryBase` option. For example, if one needs an image buffer of exactly N bytes, instead of allocating it one could reserve that space, telling the compiler to place its own static data afterwards.
+A custom region of memory can be reserved using the `--memoryBase` option. For example, if one needs an image buffer of exactly N bytes, instead of allocating it one could reserve that space, telling the compiler to place its own static data afterwards, partitioning memory in this order:
+
+| Region | Description |
+| :--- | :--- |
+| Reserved memory | As specified with `--memoryBase` |
+| Static memory | Starting right after reserved memory |
+| Dynamic memory | Starting right after dynamic memory |
 
 ### Dynamic memory
 
