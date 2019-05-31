@@ -41,7 +41,7 @@ function add<T>(a: T, b: T): T {
 ```
 
 {% hint style="info" %}
-If you are not going to use low-level WebAssembly in the foreseeable future, feel free to come back to the following paragraphs at a later time and continue at [Limitations](limitations.md) right away.
+If you are not going to use low-level WebAssembly in the foreseeable future, feel free to come back to the following paragraphs at a later time and continue at [Loader ](loader.md)right away.
 {% endhint %}
 
 * **sizeof**&lt;`T`&gt;\(\): `usize` Determines the byte size of the respective basic type. Compiles to a constant.

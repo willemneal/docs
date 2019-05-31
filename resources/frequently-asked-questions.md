@@ -20,6 +20,10 @@ Or: WebAssembly is great for computational tasks, stuff with numbers, but still 
 
 Bonus: If you are considering another language than AssemblyScript, pick one that doesn't \(currently\) compile an interpreter to WebAssembly to run your code, because that's neither small nor fast.
 
+## Is AssemblyScript _always_ faster?
+
+No, not always. But there are use cases especially well-suited for it, like creating a Game Boy emulator by making use of its low-level capabilities, essentially emitting raw WebAssembly using a nicer syntax. But just by compiling to WebAssembly, code doesn't magically become faster, especially when making extensive use of managed objects that require memory management and garbage collection \(this has its cost in every language\) or talking to the host in structures that WebAssembly isn't currently good at, like strings or more complex objects. Low-level code \(just functions, numbers and math\) is always the best choice when all you care about is raw performance.
+
 ## How does AssemblyScript compare/relate to C++/Rust?
 
 First and foremost: Both Emscripten \(C++\) and Rust have very mature tooling to compile to WebAssembly and are made by the smartest people on this field. Also, both can make use of compiler infrastructure that has been created by many individuals and corporations over years. In contrast, AssemblyScript is a relatively young project with limited resources that strives to create a viable alternative from another perspective.

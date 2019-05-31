@@ -5,6 +5,7 @@
 * [The Basics](the-basics/README.md)
   * [Types](the-basics/types.md)
   * [Environment](the-basics/environment.md)
+  * [Loader](the-basics/loader.md)
   * [Limitations](the-basics/limitations.md)
 * [The Details](the-details/README.md)
   * [Compiler](the-details/compiler-options.md)

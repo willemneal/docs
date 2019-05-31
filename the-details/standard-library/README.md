@@ -1,5 +1,5 @@
 ---
-description: AssemblyScript's implementation of the JavaScript standard library.
+description: AssemblyScript's take on the JavaScript standard library.
 ---
 
 # Stdlib

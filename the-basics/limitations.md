@@ -4,7 +4,7 @@ description: The mighty throw new Error("not implemented")
 
 # Limitations
 
-Not everything that can be implemented has been implemented yet and there are features that are not yet feasible to implement due to the relevant [post-MVP WebAssembly features](https://webassembly.org/docs/future-features/) still being on their way through specification.
+Not everything that can be implemented has been implemented already and there are features that are not yet feasible to implement due to the relevant [post-MVP WebAssembly features](https://webassembly.org/docs/future-features/) still being on their way through specification.
 
 ## Closures
 
