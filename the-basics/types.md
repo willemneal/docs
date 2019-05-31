@@ -16,7 +16,7 @@ Instead of using the `number` type for all sorts of numeric values, WebAssembly 
 | `f64` | `number` | A 64-bit float. |
 | `v128` |  | A 128-bit vector 🦄. |
 
-Native WebAssembly types do not convey the concept of signedness. Instead, WebAssembly uses specific instructions to deal with a value in either signed or unsigned interpretation. For convenience, AssemblyScript wraps this fact into actual signed and unsigned types.
+Native WebAssembly types do not convey the concept of signedness. Instead, WebAssembly uses distinct instructions to deal with a value in either signed or unsigned interpretation. For convenience, AssemblyScript wraps this fact into actual signed and unsigned types.
 
 ## AssemblyScript types
 

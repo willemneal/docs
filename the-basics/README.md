@@ -18,6 +18,8 @@ But what does this mean _exactly_? Well, let there be...
 
 For a better understanding of what to expect, let's start with a collection of obviously "not so strictly typed" code snippets, and how to fix them.
 
+### Strict typing
+
 There is no `any` or `undefined` for obvious reasons:
 
 ```typescript
@@ -64,6 +66,8 @@ class A {
 var a = new A("hello. world");
 ```
 
+### The case of ===
+
 AssemblyScript uses `===` for identity comparisons \(means: the exact same object\). Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons. Feel free to discuss!
 
 ```typescript
@@ -75,6 +79,49 @@ s2 === s2 // true
 s1 === 1 // compile error
 s1 == s2 // true
 ```
+
+### Imports
+
+With [WebAssembly ES Module Integration](https://github.com/WebAssembly/esm-integration) still in the pipeline, imports utilize the ambient context currently. For example
+
+{% code-tabs %}
+{% code-tabs-item title="env.ts" %}
+```typescript
+export declare function doSomething(foo: i32): void;
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+creates an import of a function named `doSomething` within the `env` module, because that's the name of the file it lives is. It is also possible to use namespaces:
+
+{% code-tabs %}
+{% code-tabs-item title="foo.ts" %}
+```typescript
+declare namespace console {
+  export function logi(i: i32): void;
+  export function logf(f: f64): void;
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+This will import the functions `console.logi` and `console.logf` within the `foo` module. Bonus: Don't forget `export`ing namespace members if you'd like to call them from outside the namespace.
+
+Where automatic naming is not sufficient, the `@external` decorator can be used to give an element another external name:
+
+{% code-tabs %}
+{% code-tabs-item title="bar.ts" %}
+```typescript
+@external("doSomethingElse")
+export declare function doSomething(foo: i32): void;
+// imports bar.doSomethingElse as doSomething
+
+@external("foo", "baz")
+export declare function doSomething(foo: i32): void;
+// imports foo.baz as doSomething
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Conclusion
 
