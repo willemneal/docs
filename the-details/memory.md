@@ -34,7 +34,7 @@ A custom region of memory can be reserved using the `--memoryBase` option. For e
 | :--- | :--- |
 | Reserved memory | As specified with `--memoryBase` |
 | Static memory | Starting right after reserved memory |
-| Dynamic memory | Starting right after dynamic memory |
+| Dynamic memory | Starting right after static memory |
 
 ### Dynamic memory
 
