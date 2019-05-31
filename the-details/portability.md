@@ -95,7 +95,7 @@ In JavaScript, all numeric values are IEEE754 doubles that cannot represent the 
 
 Other than that, some generic built-in functions do not support the full range of type arguments. For example:
 
-* **load**&lt;`T = u8`&gt;\(offset: `usize`\): `T` - and - **store**&lt;`T = u8`&gt;\(offset: `usize`, value: `T`\): `void` are limited to `u8` because the type argument cannot be evaluated in JavaScript.
+* **load**&lt;`T`&gt; and - **store**&lt;`T`&gt; are limited to `u8` because the type argument cannot be evaluated in JavaScript. In general, dealing with memory in a portable way is somewhat tricky.
 
 
 
