@@ -125,5 +125,5 @@ export declare function doSomething(foo: i32): void;
 
 ### Conclusion
 
-Keeping current [technical limitations](limitations.md) in mind as well, this means it is already possible to create working programs on top of [WebAssembly types](types.md) making use of the provided [environment](environment.md), but it is not as easy as just compiling existing code with another compiler.
+Even when considering that there are other [technical limitations](limitations.md) currently, this still means that it is pretty much possible already to create working programs on top of [WebAssembly types](types.md) making use of the provided [environment](environment.md), but it is not as easy as just compiling existing code with another compiler.
 
