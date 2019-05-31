@@ -26,6 +26,8 @@ When writing high level AssemblyScript, the above is pretty much everything one 
 
 When implementing low-level code, the end of static memory respectively the start of dynamic memory can be obtained by reading the `__heap_base` global. Memory managers for example do this to decide where to place their bookkeeping structures before partitioning the heap.
 
+The memory manager guarantees an alignment of 16 bytes, so an `ArrayBuffer`, which can be the backing buffer of multiple views, always fits up to `v128` values with native alignment.
+
 Objects in AssemblyScript have a common hidden header used by the runtime to keep track of them. The header includes information about the block used by the memory manager, state information used by the garbage collector, a unique id per concrete class and the data's actual size. The length of a `String` \(id = 1\) is computed from that size for example. The header is "hidden" in that the reference to an object points right after it, at the first byte of the object's actual data.
 
 #### Common header layout
@@ -59,7 +61,7 @@ The most basic objects using the common header are `ArrayBuffer` and `String`. T
 | ... |  |  |  |
 | \[N\] | N &lt;&lt; 1 | u16 | The N-th character |
 
-Unlike other languages, strings in AssemblyScript use UTF16 encoding to match common JavaScript APIs in an attempt to avoid re-encoding on every JS-API call. While this helps to reduce the overhead when talking to the host, it can of course introduce some overhead when integrating AssemblyScript into a C environment.
+Unlike other languages, strings in AssemblyScript use UTF16 encoding to match common JavaScript APIs in an attempt to avoid re-encoding on every JS-API call. While this helps to reduce the overhead when talking to the host, it can introduce some overhead when integrating AssemblyScript into a C environment where using UTF16 is not an option.
 
 Collections like `Array`, `Map` and `Set` use one or multiple `ArrayBuffer`s to store their data, but the backing buffer is exposed by the typed array views only because other collections can grow automatically, which would otherwise lead to no longer valid references sticking around.
 
