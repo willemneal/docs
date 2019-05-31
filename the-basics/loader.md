@@ -1,5 +1,5 @@
 ---
-description: How to use the loader.
+description: How to make working with an AssemblyScript module more convenient.
 ---
 
 # Loader
@@ -8,10 +8,6 @@ AssemblyScript has a tiny [module loader](https://github.com/AssemblyScript/asse
 
 {% hint style="info" %}
 Note that some of the loader's functionality, like allocating strings, requires the [managed runtime](../the-details/runtime.md) interface to be exported to the host.
-{% endhint %}
-
-{% hint style="warning" %}
-Some of the concepts below didn't even land in the dev branch yet.
 {% endhint %}
 
 ## Example
@@ -60,9 +56,11 @@ console.log(myModule.__getString(foo.getString()));
 myModule.__release(foo);
 ```
 
-### But why not more convenient?
+## Why not more convenient?
 
-Making it any more convenient than that has its trade-offs. One would either have to include extended type information with the module itself or generate an additional JavaScript file of glue code that does all the lifting. Both seem to be out of scope for a tiny loader, and hiding the fact that something actually needs to do an allocation can be detrimental in performance-oriented scenarios.
+Making it any more convenient than that has its trade-offs. One would either have to include extended type information with the module itself or generate an additional JavaScript file of glue code that does all the lifting. Both seem to be out of scope for a tiny loader, and hiding the fact that something actually needs to do an allocation can even be detrimental in performance-oriented scenarios.
 
-For a full list of of the provided utility and more usage examples, please see [the loader's README](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/loader).
+## Further resources
+
+For a full list of the provided utility and more usage examples, please see [the loader's README](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/loader). For more information on what `__retain` and `__release` are about and where it's necessary and where it's not, see the information about the [managed runtime](../the-details/runtime.md).
 
