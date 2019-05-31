@@ -86,7 +86,7 @@ The `immOffset` argument is a bit special here, because it becomes an actual imm
 
 ### Control flow
 
-* **select**&lt;`T`&gt;\(ifTrue: `T`, ifFalse: `T`, condition: `bool`\): `T` Selects one of two pre-evaluated values depending on the condition.
+* **select**&lt;`T`&gt;\(ifTrue: `T`, ifFalse: `T`, condition: `bool`\): `T` Selects one of two pre-evaluated values depending on the condition. Differs from an `if/else` in that both arms are always executed and the final value is picked based on the condition afterwards. Performs better than an `if/else` only if the condition is random \(means: branch prediction is not going to perform well\) and both alternatives are cheap. It is also worth to note that Binaryen will do relevant optimizations like switching to a `select` automatically, so using a ternary `? :` for example is just fine.
 * **unreachable**\(\): `*` Emits an unreachable operation that results in a runtime error when executed. Both a statement and an expression of any type.
 
 ### Calls
