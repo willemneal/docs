@@ -57,7 +57,7 @@ will essentially result in
 ```javascript
 // js
 var someFloat = 1.5;
-var someInt = 1.5 | 0;
+var someInt = someFloat | 0;
 ```
 
 which is correct. The best way of dealing with this is asking yourself the question: What would this code do when compiled to JavaScript?
