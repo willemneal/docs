@@ -4,7 +4,7 @@ description: 'Let''s attempt the unthinkable, shall we?'
 
 # Introduction
 
-[AssemblyScript](https://github.com/AssemblyScript/assemblyscript) compiles a **strictly-typed** subset of [TypeScript](https://www.typescriptlang.org) \(a typed superset of JavaScript\) to [WebAssembly](https://webassembly.org) using [Binaryen](https://github.com/WebAssembly/binaryen), looking like:
+AssemblyScript compiles a **strictly-typed** subset of [TypeScript](https://www.typescriptlang.org) \(a typed superset of JavaScript\) to [WebAssembly](https://webassembly.org) using [Binaryen](https://github.com/WebAssembly/binaryen), looking like:
 
 {% code-tabs %}
 {% code-tabs-item title="fib.ts" %}
