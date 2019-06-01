@@ -6,10 +6,12 @@ description: Represents a runtime error.
 
 ## Kinds
 
-* **Error** Represents a general error.
-* **RangeError** extends **Error** Represents a range error.
-* **TypeError** extends **Error** Represents a type error.
-* **SyntaxError** extends **Error** Represents a syntax error.
+| Kind | Description |
+| :--- | :--- |
+| Error | Represents a general error. |
+| RangeError | Represents an error where a value is not in the range of allowed values. |
+| TypeError | Represents an error where a value is not of the expected type. |
+| SyntaxError | Represents an error where the syntax of the input in invalid. |
 
 The `Error`class can also be sub-classed by forwarding `message` and setting the `name` property in the overloaded constructor.
 
