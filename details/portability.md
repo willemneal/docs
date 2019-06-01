@@ -8,7 +8,7 @@ With AssemblyScript using a stricter variant of TypeScript's syntax with just a 
 
 ## Portable Stdlib
 
-Besides the full [standard library](standard-library/), AssemblyScript provides a portable variant of the functionality that is present in both JavaScript and WebAssembly. In addition to that, the portable library lifts some of the functionality that is only available with `asc` to JavaScript, like the portable conversions mentioned below.
+Besides the full [standard library](stdlib/), AssemblyScript provides a portable variant of the functionality that is present in both JavaScript and WebAssembly. In addition to that, the portable library lifts some of the functionality that is only available with `asc` to JavaScript, like the portable conversions mentioned below.
 
 To use the portable library, add the following somewhere along your build step so the portable features are present in the environment
 
