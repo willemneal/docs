@@ -4,8 +4,6 @@ description: Regional specialties à la carte.
 
 # Additions
 
-AssemblyScript also has a set of special features that cannot be found in TypeScript.
-
 ## Annotations
 
 Decorators work more like actual compiler annotations in AssemblyScript.
@@ -133,5 +131,13 @@ Overloaded postfix operations do not preserve the original value automatically.
 
 ## Tree-shaking
 
-The compiler only compiles those elements reachable from the entry file and ignores everything that remains unused. This is very similar to a JavaScript VM's behavior when running a JavaScript file, but unlike TypeScript it also affects type annotations.
+The compiler only compiles elements reachable from the entry file and ignores everything that remains unused. This is very similar to a JavaScript VM's behavior when running a JavaScript file, but unlike in TypeScript it also affects checking of types. Helps to reduce compilation times and binary sizes significantly.
+
+## Transforms
+
+The compiler frontend \(asc\) provides hooking into the compilation process by means of transforms. Specifying `--transform myTransform` on the command line will load the node module pointed to by `myTransform` and the compiler will call the following hooks during the compilation process:
+
+* **afterParse**\(parser: `Parser`\): `void` Called with the parsing result of all relevant files once parsing is complete. Useful to modify the AST before it becomes compiled, for example by looking for custom decorators and injecting actual logic.
+
+The set of hooks is intentionally minimal at this point. If you need something special, please let us know about your use case.
 
