@@ -41,6 +41,7 @@ Some JavaScript engines also support adding break points when running WebAssembl
 * [Chrome](https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints)
 * [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Set_a_breakpoint)
 * [node.js](https://nodejs.org/api/debugger.html)
+* [Safari](https://support.apple.com/de-de/guide/safari-developer/dev5e4caf347/mac)
 
 ## Additional resources
 
