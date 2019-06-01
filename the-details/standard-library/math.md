@@ -4,11 +4,11 @@ description: Mathematical operations as known from JavaScript.
 
 # Math
 
-## Flavors
+## Variants
 
-Math in AssemblyScript is available in multiple flavors.
+Math in AssemblyScript is available in multiple variants.
 
-| Implementation |  |
+| Variant | Description |
 | :--- | :--- |
 | NativeMath | WebAssembly implementation for `f64` |
 | NativeMathf | WebAssembly implementation for `f32` |
