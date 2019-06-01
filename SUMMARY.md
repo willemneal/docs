@@ -7,7 +7,6 @@
   * [Environment](the-basics/environment.md)
   * [Loader](the-basics/loader.md)
   * [Limitations](the-basics/limitations.md)
-  * [Additions](the-basics/distinctions.md)
 * [The Details](the-details/README.md)
   * [Compiler](the-details/compiler-options.md)
   * [Stdlib](the-details/standard-library/README.md)
@@ -23,6 +22,7 @@
     * [TypedArray](the-details/standard-library/typedarray.md)
   * [Memory](the-details/memory.md)
   * [Runtime](the-details/runtime.md)
+  * [Peculiarities](the-details/distinctions.md)
   * [Portability](the-details/portability.md)
   * [Debugging](the-details/debugging.md)
 

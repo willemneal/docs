@@ -1,8 +1,8 @@
 ---
-description: Regional specialties à la carte.
+description: Special features that exist for the sole reason of why not.
 ---
 
-# Additions
+# Peculiarities
 
 ## Annotations
 
