@@ -26,7 +26,7 @@ By default, the compiler will preserve any `assert(expression)`s in a module, le
 
 ## Manual tracing
 
-The standard library provides a relatively basic `trace` utility function that is imported from the host and understood by the [loader](../the-basics/loader.md). For example
+The standard library provides a relatively basic `trace` utility function that is imported from the host and understood by the [loader](../basics/loader.md). For example
 
 ```typescript
 trace("HERE", 2, value, otherValue);

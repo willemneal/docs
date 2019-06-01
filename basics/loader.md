@@ -7,7 +7,7 @@ description: How to make working with an AssemblyScript module more convenient.
 AssemblyScript has a tiny [module loader](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/loader) that makes working with AssemblyScript modules more convenient. It mirrors the relevant parts of the WebAssembly API while also providing utility to load and store numbers as well as to allocate and read strings, arrays and classes.
 
 {% hint style="info" %}
-Note that some of the loader's functionality, like allocating strings, requires the [managed runtime](../the-details/runtime.md) interface to be exported to the host.
+Note that some of the loader's functionality, like allocating strings, requires the [managed runtime](../details/runtime.md) interface to be exported to the host.
 {% endhint %}
 
 ## Example
@@ -64,5 +64,5 @@ Making it any more convenient than that has its trade-offs. One would either hav
 
 ## Further resources
 
-For a full list of the provided utility and more usage examples, please see [the loader's README](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/loader). For more information on what `__retain` and `__release` are about and where it's necessary and where it's not, see the information about the [managed runtime](../the-details/runtime.md).
+For a full list of the provided utility and more usage examples, please see [the loader's README](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/loader). For more information on what `__retain` and `__release` are about and where it's necessary and where it's not, see the information about the [managed runtime](../details/runtime.md).
 
