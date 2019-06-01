@@ -1,5 +1,5 @@
 ---
-description: Regional specialties a la carte.
+description: Regional specialties à la carte.
 ---
 
 # Additions
