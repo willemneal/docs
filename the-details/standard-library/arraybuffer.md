@@ -6,6 +6,8 @@ description: A fixed-length raw binary data buffer.
 
 ## API
 
+The ArrayBuffer API is exactly as in JavaScript \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)\).
+
 ### Static
 
 * ArrayBuffer.**isView**&lt;`T`&gt;\(value: `T`\): `bool` Returns true if `value` is one of the buffer views, such as one of the [typed arrays](typedarray.md) or a [DataView](dataview.md).

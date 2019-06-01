@@ -6,6 +6,8 @@ description: A sequence of values of a generic type.
 
 ## API
 
+The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)\), with the notable difference that any operation on an Array of a non-nullable reference type that would result in a holey array \(containing `null` values\) results in an error, because the Array would no longer match its value type.
+
 ### Static
 
 * Array.**isArray**&lt;`U`&gt;\(value: `U`\): `bool` Tests if a value is an array.

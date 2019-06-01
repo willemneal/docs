@@ -6,6 +6,8 @@ description: A mapping of generic keys to generic values.
 
 ## API
 
+The Map API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)\), with the notable difference that a `get` with a key that does not exist results in an error, because `undefined` cannot be represented. Iterators are not implemented yet.
+
 ### Constructor
 
 * new **Map**&lt;`K`,`V`&gt;\(\) Constructs a new map mapping keys of type `K` to values of type `V`.

@@ -8,6 +8,8 @@ description: >-
 
 ## API
 
+The DataView API is exactly as in JavaScript \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView)\).
+
 ### Constructor
 
 * new **DataView**\(buffer: `ArrayBuffer`, byteOffset?: `i32`, byteLength?: `i32`\) Constructs a new DataView on the specified buffer and region.

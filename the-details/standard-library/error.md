@@ -15,6 +15,8 @@ The `Error`class can also be sub-classed by forwarding `message` and setting the
 
 ## API
 
+The Error API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)\), with some properties not being implemented yet.
+
 ### Constructor
 
 * new **Error**\(message?: `string`\) Constructs a new error object.

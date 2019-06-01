@@ -6,6 +6,8 @@ description: A set of unique generic values.
 
 ## API
 
+The Set API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)\), but iterators are not implemented yet.
+
 ### Constructor
 
 * new **Set**&lt;`T`&gt;\(\) Constructs a new set of unique value of type `T`.

@@ -6,10 +6,12 @@ description: Represents timestamps.
 
 ## API
 
+The Date API is still preliminary and requires importing the `Date` object from the host \(as `Date`\).
+
 ### Static
 
-* Date.**now**\(\): `i64` Returns the current UTC timestamp in milliseconds. Requires that the host's `Date` object is imported as an import named `Date`.
-* Date.**UTC**\(year: `i32`, month?: `i32`, day?: `i32`, hour?: `i32`, minute?: `i32`, second?: `i32`, millisecond?: `i64`\): `i64` Returns the UTC timestamp in milliseconds of the specified date. Requires that the host's `Date` object is imported as an import named `Date`.
+* Date.**now**\(\): `i64` Returns the current UTC timestamp in milliseconds
+* Date.**UTC**\(year: `i32`, month?: `i32`, day?: `i32`, hour?: `i32`, minute?: `i32`, second?: `i32`, millisecond?: `i64`\): `i64` Returns the UTC timestamp in milliseconds of the specified date.
 
 ### Constructor
 
