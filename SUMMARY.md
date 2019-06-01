@@ -7,6 +7,7 @@
   * [Environment](the-basics/environment.md)
   * [Loader](the-basics/loader.md)
   * [Limitations](the-basics/limitations.md)
+  * [Additions](the-basics/distinctions.md)
 * [The Details](the-details/README.md)
   * [Compiler](the-details/compiler-options.md)
   * [Stdlib](the-details/standard-library/README.md)
