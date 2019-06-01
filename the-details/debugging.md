@@ -34,6 +34,14 @@ trace("HERE", 2, value, otherValue);
 
 will call the `env.trace` import with a string message and two arbitrary values that can be anything convertible to an `f64`. The loader for example will log the output to console.
 
+## Breakpoints
+
+Some JavaScript engines also support adding break points when running WebAssembly binaries. Please consult your engine's documentation.
+
+* [Chrome](https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints)
+* [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Set_a_breakpoint)
+* [node.js](https://nodejs.org/api/debugger.html)
+
 ## Additional resources
 
 * [Making Web Assembly Even Faster: Debugging Web Assembly Performance with AssemblyScript and a Gameboy Emulator](https://medium.com/@torch2424/making-web-assembly-even-faster-debugging-web-assembly-performance-with-assemblyscript-and-a-4d30cb6463f1) \(Aaron Turner, March 2018\)
