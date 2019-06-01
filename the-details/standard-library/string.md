@@ -1,5 +1,5 @@
 ---
-description: A constant-length sequence of UTF-16 code units.
+description: A fixed-length sequence of UTF-16 code units.
 ---
 
 # String
@@ -11,9 +11,9 @@ The String API works very much like JavaScript's \([MDN](https://developer.mozil
 ### Static
 
 * String.**fromCharCode**\(unit: `i32`, surr?: `i32`\): `string` Creates a one character long string from the specified UTF-16 code units.
-* String.**fromCharCodes**\(units: `u16[]`\): `string` Creates a string from a sequence of UTF-16 code units. \(TODO\)
+* String.**fromCharCodes**\(units: `u16[]`\): `string` _non-standard_ Creates a string from a sequence of UTF-16 code units. \(TODO\)
 * String.**fromCodePoint**\(code: `i32`\): `string` Creates a one character long string from the specified UTF-8 code point.
-* String.**fromCodePoints**\(codes: `i32[]`\): `string` Creates a string from a sequence of UTF-8 code points. \(TODO\)
+* String.**fromCodePoints**\(codes: `i32[]`\): `string` _non-standard_ Creates a string from a sequence of UTF-8 code points. \(TODO\)
 
 ### Instance
 
