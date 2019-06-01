@@ -52,7 +52,7 @@ The type `T` below substitutes either `f32` or `f64` depending on the implementa
 * Math.**exp**\(x: `T`\): `T` Returns e to the power of `x`.
 * Math.**expm1**\(x: `T`\): `T` Returns e to the power of `x`, minus 1.
 * Math.**floor**\(x: `T`\): `T` Returns the largest integer less than or equal to `x`.
-* Math.**fround**\(x: `T`\): `f32` Returns the nearest 32-bit single precision float representation of `x`.
+* Math.**fround**\(x: `T`\): `T` Returns the nearest 32-bit single precision float representation of `x`.
 * Math.**hypot**\(value1: `T`, value2: `T`\): `T` Returns the square root of the sum of squares of its arguments.
 * Math.**imul**\(a: `T`, b: `T`\): `T` Returns the result of the C-like 32-bit multiplication of `a` and `b`.
 * Math.**log**\(x: `T`\): `T` Returns the natural logarithm \(base e\) of `x`.
@@ -72,4 +72,8 @@ The type `T` below substitutes either `f32` or `f64` depending on the implementa
 * Math.**tan**\(x: `T`\): `T` Returns the tangent of `x`.
 * Math.**tanh**\(x: `T`\): `T` Returns the hyperbolic tangent of `x`.
 * Math.**trunc**\(x: `T`\): `T` Returns the integer part of `x` by removing any fractional digits.
+
+## Considerations
+
+The Math implementations are meant as a drop-in replacement and sometimes need to mimic special semantics from JavaScript, like `Math.round` always rounding towards `+Infinity`. Also, functions like `Math.fround` or `Math.imul`do not return an `f32` respectively an `i32` as some might expect for the same reason. Hence, depending on the use case, using [WebAssembly's math instructions](../../the-basics/environment.md#math) directly can be a worthwhile alternative where portability is not a concern.
 
