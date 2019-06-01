@@ -35,6 +35,6 @@
 ## Resources
 
 * [Frequently asked questions](resources/frequently-asked-questions.md)
-* [AssemblyScript GitHub](https://github.com/AssemblyScript)
 * [Contributing guidelines](https://github.com/AssemblyScript/assemblyscript/blob/master/CONTRIBUTING.md)
+* [WebAssembly Documentation](https://webassembly.org/docs/high-level-goals/)
 
