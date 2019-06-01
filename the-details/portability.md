@@ -93,9 +93,5 @@ In JavaScript, some parts of the standard library function a little more loosely
 
 In JavaScript, all numeric values are IEEE754 doubles that cannot represent the full range of values fitting in a 64-bit integer \([max. safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) is 2^53-1\). Hence `i64` and `u64` are not portable and not present in `std/portable`. There are several ways to deal with this. One is to use an i64 polyfill like [in this example](https://github.com/AssemblyScript/assemblyscript/tree/master/examples/i64-polyfill).
 
-Other than that, some generic built-in functions do not support the full range of type arguments. For example:
-
-* **load**&lt;`T`&gt; and - **store**&lt;`T`&gt; are limited to `u8` because the type argument cannot be evaluated in JavaScript. In general, dealing with memory in a portable way is somewhat tricky.
-
-
+Other than that, some generic functions do not support the full range of type arguments. For example **load**&lt;`T`&gt; and - **store**&lt;`T`&gt; are limited to `u8` because the type argument cannot be evaluated in JavaScript. In general, dealing with memory in a portable way is somewhat tricky.
 
