@@ -4,3 +4,27 @@ description: Recommendations on how to debug AssemblyScript modules.
 
 # Debugging
 
+## Source maps
+
+The compiler supports generating a source map alongside a binary using the `--sourceMap` option.
+
+### Relative source maps
+
+By default, specifying the `--sourceMap` option will create a source mapping section pointing to the source map with a relative path, defaulting to `myModule.wasm.map` with `myModule` being the name of the respective binary. This works when instantiating a module with [WebAssembly.instantiateStreaming](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiateStreaming) because the VM can obtain the absolute URL the source map is relative to from the provided `Response` object, but does not work if a module is instantiated from a buffer or otherwise without a path context.
+
+### Absolute source maps
+
+Where relative source maps cannot be used, for example if [WebAssembly.instantiate](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiate) is used to instantiate a module from a binary buffer, it is also possible to specify an absolute path to the source map using `--sourceMap absolutePathToSourceMap`.
+
+## Stack traces
+
+A JavaScript VM is able to display stack traces originating in WebAssembly code. However, optimizing a WebAssembly module will usually drop all the debug information, making these stack traces hard to grasp. Using an unoptimized module or a module otherwise preserving debug information can help here. The AssemblyScript compiler preserves debug information by specifying the `--debug` compiler option.
+
+## Disabling assertions
+
+By default, the compiler will preserve any `assert(expression)`s in a module, leading to an abort if one of the respective expectations failed. These assertions can be disabled with the `--noAssert` compiler option, though, essentially replacing them with `nop`s, doing nothing. Doing so can lead to smaller binaries once sufficiently confident that no assertions will be hit anyway, but also introduces the risk that a module explodes for no longer asserted reasons.
+
+## Additional resources
+
+* [Making Web Assembly Even Faster: Debugging Web Assembly Performance with AssemblyScript and a Gameboy Emulator](https://medium.com/@torch2424/making-web-assembly-even-faster-debugging-web-assembly-performance-with-assemblyscript-and-a-4d30cb6463f1) \(Aaron Turner, March 2018\)
+
