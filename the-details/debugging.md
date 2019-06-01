@@ -24,6 +24,16 @@ A JavaScript VM is able to display stack traces originating in WebAssembly code.
 
 By default, the compiler will preserve any `assert(expression)`s in a module, leading to an abort if one of the respective expectations failed. These assertions can be disabled with the `--noAssert` compiler option, though, essentially replacing them with `nop`s, doing nothing. Doing so can lead to smaller binaries once sufficiently confident that no assertions will be hit anyway, but also introduces the risk that a module explodes for no longer asserted reasons.
 
+## Manual tracing
+
+The standard library provides a relatively basic `trace` utility function that is imported from the host and understood by the [loader](../the-basics/loader.md). For example
+
+```typescript
+trace("HERE", 2, value, otherValue);
+```
+
+will call the `env.trace` import with a string message and two arbitrary values that can be anything convertible to an `f64`. The loader for example will log the output to console.
+
 ## Additional resources
 
 * [Making Web Assembly Even Faster: Debugging Web Assembly Performance with AssemblyScript and a Gameboy Emulator](https://medium.com/@torch2424/making-web-assembly-even-faster-debugging-web-assembly-performance-with-assemblyscript-and-a-4d30cb6463f1) \(Aaron Turner, March 2018\)
