@@ -68,7 +68,7 @@ var a = new A("hello. world");
 
 ### The case of ===
 
-AssemblyScript uses `===` for identity comparisons \(means: the exact same object\). Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons. Feel free to discuss!
+AssemblyScript uses `===` for identity comparisons \(means: the exact same object\). Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons.
 
 ```typescript
 var s1 = "1";
@@ -78,6 +78,15 @@ s1 === s2 // false
 s2 === s2 // true
 s1 === 1 // compile error
 s1 == s2 // true
+```
+
+For all other types than `string` and operator-overloaded objects with a `==` overload, `===` is equivalent to `==`.
+
+```typescript
+1 === 1 // true
+1 == 1 // true
+obj === obj // true
+obj == obj // true if there is no == overload doing something different
 ```
 
 ### Imports
