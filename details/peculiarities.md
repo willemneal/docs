@@ -129,20 +129,6 @@ __op(): T { ... }
 Overloaded postfix operations do not preserve the original value automatically.
 {% endhint %}
 
-## Tree-shaking
-
-The compiler only compiles elements reachable from the entry file and ignores everything that remains unused. This is very similar to a JavaScript VM's behavior when running a JavaScript file, but unlike in TypeScript it also affects checking of types. Helps to reduce compilation times and binary sizes significantly.
-
-## Transforms
-
-The compiler frontend \(asc\) provides hooking into the compilation process by means of transforms. Specifying `--transform myTransform` on the command line will load the node module pointed to by `myTransform` and the compiler will call the following hooks during the compilation process:
-
-* **afterParse**\(parser: `Parser`\): `void` Called with the parsing result of all relevant files once parsing is complete. Useful to modify the AST before it becomes compiled, for example by looking for custom decorators and injecting actual logic.
-
-The set of hooks is intentionally minimal at this point. If you need something special, please let us know about your use case.
-
-Range limits
-
 ## Range limits
 
 The following range limits are present as global constants for convenience:
@@ -181,4 +167,16 @@ The following range limits are present as global constants for convenience:
 | f64.**MIN\_SAFE\_INTEGER**: `f64` | -9007199254740991 |
 | f64.**MAX\_SAFE\_INTEGER**: `f64` | 9007199254740991 |
 | f64.**EPSILON**: `f64` | 2.2204460492503131e-16 |
+
+## Tree-shaking
+
+The compiler only compiles elements reachable from the entry file and ignores everything that remains unused. This is very similar to a JavaScript VM's behavior when running a JavaScript file, but unlike in TypeScript it also affects checking of types. Helps to reduce compilation times and binary sizes significantly.
+
+## Transforms
+
+The compiler frontend \(asc\) provides hooking into the compilation process by means of transforms. Specifying `--transform myTransform` on the command line will load the node module pointed to by `myTransform` and the compiler will call the following hooks during the compilation process:
+
+* **afterParse**\(parser: `Parser`\): `void` Called with the parsing result of all relevant files once parsing is complete. Useful to modify the AST before it becomes compiled, for example by looking for custom decorators and injecting actual logic.
+
+The set of hooks is intentionally minimal at this point. If you need something special, please let us know about your use case.
 
