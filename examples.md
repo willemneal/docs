@@ -1,5 +1,5 @@
 ---
-description: A collection of cool examples we have created over time.
+description: A collection of examples we have created over time.
 ---
 
 # Examples

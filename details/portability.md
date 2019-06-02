@@ -18,7 +18,7 @@ require("assemblyscript/std/portable");
 
 and extend `assemblyscript/std/portable.json` instead of `assemblyscript/std/assembly.json` within your `tsconfig.json`. The AssemblyScript compiler itself is an example of how this can be done.
 
-{% hint style="warning" %}
+{% hint style="info" %}
 The portable standard library is still pretty much a work in progress and we are extending it as we go while working on the compiler. If you need something specific, feel free to improve [its definitions and feature set](https://github.com/AssemblyScript/assemblyscript/tree/master/std/portable).
 {% endhint %}
 

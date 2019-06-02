@@ -43,7 +43,15 @@ The TypedArray API is exactly like JavaScript's \([MDN](https://developer.mozill
 
 #### Methods
 
-* TypedArray\#**fill**\(value: T, start?: i32, end?: i32\): this Replaces the values of the array from `start` inclusive to `end` exclusive in place with the specified value, returning the array.
+* TypedArray\#**every**\(fn: `(value: T, index: i32, self: TypedArray) => bool`\): `bool` Calls the specified function with every value of the array until it finds the first value for which the function returns `false`. Returns `true` if all functions returned `true` or the array is empty, otherwise `false`.
+* TypedArray\#**fill**\(value: `T`, start?: `i32`, end?: `i32`\): `this` Replaces the values of the array from `start` inclusive to `end` exclusive in place with the specified value, returning the array.
+* TypedArray\#**findIndex**\(fn: `(value: T, index: i32, self: TypedArray) => bool`\): `i32` Calls the specified function with every value of the array until it finds the first value for which the function returns `true`, returning its index. Returns `-1` if that's never the case.
+* TypedArray\#**forEach**\(fn: `(value: T, index: i32, self: TypedArray) => void`\): `void` Calls the specified function with every value of the array.
+* TypedArray\#**map**\(fn: `(value: T, index: i32, self: TypedArray) => T`\): `TypedArray` Calls the specified function with every value of the array, returning a new array of the function's return values.
+* TypedArray\#**reduce**&lt;`U`&gt;\(fn: `Reducer`, initialValue: `U`\): `U` Calls the specified reducer function with each value of the array, resulting in a single return value. Reducer signature: `(acc: U, cur: T, idx: i32, src: Array) => U`.  The respective previous reducer function's return value is remembered in `acc`, starting with `initialValue`, becoming the final return value in the process.
+* TypedArray\#**reduceRight**&lt;`U`&gt;\(fn: `Reducer`, initialValue: `U`\): `U` Calls the specified reducer function with each value of the array, from right to left, resulting in a single return value. See `Array#reduce` for the reducer function's signature.
+* TypedArray\#**reverse**\(\): `this` Reverses an array's values in place, modifying the array before returning it.
+* TypedArray\#**some**\(fn: `(value: T, index: i32, self: TypedArray) => bool`\): `bool` Calls the specified function with every value of the array until it finds the first value for which the function returns `true`, returning `true`. Returns `false` otherwise or if the array is empty.
 * TypedArray\#**sort**\(fn: `(a: T, b: T) => i32`\): `this` Sorts the values of the array in place, using the specified comparator function, modifying the array before returning it. The comparator returning a negative value means `a < b`, a positive value means `a > b` and `0` means that both are equal. Unlike in JavaScript, where an implicit conversion to strings is performed, the comparator defaults to compare two values of type `T`.
-* ...
+* TypedArray\#**subarray**\(start?: `i32`, end?: `i32`\): `TypedArray` Returns a new view on the array's backing buffer from `begin` inclusive to `end` exclusive relative to this array. If omitted, `end` defaults to the end of the array. Does not copy.
 

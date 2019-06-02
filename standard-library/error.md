@@ -4,9 +4,9 @@ description: Represents a runtime error.
 
 # Error
 
-## Kinds
+## Variants
 
-| Kind | Description |
+| Variant | Description |
 | :--- | :--- |
 | Error | Represents a general error. |
 | RangeError | Represents an error where a value is not in the range of allowed values. |
