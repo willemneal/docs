@@ -14,7 +14,7 @@ An implementation of the game of life with slight modifications. Updates an imag
 
 ### [Mandelbrot Set](https://github.com/AssemblyScript/assemblyscript/tree/master/examples/mandelbrot) \([demo](https://assemblyscript.github.io/assemblyscript/examples/mandelbrot/)\)
 
-Computes 2048 offsets of a color gradient in memory, line by line, and presents the final gradient on a canvas.
+Computes 2048 offsets of a color gradient in memory, line by line, and presents the set using the gradient's actual colors, as computed on the JavaScript side, on a canvas.
 
 ## Useful libraries
 
