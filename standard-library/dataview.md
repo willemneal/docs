@@ -1,5 +1,5 @@
 ---
-description: A low-level interface for working with a raw binary ArrayBuffer.
+description: An interface for working with a raw binary buffer.
 ---
 
 # DataView

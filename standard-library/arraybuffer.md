@@ -1,5 +1,5 @@
 ---
-description: A fixed-length raw binary data buffer.
+description: A fixed-length raw binary buffer.
 ---
 
 # ArrayBuffer

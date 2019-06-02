@@ -23,7 +23,7 @@ The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.
 * Array\#**concat**\(other: `Array<T>`\): `Array<T>` Concatenates the values of this and the other array to a new array, in this order.
 * Array\#**copyWithin**\(target: `i32`, start: `i32`, end?: `i32`\): `this` Copies a region of an array's values over the respective values starting at the target location.
 * Array\#**every**\(fn: `(value: T, index: i32, array: Array<T>) => bool`\): `bool` Calls the specified function with every value of the array until it finds the first value for which the function returns `false`. Returns `true` if all functions returned `true` or the array is empty, otherwise `false`.
-* Array\#**fill**\(value: `T`, start?: `i32`, end?: `i32`\): `this` Replaces an array's values with the specified value from `start` to `end`.
+* Array\#**fill**\(value: `T`, start?: `i32`, end?: `i32`\): `this` Replaces the values of the array from `start` inclusive to `end` exclusive in place with the specified value, returning the array.
 * Array\#**filter**\(fn: `(value: T, index: i32, array: Array<T>) => bool`\): `Array<T>` Calls the specified function with every value of the array, returning a new array with all values for which the function returned `true`.
 * Array\#**findIndex**\(fn: `(value: T, index: i32, array: Array<T>) => bool`\): `i32` Calls the specified function with every value of the array until it finds the first value for which the function returns `true`, returning its index. Returns `-1` if that's never the case.
 * Array\#**forEach**\(fn: `(value: T, index: i32, array: Array<T>) => void`\): `void` Calls the specified function with every value of the array.
