@@ -41,7 +41,7 @@ for (let i = 0, k = myArray.length; i < k; ++i) {
 }
 ```
 
-This also means that we cannot yet have shiny things like iterators, because these are basically closures. It's still necessary to figure out how to go forward with these, like whether we should implement something on our own or wait for the specification to land.
+It's still necessary to figure out how to go forward with these, like whether we should implement something on our own or wait for the specification to land.
 
 ## Exceptions
 

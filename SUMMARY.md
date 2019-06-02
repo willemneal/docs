@@ -9,23 +9,27 @@
   * [Limitations](basics/limitations.md)
 * [The Details](details/README.md)
   * [Compiler](details/compiler.md)
-  * [Stdlib](details/stdlib/README.md)
-    * [Array](details/stdlib/array.md)
-    * [ArrayBuffer](details/stdlib/arraybuffer.md)
-    * [DataView](details/stdlib/dataview.md)
-    * [Date](details/stdlib/date.md)
-    * [Error](details/stdlib/error.md)
-    * [Map](details/stdlib/map.md)
-    * [Math](details/stdlib/math.md)
-    * [Set](details/stdlib/set.md)
-    * [String](details/stdlib/string.md)
-    * [TypedArray](details/stdlib/typedarray.md)
   * [Memory](details/memory.md)
   * [Runtime](details/runtime.md)
   * [Peculiarities](details/peculiarities.md)
   * [Portability](details/portability.md)
   * [Debugging](details/debugging.md)
 * [Examples](examples.md)
+* [Frequently asked questions](faq.md)
+
+## Standard library
+
+* [Globals](standard-library/globals.md)
+* [Array](standard-library/array.md)
+* [ArrayBuffer](standard-library/arraybuffer.md)
+* [DataView](standard-library/dataview.md)
+* [Date](standard-library/date.md)
+* [Error](standard-library/error.md)
+* [Map](standard-library/map.md)
+* [Math](standard-library/math.md)
+* [Set](standard-library/set.md)
+* [String](standard-library/string.md)
+* [TypedArray](standard-library/typedarray.md)
 
 ## Community
 
@@ -36,7 +40,6 @@
 
 ## Resources
 
-* [Frequently asked questions](resources/faq.md)
 * [Contributing guidelines](https://github.com/AssemblyScript/assemblyscript/blob/master/CONTRIBUTING.md)
 * [WebAssembly Documentation](https://webassembly.org/docs/high-level-goals/)
 

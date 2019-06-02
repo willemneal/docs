@@ -27,7 +27,7 @@ The reason for going with our own runtime is that [WebAssembly GC](https://githu
 
 ## Implementation
 
-The memory manager used by AssemblyScript is a variant of [TLSF](http://www.gii.upv.es/tlsf/) \(Two-Level Segregate Fit memory allocator\) and it is accompanied by PureRC \(a variant of [A Pure Reference Counting Garbage Collector](https://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon03Pure.pdf) devised by David F. Bacon et al.\) with [slight modifications of assumptions](https://github.com/dcodeIO/purerc) to avoid unnecessary work. Essentially, TLSF is responsible for partitioning [dynamic memory](memory.md#dynamic-memory) into chunks that can be used by the various objects, while PureRC keeps track of their lifetimes.
+The memory manager used by AssemblyScript is a variant of TLSF \([Two-Level Segregate Fit memory allocator](http://www.gii.upv.es/tlsf/)\) and it is accompanied by PureRC \(a variant of [A Pure Reference Counting Garbage Collector](https://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon03Pure.pdf)\) with [slight modifications of assumptions](https://github.com/dcodeIO/purerc) to avoid unnecessary work. Essentially, TLSF is responsible for partitioning [dynamic memory](memory.md#dynamic-memory) into chunks that can be used by the various objects, while PureRC keeps track of their lifetimes.
 
 The concept is simple: If a reference to an object is established, its reference count is increased by 1 \(retained\), and when a reference is deleted, its reference count is decreased by 1 \(released\). If the reference count of an object reaches 0, it is collected and its memory returned to TLSF for reuse.
 

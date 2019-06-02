@@ -75,5 +75,5 @@ The type `T` below substitutes either `f32` or `f64` depending on the implementa
 
 ## Considerations
 
-The Math implementations are meant as a drop-in replacement and sometimes need to mimic special semantics from JavaScript, like `Math.round` always rounding towards `+Infinity`. Also, functions like `Math.fround` or `Math.imul`do not return an `f32` respectively an `i32` as some might expect for the same reason. Hence, depending on the use case, using [WebAssembly's math instructions](../../basics/environment.md#math) directly can be a worthwhile alternative where portability is not a concern.
+The Math implementations are meant as a drop-in replacement and sometimes need to mimic special semantics from JavaScript, like `Math.round` always rounding towards `+Infinity`. Also, functions like `Math.fround` or `Math.imul`do not return an `f32` respectively an `i32` as some might expect for the same reason. Hence, depending on the use case, using [WebAssembly's math instructions](../basics/environment.md#math) directly can be a worthwhile alternative where portability is not a concern.
 

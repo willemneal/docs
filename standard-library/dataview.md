@@ -1,7 +1,5 @@
 ---
-description: >-
-  Provides a low-level interface for reading/writing number values from/to a raw
-  binary ArrayBuffer.
+description: A low-level interface for working with a raw binary ArrayBuffer.
 ---
 
 # DataView
