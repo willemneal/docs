@@ -25,6 +25,7 @@
   * [Peculiarities](details/peculiarities.md)
   * [Portability](details/portability.md)
   * [Debugging](details/debugging.md)
+* [Examples](examples.md)
 
 ## Community
 
