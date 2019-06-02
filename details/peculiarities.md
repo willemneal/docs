@@ -141,3 +141,44 @@ The compiler frontend \(asc\) provides hooking into the compilation process by m
 
 The set of hooks is intentionally minimal at this point. If you need something special, please let us know about your use case.
 
+Range limits
+
+## Range limits
+
+The following range limits are present as global constants for convenience:
+
+| Constant | Value |
+| :--- | :--- |
+| i8.**MIN\_VALUE**: `i8` | -128 |
+| i8.**MAX\_VALUE**: `i8` | 127 |
+| i16.**MIN\_VALUE**: `i16` | -32768 |
+| i16.**MAX\_VALUE**: `i16` | 32767 |
+| i32.**MIN\_VALUE**: `i32` | -2147483648 |
+| i32.**MAX\_VALUE**: `i32` | 2147483647 |
+| i64.**MIN\_VALUE**: `i64` | -9223372036854775808 |
+| i64.**MAX\_VALUE**: `i64` | 9223372036854775807 |
+| isize.**MIN\_VALUE**: `isize` | target specific: either `i32.MIN_VALUE` or `i64.MIN_VALUE` |
+| isize.**MAX\_VALUE**: `isize` | target specific: either `i32.MAX_VALUE` or `i64.MAX_VALUE` |
+| u8.**MIN\_VALUE**: `u8` | 0 |
+| u8.**MAX\_VALUE**: `u8` | 255 |
+| u16.**MIN\_VALUE**: `u16` | 0 |
+| u16.**MAX\_VALUE**: `u16` | 65535 |
+| u32.**MIN\_VALUE**: `u32` | 0 |
+| u32.**MAX\_VALUE**: `u32` | 4294967295 |
+| u64.**MIN\_VALUE**: `u64` | 0 |
+| u64.**MAX\_VALUE**: `u64` | 18446744073709551615 |
+| usize.**MIN\_VALUE**: `usize` | 0 |
+| usize.**MAX\_VALUE**: `usize` | target specific: either `u32.MAX_VALUE` or `u64.MAX_VALUE` |
+| bool.**MIN\_VALUE**: `bool` | 0 |
+| bool.**MAX\_VALUE**: `bool` | 1 |
+| f32.**MIN\_VALUE**: `f32` | -3.40282347e+38 |
+| f32.**MAX\_VALUE**: `f32` | 3.40282347e+38 |
+| f32.**MIN\_SAFE\_INTEGER**: `f32` | -16777215 |
+| f32.**MAX\_SAFE\_INTEGER**: `f32` | 16777215 |
+| f32.**EPSILON**: `f32` | 1.19209290e-07 |
+| f64.**MIN\_VALUE**: `f64` | -1.7976931348623157e+308 |
+| f64.**MAX\_VALUE**: `f64` | 1.7976931348623157e+308 |
+| f64.**MIN\_SAFE\_INTEGER**: `f64` | -9007199254740991 |
+| f64.**MAX\_SAFE\_INTEGER**: `f64` | 9007199254740991 |
+| f64.**EPSILON**: `f64` | 2.2204460492503131e-16 |
+
