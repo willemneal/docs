@@ -35,5 +35,3 @@ The Error API is very similar to JavaScript's \([MDN](https://developer.mozilla.
 
 * Error\#**toString**\(\): `string` Returns a string representation of this error in the form `name: message`.
 
-
-

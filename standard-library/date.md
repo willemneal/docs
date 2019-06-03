@@ -22,5 +22,3 @@ The Date API is still preliminary and requires importing the `Date` object from 
 * Date\#**getTime**\(\): `i64` Gets the UTC timestamp of this date in milliseconds.
 * Date\#**setTime**\(value: `i64`\): `i64` Sets the UTC timestamp of this date in milliseconds and returns the timestamp.
 
-
-

@@ -6,13 +6,13 @@ description: Wrappers for basic numerical values.
 
 The `Number` object has been split into one class per basic WebAssembly type as well. Unlike in JavaScript, these classes cannot have actual instances.
 
-{% hint style="warning" %}
-It is planned to pick up the instance members described below automatically, for example when concatenating a string with a number, but this is not yet functional.
-{% endhint %}
-
 ## API
 
 The Number API works a bit different than JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)\).
+
+{% hint style="warning" %}
+It is planned to pick up the instance members described below automatically, for example when concatenating a string with a number, but this is not yet functional.
+{% endhint %}
 
 ### Integers
 
@@ -52,6 +52,4 @@ The name `Number` below stands for one of `F32` or `F64` representing their resp
 #### Instance
 
 * Number\#**toString**\(radix?: `i32`\): `string` Returns the respective basic value converted to a string. The `radix` parameter is not supported yet.
-
-
 
