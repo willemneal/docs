@@ -74,7 +74,7 @@ If you are not going to use low-level WebAssembly in the foreseeable future, fee
 
 ## Utility
 
-* **assert**&lt;`T`&gt;\(isTrueish: `T`, message?: `string`\): `T` Traps if the specified value is not true-ish, otherwise returns the non-nullable value.
+* **assert**&lt;`T`&gt;\(isTrueish: `T`, message?: `string`\): `T` Traps if the specified value is not true-ish, otherwise returns the non-nullable value. Like assertions in C, aborting the entire program if the expectation fails, with the `--noAssert` option to disable all assertions in production.
 * **instantiate**&lt;`T`&gt;\(...args: `*[]`\): `T` Instantiates a new instance of `T` using the specified constructor arguments.
 * **changetype**&lt;`T`&gt;\(value: `*`\): `T` Changes the type of a value to another one. Useful for casting class instances to their pointer values and vice-versa.
 * **idof**&lt;`T`&gt;\(\): `u32` Obtains the computed unique id of a class type. Usually only relevant when allocating objects or dealing with RTTI externally.
