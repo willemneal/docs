@@ -41,6 +41,19 @@ It is also likely that our implementations are not as optimized yet as ultimatel
 
 If you are interested in the inner workings, the internal APIs are explained in [the runtime's README file](https://github.com/AssemblyScript/assemblyscript/tree/master/std/assembly/rt) and of course in its sources - feel free to take a look!
 
+#### Runtime type information \(RTTI\)
+
+Every module using managed objects contains a memory segment with basic type information, that [the loader](../basics/loader.md) for example uses when allocating new arrays. Internally, RTTI is used to perform dynamic `instanceof` checks and to determine whether a class is inherently acyclic. The memory offset of RTTI can be obtained by reading the `__rtti_base` global. Essentially, the compiler maps every concrete class to a unique id, starting with 0 \(=String\), 1 \(=ArrayBuffer\) and 2 \(=ArrayBufferView\) . For each such class, the compiler remembers the id of the respective base class, if any, and a set of flags describing the class. Flags for example contain information about key and value alignments, whether a class is managed and so on. Structure is like this:
+
+| Name | Offset | Type | Description |
+| :--- | :--- | :--- | :--- |
+| \#count | 0 | u32 | Number of concrete classes |
+| \#flags\[0\] | 4 | u32 | Flags describing the class with id=0 |
+| \#base\[0\] | 8 | u32 | Base class id of the class with id=0 |
+| \#flags\[1\] | 12 | u32 | ... etc. ... |
+
+Flag values are currently still in flux, but if you are interested in these, feel free to take a look at the sources.
+
 #### Notes
 
 Unlike other reference counting implementions, allocating an object starts with a reference count of 0. This is useful in standard library code where memory is first allocated and then assigned to a variable, establishing the first reference.
