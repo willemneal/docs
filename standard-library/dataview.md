@@ -14,9 +14,14 @@ The DataView API is exactly as in JavaScript \([MDN](https://developer.mozilla.o
 
 ### Instance
 
+#### Fields
+
 * DataView\#**buffer**: `ArrayBuffer` _readonly_ The backing buffer.
 * DataView\#**byteLength**: `i32` _readonly_ The length of this view from the start of its buffer.
 * DataView\#**byteOffset**: `i32` _readonly_ The offset of this view from the start of its buffer.
+
+#### Methods
+
 * DataView\#**getFloat32**\(byteOffset: `i32`, littleEndian?: `bool`\): `f32` Gets the 32-bit float value at the specified offset from the start of the view.
 * DataView\#**getFloat64**\(byteOffset: `i32`, littleEndian?: `bool`\): `f64`
 

@@ -17,6 +17,12 @@ The String API works very much like JavaScript's \([MDN](https://developer.mozil
 
 ### Instance
 
+#### Fields
+
+* String\#**length**: `i32` _readonly_ The length of the string in UTF-16 code units.
+
+#### Methods
+
 * String\#**charAt**\(pos: `i32`\): `string` Gets the UTF-16 code unit at the specified position as a single character string. Returns `""` \(empty string\) if out of bounds.
 * String\#**charCodeAt**\(pos: `i32`\): `i32` Gets the UTF-16 code unit at the specified position as a number. Returns `-1` if out of bounds.
 * String\#**codePointAt**\(pos: `i32`\): `i32` Gets the UTF-8 code point at the specified \(UTF-16 code unit\) position as a number, possibly combining multiple successive UTF-16 code units. Returns `-1` if out of bounds.
@@ -25,7 +31,6 @@ The String API works very much like JavaScript's \([MDN](https://developer.mozil
 * String\#**includes**\(search: `string`, start?: `i32`\): `bool` Tests if the string includes the search string. If specified, `start` indicates the position at which to begin searching.
 * String\#**indexOf**\(search: `string`, start?: `i32`\): `i32` Gets the first index of the specified search string within the string, or `-1` if not found. If specified, `start` indicates the position at which to begin searching.
 * String\#**lastIndexOf**\(search: `string`, start?: `i32`\): `i32` Gets the last index of the specified search string within the string, or `-1` if not found. If specified, `pos` indicates the position at which to begin searching from right to left.
-* String\#**length**: `i32` _readonly_ The length of the string in UTF-16 code units.
 * String\#**padStart**\(length: `i32`, pad: `string`\): `string` Pads the string with the contents of another string, possibly multiple times, until the resulting string reaches the specified length, returning the resulting string.
 * String\#**padEnd**\(length: `i32`, pad: `string`\): `string` Pads the string with the contents of another string, possibly multiple times, until the resulting string reaches the specified length, returning the resulting string.
 * String\#**repeat**\(count?: `i32`\): `string` Repeats the string `count` times and returns the concatenated result.

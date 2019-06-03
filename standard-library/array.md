@@ -19,7 +19,12 @@ The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.
 
 ### Instance
 
+#### Fields
+
 * Array\#**length**: `i32` The length of this array. Setting the length to a value larger than internal capacity will automatically grow the array. Traps if `T` is of a non-nullable reference type and setting length would result in a holey array.
+
+#### Methods
+
 * Array\#**concat**\(other: `Array<T>`\): `Array<T>` Concatenates the values of this and the other array to a new array, in this order.
 * Array\#**copyWithin**\(target: `i32`, start: `i32`, end?: `i32`\): `this` Copies a region of an array's values over the respective values starting at the target location.
 * Array\#**every**\(fn: `(value: T, index: i32, array: Array<T>) => bool`\): `bool` Calls the specified function with every value of the array until it finds the first value for which the function returns `false`. Returns `true` if all functions returned `true` or the array is empty, otherwise `false`.

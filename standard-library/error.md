@@ -25,9 +25,14 @@ The Error API is very similar to JavaScript's \([MDN](https://developer.mozilla.
 
 ### Instance
 
+#### Fields
+
 * Error\#**message**: `string` The message of this error.
 * Error\#**name**: `string` The name of this error. In case of `Error`, this is `"Error"`.
 * Error\#**stack**: `string` The stack trace of this error. Not supported yet, hence an empty string.
+
+#### Methods
+
 * Error\#**toString**\(\): `string` Returns a string representation of this error in the form `name: message`.
 
 

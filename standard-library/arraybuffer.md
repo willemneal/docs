@@ -18,7 +18,12 @@ The ArrayBuffer API is exactly as in JavaScript \([MDN](https://developer.mozill
 
 ### Instance
 
+#### Fields
+
 * ArrayBuffer\#**byteLength** The buffer's length, in bytes.
+
+#### Methods
+
 * ArrayBuffer\#**slice**\(begin?: `i32`, end?: `i32`\): `ArrayBuffer` Returns a copy of this buffer from begin, inclusive, up to end, exclusive.
 * ArrayBuffer\#**toString**\(\):  `string` Returns a string representation of this buffer.
 
