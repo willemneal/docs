@@ -10,7 +10,7 @@ The first thing one is going to notice is that AssemblyScript's [type system](ty
 
 This means that **objects cannot yet flow in and out of WebAssembly natively**, making it necessary to read/write them from/to memory. To make this process more convenient, [the loader](loader.md) provides the utility necessary to translate between the WebAssembly and the JavaScript world.
 
-It must also be noted that WebAssembly has **no immediate access to the DOM** or other JavaScript APIs currently, sometimes making it necessary to create some custom glue code.
+It must also be noted that WebAssembly has **no immediate access to the DOM** or other JavaScript APIs currently, sometimes making it necessary to create some custom glue code by means of importing and exporting functionality from/to JavaScript.
 
 Combined, this makes it **unlikely that existing TypeScript code can be compiled** to WebAssembly without modifications, yet likely that already **reasonably strict TypeScript code can be made compatible** with the AssemblyScript compiler.
 
@@ -70,7 +70,7 @@ var a = new A("hello. world");
 
 ### The case of ===
 
-AssemblyScript uses `===` for identity comparisons \(means: the exact same object\). Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons.
+Also, AssemblyScript does some things differently. It uses `===` for identity comparisons \(means: the exact same object\) for example. Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons.
 
 ```typescript
 var s1 = "1";
