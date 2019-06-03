@@ -27,6 +27,7 @@
 * [Error](standard-library/error.md)
 * [Map](standard-library/map.md)
 * [Math](standard-library/math.md)
+* [Number](standard-library/number.md)
 * [Set](standard-library/set.md)
 * [String](standard-library/string.md)
 * [TypedArray](standard-library/typedarray.md)
