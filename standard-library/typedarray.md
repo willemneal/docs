@@ -13,12 +13,12 @@ description: An Array-like view on a raw binary buffer.
 | Int32Array | A view on 32-bit signed integer values of type `i32`. |
 | Int64Array | A view on 64-bit signed integer values of type `i64`. |
 | Uint8Array | A view on 8-bit unsigned integer values of type `u8`. |
-| Uint8ClampedArray | Like Uint8Array but with set values of a larger type clamped between `0` and `255` inclusive instead of overflowing. |
 | Uint16Array | A view on 16-bit unsigned integer values of type `u16`. |
 | Uint32Array | A view on 32-bit unsigned integer values of type `u32`. |
 | Uint64Array | A view on 64-bit unsigned integer values of type `u64`. |
 | Float32Array | A view on 32-bit float values of type `f32`. |
 | Float64Array | A view on 64-bit float values of type `f64`. |
+| Uint8ClampedArray | Like Uint8Array but with set values of a larger type clamped between `0` and `255` inclusive instead of overflowing. |
 
 ## API
 

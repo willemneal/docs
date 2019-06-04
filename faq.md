@@ -36,5 +36,5 @@ In short: AssemblyScript differs in that it is new and tries another approach. I
 
 ## Is WebAssembly going to supersede JavaScript?
 
-No, and it is not meant to do so. There are use cases one can handle "better" than the other, with "better" depending on expectations. This can be making an algorithm perform faster on the one hand or getting an UI job done quicker on the other. As always, picking the right tool for the job is key, and AssemblyScript just so happens to blur the line a bit.
+No, and it is not meant to do so. There are use cases one can handle "better" than the other, with "better" depending on expectations. This can be making an algorithm performing with less overhead on the one hand or getting an UI job done quicker on the other. As always, picking the right tool for the job is key, and AssemblyScript just so happens to blur the line a bit.
 
