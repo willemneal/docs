@@ -50,7 +50,9 @@ Decorators work more like actual compiler annotations in AssemblyScript.
       <td style="text-align:left">Annotates a method as a unary postfix operator overload. See below.</td>
     </tr>
   </tbody>
-</table>## Operator overloads
+</table>Custom decorators can be given meaning by using a [transform](peculiarities.md#transforms).
+
+## Operator overloads
 
 Operator overloads can only be used on class methods. The respective argument types must match the class type.
 
