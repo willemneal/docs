@@ -10,13 +10,13 @@ Instead of using the `number` type for all sorts of numeric values, WebAssembly 
 
 | WebAssembly type | Closest JavaScript type | Description |
 | :--- | :--- | :--- |
-| `i32` | `number` | A 32-bit \(signed\) integer. |
-| `i64` | `BigInt` | A 64-bit \(signed\) integer. |
+| `i32` | `number` | A 32-bit integer. |
+| `i64` | `BigInt` | A 64-bit integer. |
 | `f32` | `number` | A 32-bit float. |
 | `f64` | `number` | A 64-bit float. |
 | `v128` |  | A 128-bit vector 🦄. |
 
-Native WebAssembly types do not convey the concept of signedness. Instead, WebAssembly uses distinct instructions to deal with a value in either signed or unsigned interpretation. For convenience, AssemblyScript wraps this fact into actual signed and unsigned types.
+Native WebAssembly types do not convey the concept of signedness \(WebAssembly uses distinct instructions for signed or unsigned interpretation\), but AssemblyScript wraps this fact into actual signed and unsigned types.
 
 ## AssemblyScript types
 
@@ -31,6 +31,20 @@ Hence, in addition to interpreting the native WebAssembly types above as signed 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td style="text-align:left"><code>i32</code>
+      </td>
+      <td style="text-align:left"><code>i32</code>
+      </td>
+      <td style="text-align:left">A 32-bit signed integer.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>i64</code>
+      </td>
+      <td style="text-align:left"><code>i64</code>
+      </td>
+      <td style="text-align:left">A 64-bit signed integer.</td>
+    </tr>
     <tr>
       <td style="text-align:left"><code>u32</code>
       </td>
