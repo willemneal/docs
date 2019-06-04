@@ -34,3 +34,7 @@ More precisely: AssemblyScript is putting anything web - from APIs to syntax to 
 
 In short: AssemblyScript differs in that it is new and tries another approach. It's not as mature as Emscripten and Rust, but there is something about the idea that is definitely appealing. If you find it appealing as well, AssemblyScript is for you.
 
+## Is WebAssembly going to supersede JavaScript?
+
+No, and it is not meant to do so. There are use cases one can handle "better" than the other, with "better" depending on expectations. This can be making an algorithm perform faster on the one hand or getting an UI job done quicker on the other. As always, picking the right tool for the job is key, and AssemblyScript just so happens to blur the line a bit.
+
