@@ -26,6 +26,8 @@ AssemblyScript comes with its own standard library very much resembling what dev
 
 {% page-ref page="../standard-library/math.md" %}
 
+{% page-ref page="../standard-library/number.md" %}
+
 {% page-ref page="../standard-library/set.md" %}
 
 {% page-ref page="../standard-library/string.md" %}
