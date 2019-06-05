@@ -40,7 +40,7 @@ Therefore, the compiler inserts`__retain` and `__release` calls to count the num
    * If such a reference **is not immediately retained**, the compiler will insert a temporary local into the current scope that autoreleases the reference at the end of the scope.
 
 {% hint style="warning" %}
-Objects created by calling `__alloc` start with a reference count of 0. This is not the case for constructors: Calling a constructor is a function call.
+Objects created by calling `__alloc` start with a reference count of 0. This is not the case for constructors, these behave like calls. Built-ins like `store<T>` emit instructions directly and don't behave like calls.
 {% endhint %}
 
 ### Working with references externally
@@ -48,7 +48,7 @@ Objects created by calling `__alloc` start with a reference count of 0. This is 
 Guidelines for working with references through imports and exports, like when using [the loader](../basics/loader.md).
 
 * Always `__retain` a reference to what is manually`__alloc`'ed and `__release` it again when done with it.
-* Always `__release` the reference to an object that was a return value of a function, getter, constructor or operator overload when done with it. It is not necessary to `__retain` return values.
+* Always `__release` the reference to an object that was a return value of a call \(see above\) when done with it. It is not necessary to `__retain` return values.
 
 ### Working with references internally
 
