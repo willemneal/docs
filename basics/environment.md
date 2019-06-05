@@ -161,48 +161,65 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 * v128.**add**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Adds each lane of two 128-bit vectors.
 * v128.**sub**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Subtracts each lane of two 128-bit vectors.
 * v128.**mul**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Multiplies each lane of two 128-bit vectors.
-* v128.**div**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Divides each lane of two 128-bit vectors.
+* v128.**div**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` _float only_ Divides each lane of two 128-bit vectors.
 * v128.**neg**&lt;`T`&gt;\(a: `v128`\): `v128` Negates each lane of a 128-bit vector.
-* v128.**add\_saturate**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128`
+* v128.**add\_saturate**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` _i8/i16 only_
 
   Adds each lane of two 128-bit vectors using saturation.
 
-* v128.**sub\_saturate**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128`
+* v128.**sub\_saturate**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` _i8/i16 only_
 
   Subtracts each lane of two 128-bit vectors using saturation.
 
-* v128.**shl**&lt;`T`&gt;\(a: `v128`, b: `i32`\): `v128`
+* v128.**shl**&lt;`T`&gt;\(a: `v128`, b: `i32`\): `v128` _integer only_
 
   Performs a bitwise left shift on each lane of a 128-bit vector by a scalar.
 
-* v128.**shr**&lt;`T`&gt;\(a: `v128`, b: `i32`\): `v128`
+* v128.**shr**&lt;`T`&gt;\(a: `v128`, b: `i32`\): `v128` _integer only_
 
   Performs a bitwise right shift on each lane of a 128-bit vector by a scalar.
 
-* v128.**and**\(a: `v128`, b: `v128`\): `v128`
+* v128.**and**\(a: `v128`, b: `v128`\): `v128` _integer only_
 
   Performs the bitwise AND operation on each lane of two 128-bit vectors.
 
-* v128.**or**\(a: `v128`, b: `v128`\): `v128`
+* v128.**or**\(a: `v128`, b: `v128`\): `v128` _integer only_
 
   Performs the bitwise OR operation on each lane of two 128-bit vectors.
 
-* v128.**xor**\(a: `v128`, b: `v128`\): `v128`
+* v128.**xor**\(a: `v128`, b: `v128`\): `v128` _integer only_
 
   Performs the bitwise XOR operation on each lane of two 128-bit vectors.
 
-* v128.**not**\(a: `v128`\): `v128`
+* v128.**not**\(a: `v128`\): `v128` _integer only_
 
   Performs the bitwise NOT operation on each lane of a 128-bit vector.
 
 * v128.**bitselect**\(a: `v128`, b: `v128`, mask: `v128`\): `v128`
 
-  Performs the bitwise NOT operation on each lane of a 128-bit vector.  
-  
-  ...
+  Selects bits of either 128-bit vector according to the specified mask.
 
-\`\`
+* v128.**any\_true**&lt;`T`&gt;\(a: `v128`\): `bool` Reduces a 128-bit vector to a scalar indicating whether any lane is considered `true`.
+* v128.**all\_true**&lt;`T`&gt;\(a: `v128`\): `bool` Reduces a 128-bit vector to a scalar indicating whether all lanes are considered `true`.
+* v128.**max**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` _float only_ Computes the maximum of each lane of two 128-bit vectors.
+* v128.**min**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` _float only_ Computes the minimum of each lane of two 128-bit vectors.
+* v128.**abs**&lt;`T`&gt;\(a: `v128`\): `v128` _float only_ Computes the absolute value of each lane of a 128-bit vector.
+* v128.**sqrt**&lt;`T`&gt;\(a: `v128`\): `v128` _float only_ Computes the square root of each lane of a 128-bit vector.
+* v128.**eq**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of two 128-bit vectors are equal.
+* v128.**ne**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of two 128-bit vectors are not equal.
+* v128.**lt**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of the first 128-bit vector are less than those of the second.
+* v128.**le**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of the first 128-bit vector are less than or equal those of the second.
+* v128.**gt**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of the first 128-bit vector are greater than those of the second.
+* v128.**ge**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of the first 128-bit vector are greater than or equal those of the second.
+* v128.**convert**&lt;`TFrom`&gt;\(a: `v128`\): `v128` _integer only_ Converts each lane of a 128-bit vector from integer to floating point.
+* v128.**trunc**&lt;`TTo`&gt;\(a: `v128`\): `v128` _float only_ Truncates each lane of a 128-bit vector from floating point to integer with saturation.
 
-  
+In addition, the namespaces `i8x16`, `i16x8`, `i32x4`, `i64x2` , `f32x4` and `f64x2` provide their respective non-generic instructions, like `i32x4.splat` etc. Each of them can also be used to create a literal directly:
 
+* **i8x16**\(a: `i8`, ... , p: `i8`\): `v128` Initializes a 128-bit vector from sixteen 8-bit integer values. Arguments must be compile-time constants.
+* **i16x8**\(a: `i16`, ..., h: `i16`\): `v128` Initializes a 128-bit vector from eight 16-bit integer values. Arguments must be compile-time constants.
+* **i32x4**\(a: `i32`, b: `i32`, c: `i32`, d: `i32`\): `v128` Initializes a 128-bit vector from four 32-bit integer values. Arguments must be compile-time constants.
+* **i64x2**\(a: `i64`, b: `i64`\): `v128` Initializes a 128-bit vector from two 64-bit integer values. Arguments must be compile-time constants.
+* **f32x4**\(a: `f32`, b: `f32`, c: `f32`, d: `f32`\): `v128` Initializes a 128-bit vector from four 32-bit float values. Arguments must be compile-time constants.
+* **f64x2**\(a: `f64`, b: `f64`\): `v128` Initializes a 128-bit vector from two 64-bit float values. Arguments must be compile-time constants.
 
