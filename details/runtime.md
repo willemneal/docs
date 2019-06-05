@@ -31,13 +31,17 @@ The concept is simple: If a reference to an object is established, its reference
 
 Therefore, the compiler inserts`__retain` and `__release` calls to count the number of references established to managed objects. At a higher level, this is opaque to a user and is fully automatic, but on lower-levels, for instance when dealing with managed objects externally, it is necessary to understand and adhere to the rules the compiler applies.
 
+{% hint style="info" %}
+Technically, both `__retain` and `__release` are nops when using the `stub`runtime, so one can either decide to skip the following for good or spend a little extra time to account for the possibility of upgrading to `full` or `half` later on.
+{% endhint %}
+
 ### Rules
 
 1. A reference to an object **is retained** when assigning it to a target \(local, global, field or otherwise inserting it into a structure\), with the exceptions stated in \(3\).
 2. A reference to an object **is released** when assigning another object to a target previously retaining a reference to it, or if the lifetime of the local or structure currently retaining a reference to an object ends.
 3. A reference **is not released** but **remains retained** when returning it from a call \(function, getter, constructor or operator overload\). Instead, the caller is expected to perform the release. This also means: 
    * If such a reference **would be immediately retained** by assigning it to a target, the compiler will not retain it twice, but skip retaining it on assignment.
-   * If such a reference **would not be immediately retained**, the compiler will insert a temporary local into the current scope that autoreleases the reference at the end of the scope.
+   * If such a reference **will not be immediately retained**, the compiler will insert a temporary local into the current scope that autoreleases the reference at the end of the scope.
 
 {% hint style="warning" %}
 Objects created by calling `__alloc` start with a reference count of 0. This is not the case for constructors, these behave like calls. Built-ins like `store<T>` emit instructions directly and don't behave like calls.
@@ -45,10 +49,11 @@ Objects created by calling `__alloc` start with a reference count of 0. This is 
 
 ### Working with references externally
 
-Guidelines for working with references through imports and exports, like when using [the loader](../basics/loader.md).
+Guidelines for working with references through imports and exports, like when using [the loader](../basics/loader.md). If not handled properly, the program will either leak memory, free objects prematurely or even break.
 
 * Always `__retain` a reference to what is manually`__alloc`'ed and `__release` it again when done with it.
 * Always `__release` the reference to an object that was a return value of a call \(see above\) when done with it. It is not necessary to `__retain` return values.
+* Always `__retain` a reference to an object read from memory, and `__release` it again when done with it.
 
 ### Working with references internally
 
