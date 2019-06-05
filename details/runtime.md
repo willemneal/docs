@@ -25,11 +25,65 @@ Previous versions of the compiler \(pre 0.7\) did not include any runtime functi
 
 The reason for going with our own runtime is that [WebAssembly GC](https://github.com/WebAssembly/gc) is still in the works without any ETA on it. Yet, the absence of runtime functionality was blocking our progress, so we decided to roll our own for the time being. As soon as WebAssembly GC lands, it is very likely that we are going to reconsider alternatives to shipping a runtime, yet most likely still keeping our own around for non-web scenarios that might not implement the GC spec anytime soon.
 
+## Managing lifetimes
+
+The concept is simple: If a reference to an object is established, its reference count is increased by 1 \(retained\), and when a reference is deleted, its reference count is decreased by 1 \(released\). If the reference count of an object reaches 0, it is collected and its memory returned to the memory manager for reuse.
+
+Therefore, the compiler inserts`__retain` and `__release` calls to count the number of references established to managed objects. At a higher level, this is opaque to a user and is fully automatic, but on lower-levels, for instance when dealing with managed objects externally, it is necessary to understand and adhere to the rules the compiler applies.
+
+### Rules
+
+1. A reference to an object **is retained** when assigning it to a target \(local, global, field or otherwise inserting it into a structure\), with the exceptions stated in \(3\).
+2. A reference to an object **is released** when assigning another object to a target previously retaining a reference to it, or if the lifetime of the local or structure currently retaining a reference to an object ends.
+3. A reference **is not released** but **remains retained** when returning it from a call \(function, getter, constructor or operator overload\). Instead, the caller is expected to perform the release. This also means: 
+   * If such a reference **is immediately retained** by assigning it to a target, the compiler will not retain it twice, but skip retaining it on assignment.
+   * If such a reference **is not immediately retained**, the compiler will insert a temporary local into the current scope that autoreleases the reference at the end of the scope.
+
+{% hint style="warning" %}
+Objects created by calling `__alloc` start with a reference count of 0. This is not the case for constructors: Calling a constructor is a function call.
+{% endhint %}
+
+### Working with references externally
+
+Guidelines for working with references through imports and exports, like when using [the loader](../basics/loader.md).
+
+* Always `__retain` a reference to what is manually`__alloc`'ed and `__release` it again when done with it.
+* Always `__release` the reference to an object that was a return value of a function, getter, constructor or operator overload when done with it. It is not necessary to `__retain` return values.
+
+### Working with references internally
+
+Additional examples for working with references internally, like when creating custom standard library components or otherwise writing low-level code.
+
+```typescript
+{
+  let ref = new ArrayBuffer(10); // retains on ref, skipping retaining twice
+  let buf = changetype<usize>(ref);
+  ...
+  // compiler will automatically __release(ref)
+}
+```
+
+```typescript
+{
+  let buf = changetype<usize>(new ArrayBuffer(10));
+  // inserts a temporary, because _the object_ is not immediately assigned
+  ...
+  // compiler will automatically __release(theTemp)
+}
+```
+
+```typescript
+{
+  let ref = changetype<ArrayBuffer>(__alloc(10, idof<ArrayBuffer>());
+  // retains on ref, because after changetype an object is assigned
+  ...
+  // compiler will automatically __release(ref)
+}
+```
+
 ## Implementation
 
 The memory manager used by AssemblyScript is a variant of TLSF \([Two-Level Segregate Fit memory allocator](http://www.gii.upv.es/tlsf/)\) and it is accompanied by PureRC \(a variant of [A Pure Reference Counting Garbage Collector](https://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon03Pure.pdf)\) with [slight modifications of assumptions](https://github.com/dcodeIO/purerc) to avoid unnecessary work. Essentially, TLSF is responsible for partitioning [dynamic memory](memory.md#dynamic-memory) into chunks that can be used by the various objects, while PureRC keeps track of their lifetimes.
-
-The concept is simple: If a reference to an object is established, its reference count is increased by 1 \(retained\), and when a reference is deleted, its reference count is decreased by 1 \(released\). If the reference count of an object reaches 0, it is collected and its memory returned to TLSF for reuse.
 
 ## Performance considerations
 
