@@ -4,23 +4,7 @@ description: When one number just doesn't cut it.
 
 # Types
 
-## WebAssembly types
-
-Instead of using the `number` type for all sorts of numeric values, WebAssembly has more specific integer and floating point types of varying sizes:
-
-| WebAssembly type | Closest JavaScript type | Description |
-| :--- | :--- | :--- |
-| `i32` | `number` | A 32-bit integer. |
-| `i64` | `BigInt` | A 64-bit integer. |
-| `f32` | `number` | A 32-bit float. |
-| `f64` | `number` | A 64-bit float. |
-| `v128` |  | A 128-bit vector 🦄. |
-
-Native WebAssembly types do not convey the concept of signedness \(WebAssembly uses distinct instructions for signed or unsigned interpretation\), but AssemblyScript wraps this fact into actual signed and unsigned types.
-
-## AssemblyScript types
-
-Hence, in addition to interpreting the native WebAssembly types above as signed by default, AssemblyScript introduces the corresponding unsigned types plus their commonly known smaller variants:
+Instead of using the `number` type for all sorts of numeric values, AssemblyScript inherits WebAssembly's more specific integer and floating point types:
 
 <table>
   <thead>
@@ -39,13 +23,6 @@ Hence, in addition to interpreting the native WebAssembly types above as signed 
       <td style="text-align:left">A 32-bit signed integer.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>i64</code>
-      </td>
-      <td style="text-align:left"><code>i64</code>
-      </td>
-      <td style="text-align:left">A 64-bit signed integer.</td>
-    </tr>
-    <tr>
       <td style="text-align:left"><code>u32</code>
       </td>
       <td style="text-align:left"><code>i32</code>
@@ -53,11 +30,45 @@ Hence, in addition to interpreting the native WebAssembly types above as signed 
       <td style="text-align:left">A 32-bit unsigned integer.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>i64</code>
+      </td>
+      <td style="text-align:left"><code>i64</code>
+      </td>
+      <td style="text-align:left">A 64-bit signed integer.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>u64</code>
       </td>
       <td style="text-align:left"><code>i64</code>
       </td>
       <td style="text-align:left">A 64-bit unsigned integer.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>f32</code>
+      </td>
+      <td style="text-align:left"><code>f32</code>
+      </td>
+      <td style="text-align:left">A 32-bit float.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>f64</code>
+      </td>
+      <td style="text-align:left"><code>f64</code>
+      </td>
+      <td style="text-align:left">A 64-bit float.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>v128</code>
+      </td>
+      <td style="text-align:left"><code>v128</code>
+      </td>
+      <td style="text-align:left">A 128-bit vector &#x1F984;.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><em>Small types</em>
+      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left"><code>i8</code>
@@ -95,6 +106,12 @@ Hence, in addition to interpreting the native WebAssembly types above as signed 
       <td style="text-align:left">A 1-bit unsigned integer.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><em>Special types</em>
+      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
       <td style="text-align:left"><code>isize</code>
       </td>
       <td style="text-align:left"><code>i32</code>/<code>i64</code>
@@ -118,21 +135,34 @@ Hence, in addition to interpreting the native WebAssembly types above as signed 
       <td style="text-align:left">-</td>
       <td style="text-align:left">Indicates no return value.</td>
     </tr>
+    <tr>
+      <td style="text-align:left"><em>Alias types</em>
+      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>number</code>
+      </td>
+      <td style="text-align:left"><code>f64</code>
+      </td>
+      <td style="text-align:left">Alias of <code>f64</code>. Not recommended.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>boolean</code>
+      </td>
+      <td style="text-align:left"><code>i32</code>
+      </td>
+      <td style="text-align:left">Alias of <code>bool</code>. Not recommended.</td>
+    </tr>
   </tbody>
-</table>Types known from JavaScript are still present as aliases, but it is recommended to avoid them for clarity.
-
-| Alias | AssemblyScript type |
-| :--- | :--- |
-| `number` | `f64` |
-| `boolean` | `bool` |
-
-## Type rules
+</table>## Type rules
 
 With just one numeric type, a JavaScript VM tries to determine the best fitting machine-level instruction automatically, doing conversions silently, possibly leading to code not performing as well as expected. AssemblyScript, on the other hand, lets the developer declare the correct type in advance, and will complain when it sees an implicit conversion that might not actually be intended, quite similar to what a C compiler would do.
 
 ### Casting
 
-In AssemblyScript, the type assertions `<T>expression` and `expression as T` known from TypeScript become explicit type conversions, essentially telling the compiler that the conversion is intended. In addition, each of the type names mentioned above, except aliases, also act as portable conversion built-ins that can be used just like `i32(expression)`. Using portable conversions is especially useful where the exact same code is meant to be compiled to JavaScript with the TypeScript compiler, that otherwise would require the insertion of asm.js-style type coercions like `expression | 0`.
+In AssemblyScript, the type assertions `<T>expression` and `expression as T` known from TypeScript become explicit type conversions, essentially telling the compiler that the conversion is intended. In addition, each of the type names mentioned above, except aliases, also act as portable conversion built-ins that can be used just like `i32(expression)`. Using portable conversions is especially useful where the exact same code is meant to be compiled to JavaScript with the TypeScript compiler \([see](../details/portability.md)\), that otherwise would require the insertion of asm.js-style type coercions like `expression | 0`.
 
 ### Inference
 
