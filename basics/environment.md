@@ -70,9 +70,9 @@ function add<T>(a: T, b: T): T {
 If you are not going to use low-level WebAssembly in the foreseeable future, feel free to come back to the following paragraphs at a later time and continue at [Loader ](loader.md)right away.
 {% endhint %}
 
-* **sizeof**&lt;`T`&gt;\(\): `usize` Determines the byte size of the respective basic type. Compiles to a constant.
+* **sizeof**&lt;`T`&gt;\(\): `usize` Determines the byte size of the respective _basic type_. Means: If `T` is a class type, the size of `usize` is returned. To obtain the size of a class in memory, use `offsetof<T>()` instead. Compiles to a constant.
 * **offsetof**&lt;`T`&gt;\(fieldName?: `string`\): `usize` Determines the offset of the specified field within the given class type. Returns the class type's end offset \(means: where the next field would be located, before alignment\) if field name has been omitted. Compiles to a constant. The `fieldName` argument must be a compile-time constant `string` because there is no information about field names anymore in the final binary. Hence, the field's name must be known at the time the returned constant is computed.
-* **alignof**&lt;`T`&gt;\(\): `usize` Determines the alignment \(log2\) of the specified underlying core type. Compiles to a constant.
+* **alignof**&lt;`T`&gt;\(\): `usize` Determines the alignment \(log2\) of the specified underlying _basic type_. Means: If `T` is a class type, the alignment of `usize` is returned. Compiles to a constant.
 
 ## Utility
 
@@ -117,7 +117,7 @@ The `immOffset` argument is a bit special here, because it becomes an actual imm
 ### Control flow
 
 * **select**&lt;`T`&gt;\(ifTrue: `T`, ifFalse: `T`, condition: `bool`\): `T` Selects one of two pre-evaluated values depending on the condition. Differs from an `if/else` in that both arms are always executed and the final value is picked based on the condition afterwards. Performs better than an `if/else` only if the condition is random \(means: branch prediction is not going to perform well\) and both alternatives are cheap. It is also worth to note that Binaryen will do relevant optimizations like switching to a `select` automatically, so using a ternary `? :` for example is just fine.
-* **unreachable**\(\): `*` Emits an unreachable operation that results in a runtime error when executed. Both a statement and an expression of any type.
+* **unreachable**\(\): `*` Emits an unreachable instruction that results in a runtime error \(trap\) when executed. Both a statement and an expression of any type. Beware that trapping in managed code will most likely lead to memory leaks or even break the program because it ends execution prematurely.
 
 ### Calls
 

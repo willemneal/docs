@@ -32,7 +32,7 @@ export class Foo {
 }
 ```
 
-and then wants to call `new myModule.Foo(theString)` externally, the `theString` argument cannot just be a JavaScript string but must first be allocated and its lifetime tracked, like so:
+and then wants to call `new myModule.Foo(theString)` externally, the `theString` argument cannot just be a JavaScript string but must first be allocated and its [lifetime tracked](../details/runtime.md#managing-lifetimes), like so:
 
 ```javascript
 var str = myModule.__retain(myModule.__allocString("my string"));
