@@ -1,5 +1,5 @@
 ---
-description: 'How to talk to AssemblyScript from C, mostly.'
+description: How to talk to AssemblyScript from C or other languages.
 ---
 
 # Interoperability
