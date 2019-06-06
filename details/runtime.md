@@ -102,7 +102,7 @@ If you are interested in the inner workings, the internal APIs are explained in 
 
 #### Runtime type information \(RTTI\)
 
-Every module using managed objects contains a memory segment with basic type information, that [the loader](../basics/loader.md) for example uses when allocating new arrays. Internally, RTTI is used to perform dynamic `instanceof` checks and to determine whether a class is inherently acyclic. The memory offset of RTTI can be obtained by reading the `__rtti_base` global. Essentially, the compiler maps every concrete class to a unique id, starting with 0 \(=String\), 1 \(=ArrayBuffer\) and 2 \(=ArrayBufferView\) . For each such class, the compiler remembers the id of the respective base class, if any, and a set of flags describing the class. Flags for example contain information about key and value alignments, whether a class is managed and so on. Structure is like this:
+Every module using managed objects contains a memory segment with basic type information, that [the loader](../basics/loader.md) for example uses when allocating new arrays. Internally, RTTI is used to perform dynamic `instanceof` checks and to determine whether a class is inherently acyclic. The memory offset of RTTI can be obtained by reading the `__rtti_base` global. Essentially, the compiler maps every concrete class to a unique id, starting with 0 \(=ArrayBuffer\), 1 \(=String\) and 2 \(=ArrayBufferView\) . For each such class, the compiler remembers the id of the respective base class, if any, and a set of flags describing the class. Flags for example contain information about key and value alignments, whether a class is managed and so on. Structure is like this:
 
 | Name | Offset | Type | Description |
 | :--- | :--- | :--- | :--- |
