@@ -48,7 +48,7 @@ struct Foo {
 Exported functions will properly wrap return values, but functions not visible externally do not guarantee proper wrapping.
 
 ```typescript
-export function getI8(): u8 {
+export function getU8(): u8 {
   return someU8; // will wrap to someU8 & 0xff
 }
 ```
