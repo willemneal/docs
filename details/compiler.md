@@ -42,7 +42,7 @@ OPTIONS
   --tsdFile, -d         Specifies the TypeScript definition output file (.d.ts).
   --sourceMap           Enables source map generation. Optionally takes the URL
                         used to reference the source map from the binary file.
-  --runtime             Specifies the runtime implementation to include in the program.
+  --runtime             Specifies the runtime variant to include in the program.
 
                          full  Default runtime based on TLSF and reference counting.
                          half  Same as 'full', but not exported to the host.
@@ -56,6 +56,7 @@ OPTIONS
   --sharedMemory        Declare memory as shared by settings the max shared memory.
   --memoryBase          Sets the start offset of compiler-generated static memory.
   --importTable         Imports the function table instance provided by the embedder.
+  --explicitStart       Exports an explicit start function to be called manually.
   --lib                 Adds one or multiple paths to custom library components and
                         uses exports of all top-level files at this path as globals.
   --use, -u             Aliases a global object under another name, e.g., to switch
@@ -78,6 +79,7 @@ OPTIONS
 
   --transform           Specifies the path to a custom transform to 'require'.
   --measure             Prints measuring information on I/O and compile times.
+  --printrtti           Prints the module's runtime type information to stderr.
   --noColors            Disables terminal colors.
   -- ...                Specifies node.js options (CLI only). See: node --help
 ```
