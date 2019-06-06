@@ -26,18 +26,18 @@ More complex structures usually require manual offset calculation, though, mostl
 
 ```text
 struct Foo {
-  uint32_t bar;
+  int32_t bar;
   uint32_t baz[10];
 }
 ```
 
 ```typescript
 @unmanaged class Foo {
-  bar: u32;
+  bar: i32;
   getBaz(i: i32): u32 {
     return load<u32>(
       changetype<usize>(this) + (<usize>i << alignof<u32>()),
-      offsetof<Foo>("baz")
+      4 // or use offsetof, sizeof etc. to calculate the base offset incl. alignment
     );
   }
 }
