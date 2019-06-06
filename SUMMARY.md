@@ -14,6 +14,7 @@
   * [Peculiarities](details/peculiarities.md)
   * [Portability](details/portability.md)
   * [Debugging](details/debugging.md)
+  * [Interoperability](details/interoperability.md)
 * [Examples](examples.md)
 * [Frequently asked questions](faq.md)
 
