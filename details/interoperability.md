@@ -26,7 +26,7 @@ More complex structures usually require manual offset calculation, though, mostl
 
 ```text
 struct Foo {
-  uint32_t bar;
+  int32_t bar;
   uint32_t baz[10];
 }
 ```
@@ -37,7 +37,7 @@ struct Foo {
   getBaz(i: i32): u32 {
     return load<u32>(
       changetype<usize>(this) + (<usize>i << alignof<u32>()),
-      offsetof<Foo>("bar") + sizeof<i32>
+      4 // or use offsetof, sizeof etc. to calculate the base offset incl. alignment
     );
   }
 }

@@ -134,7 +134,3 @@ export declare function doSomething(foo: i32): void;
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### In a nutshell
-
-Even when considering that there are other [technical limitations](limitations.md) currently, this still means that it is pretty much possible already to create working programs on top of [WebAssembly types](types.md) making use of the provided [environment](environment.md), but it is not as easy as just compiling existing code with another compiler.
-

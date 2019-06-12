@@ -21,21 +21,30 @@ The default runtime included in a program is the `full` runtime, but deciding fo
 Previous versions of the compiler \(pre 0.7\) did not include any runtime functionality by default but instead required `import`ing an allocator and potentially an experimental tracing collector. This is not supported anymore by recent versions of the compiler.
 {% endhint %}
 
-## Future options
+## Runtime interface
 
-The reason for going with our own runtime is that [WebAssembly GC](https://github.com/WebAssembly/gc) is still in the works without any ETA on it. Yet, the absence of runtime functionality was blocking our progress, so we decided to roll our own for the time being. As soon as WebAssembly GC lands, it is very likely that we are going to reconsider alternatives to shipping a runtime, yet most likely still keeping our own around for non-web scenarios that might not implement the GC spec anytime soon.
+### Allocating managed objects
 
-## Managing lifetimes
+When allocating a managed object, it is necessary to also provide its unique class id so the runtime can properly recognize it. The unique id of any managed type can be obtained via `idof<TheType>()`. Each concrete class \(like `String`, `Array<i32>`, `Array<f32>`\) has its own id. The ids of ArrayBuffer \(id=0\), String \(id=1\) and ArrayBufferView \(id=2\) are always the same, while all other ids are generated sequentially on first use of a class and differ between modules. Hence, it is usually necessary to `export Uint8Array_ID = idof<Uint8Array>()` for example when allocating one externally. The relevant interface is:
 
-The concept is simple: If a reference to an object is established, its reference count is increased by 1 \(retained\), and when a reference is deleted, its reference count is decreased by 1 \(released\). If the reference count of an object reaches 0, it is collected and its memory returned to the memory manager for reuse.
+*  **\_\_alloc**\(size: `usize`, id: `u32`\): `usize` Dynamically allocates a chunk of memory for an object represented by the specified id of at least the given size in bytes and returns its address. Alignment is guaranteed to be 16 bytes to fit up to v128 values naturally. Does not zero memory.
 
-Therefore, the compiler inserts`__retain` and `__release` calls to count the number of references established to managed objects. At a higher level, this is opaque to a user and is fully automatic, but on lower-levels, for instance when dealing with managed objects externally, it is necessary to understand and adhere to the rules the compiler applies.
+The [loader](../basics/loader.md) provides some additional functionality for convenience, like `__allocString`.
+
+### Managing lifetimes
+
+The concept is simple: If a reference to an object is established, its reference count is increased by 1 \(retained\), and when a reference is deleted, its reference count is decreased by 1 \(released\). If the reference count of an object reaches 0, it is collected and its memory returned to the memory manager for reuse. The relevant interface is:
+
+*  **\_\_retain**\(ref: `usize`\): `usize` Retains a reference to an object. The object doesn't become collected as long as there's at least one retained reference. Returns the retained reference.
+*  **\_\_release**\(ref: `usize`\): `void` Releases a reference to an object. The object is considered for collection once all references to it have been released.
+
+The compiler inserts retain and release calls automatically and this is opaque to a user on a higher level. On a lower level, for instance when dealing with managed objects externally, it is necessary to understand and adhere to the rules the compiler applies.
 
 {% hint style="info" %}
 Technically, both `__retain` and `__release` are nops when using the `stub`runtime, so one can either decide to skip the following for good or spend a little extra time to account for the possibility of upgrading to `full` later on.
 {% endhint %}
 
-### Rules
+#### Rules
 
 1. A reference to an object **is retained** when assigning it to a target \(local, global, field or otherwise inserting it into a structure\), with the exceptions stated in \(3\).
 2. A reference to an object **is released** when assigning another object to a target previously retaining a reference to it, or if the lifetime of the local or structure currently retaining a reference to an object ends.
@@ -49,7 +58,7 @@ Objects created by calling `__alloc` start with a reference count of 0. This is 
 
 ### Working with references externally
 
-Guidelines for working with references through imports and exports, like when using [the loader](../basics/loader.md). If not handled properly, the program will either leak memory, free objects prematurely or even break.
+Working with references through imports and exports, like when using [the loader](../basics/loader.md), is _relatively_ straight-forward. However, if not handled properly, the program will either leak memory, free objects prematurely or even break. So here's some advice:
 
 * Always `__retain` a reference to what is manually`__alloc`'ed and `__release` it again when done with it.
 * Always `__release` the reference to an object that was a return value of a call \(see above\) when done with it. It is not necessary to `__retain` return values.
@@ -57,7 +66,7 @@ Guidelines for working with references through imports and exports, like when us
 
 ### Working with references internally
 
-Additional examples for working with references internally, like when creating custom standard library components or otherwise writing low-level code.
+Working with references internally, like when creating custom standard library components or otherwise writing low-level code, requires special care because switching between pointers and reference types can become quite tricky. The internal interface also provides [additional utility](https://github.com/AssemblyScript/assemblyscript/tree/master/std/assembly/rt) that is only relevant in very specific cases.
 
 ```typescript
 {
@@ -85,6 +94,10 @@ Additional examples for working with references internally, like when creating c
   // compiler will automatically __release(ref)
 }
 ```
+
+## Future options
+
+The reason for implementing our own runtime is that [WebAssembly GC](https://github.com/WebAssembly/gc) is still in the works without any ETA on it, unfortunately. So we decided to roll our own for the time being, but as soon as WebAssembly GC lands, it is likely that we are going to reconsider alternatives.
 
 ## Implementation
 
