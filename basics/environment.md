@@ -114,6 +114,20 @@ Similarly, the following built-ins emit WebAssembly instructions accessing or ot
 
 The `immOffset` argument is a bit special here, because it becomes an actual immediate of the respective WebAssembly instruction instead of a normal operand. Thus it must be provided as a compile time constant value. This can be a literal or the value of a `const` variable that the compiler can precompute.
 
+### **Memory Utility**
+
+Sign-agnostic endian conversions \(reverse bytes\).
+
+* **bswap**&lt;`T`&gt;\(value: `T`\): `T`
+
+  Reverse all bytes for _**8-bit**_, _**16-bit**_, _**32-bit**_ and _**64-bit**_ integers.
+
+* **bswap16**&lt;`T`&gt;\(value: `T`\): `T`
+
+  Reverse only last 2 bytes regardless of the type of argument.
+
+
+
 ### Control flow
 
 * **select**&lt;`T`&gt;\(ifTrue: `T`, ifFalse: `T`, condition: `bool`\): `T` Selects one of two pre-evaluated values depending on the condition. Differs from an `if/else` in that both arms are always executed and the final value is picked based on the condition afterwards. Performs better than an `if/else` only if the condition is random \(means: branch prediction is not going to perform well\) and both alternatives are cheap. It is also worth to note that Binaryen will do relevant optimizations like switching to a `select` automatically, so using a ternary `? :` for example is just fine.
