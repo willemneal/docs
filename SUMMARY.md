@@ -17,6 +17,7 @@
   * [Interoperability](details/interoperability.md)
 * [Examples](examples.md)
 * [Frequently asked questions](faq.md)
+* [Status and Roadmap](https://github.com/AssemblyScript/assemblyscript/wiki/Status-and-Roadmap)
 
 ## Standard library
 
