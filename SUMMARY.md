@@ -17,7 +17,6 @@
   * [Interoperability](details/interoperability.md)
 * [Examples](examples.md)
 * [Frequently asked questions](faq.md)
-* [Status and Roadmap](https://github.com/AssemblyScript/assemblyscript/wiki/Status-and-Roadmap)
 
 ## Standard library
 
@@ -43,6 +42,7 @@
 
 ## Resources
 
+* [Status and Roadmap](https://github.com/AssemblyScript/assemblyscript/wiki/Status-and-Roadmap)
 * [Contributing guidelines](https://github.com/AssemblyScript/assemblyscript/blob/master/CONTRIBUTING.md)
 * [WebAssembly Documentation](https://webassembly.org/docs/high-level-goals/)
 
