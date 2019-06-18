@@ -6,7 +6,7 @@ description: A randomly accessible sequence of values of a generic type.
 
 ## API
 
-The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)\), with the notable difference that any operation on an Array of a non-nullable reference type values, that would result in a holey array \(containing `null` values not matching the element type anymore\) results in an error. Example:
+The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)\), with the notable difference that any operation on an Array of non-nullable reference type values \(like `string`\), that would result in a holey array \(containing `null` values not matching the element type anymore\), results in an error. Example:
 
 ```typescript
 // The Array constructor implicitly sets `.length = 10`, leading to an array of
