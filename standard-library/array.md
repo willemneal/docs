@@ -20,9 +20,10 @@ var arr = Array.create<string>(10);
 // arr.length == 0 -> OK
 
 // When pushing to the latter array or subsequently inserting elements into it,
-// .length will automatically grow just like one would expect. So, this is fine:
-for (let i = 0; i < 10; ++i) arr[i] = "hello world";
-// arr.length == 10 -> OK since no `null`s
+// .length will automatically grow just like one would expect, with the backing
+// buffer already properly sized (no resize will occur). So, this is fine:
+for (let i = 0; i < 10; ++i) arr[i] = "notnull";
+// arr.length == 10 -> OK
 ```
 
 ### Static
