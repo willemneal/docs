@@ -45,7 +45,19 @@ The standard library provides a relatively basic `trace` utility function that i
 trace("HERE", 2, value, otherValue);
 ```
 
-will call the `env.trace` import with a string message and two arbitrary values that can be anything convertible to an `f64`. The loader for example will log the output to console.
+will, by default, call the `trace` function imported from the `env` module with a string message and two arbitrary values that can be anything convertible to an `f64`. The loader for example will log the output to console. Similar to [overriding abort](debugging.md#overriding-abort), the implementation can be overridden using the `--use` compiler option. Signature of the trace function is:
+
+```typescript
+function trace(
+  message: string,
+  n?: i32, // number of given parameters a0 to a4
+  a0?: f64,
+  a1?: f64,
+  a2?: f64,
+  a3?: f64,
+  a4?: f64
+): void;
+```
 
 ## Breakpoints
 
