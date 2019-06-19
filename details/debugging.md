@@ -50,7 +50,7 @@ will, by default, call the `trace` function imported from the `env` module with 
 ```typescript
 function trace(
   message: string,
-  n?: i32, // number of given parameters a0 to a4
+  n: i32 = 0, // number of given parameters a0 to a4
   a0?: f64,
   a1?: f64,
   a2?: f64,

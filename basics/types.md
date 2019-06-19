@@ -217,3 +217,13 @@ The result of an unsigned right shift \(`>>>`\) is the left type \(signedness is
 
 If the left type is a float, an error is emitted.
 
+## Macro types
+
+The following macros types provide access to related types that would otherwise be impossible to obtain.
+
+| Macro type | Description |
+| :--- | :--- |
+| `native<T>` | Obtains the underlying native type of `T`, e.g. `u32` if `T` is a class \(in WASM32\). |
+| `indexof<T>` | Obtains the index type of a collection based on the indexed access overload. |
+| `valueof<T>` | Obtains the value type of a collection based on the indexed access overload. |
+
