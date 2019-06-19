@@ -22,7 +22,11 @@ A JavaScript VM is able to display stack traces originating in WebAssembly code.
 
 ## Disabling assertions
 
-By default, the compiler will preserve any `assert(expression)`s in a module, leading to an abort if one of the respective expectations failed. These assertions can be disabled with the `--noAssert` compiler option, though, essentially replacing them with `nop`s, doing nothing. Doing so can lead to smaller binaries once sufficiently confident that no assertions will be hit anyway, but also introduces the risk that a module explodes for no longer asserted reasons.
+By default, the compiler will preserve any `assert(expression)`s in a module, leading to an `abort` if one of the respective expectations failed. These assertions can be disabled with the `--noAssert` compiler option, though, essentially replacing them with `nop`s, doing nothing. Doing so can lead to smaller binaries once sufficiently confident that no assertions will be hit anyway, but also introduces the risk that a module explodes for no longer asserted reasons.
+
+## Overriding `abort`
+
+As mentioned above, assertions require that an implementation of the `abort` interface is present, which by default is imported as `abort` from within the `env` module, handling aborts externally. This can be overridden by specifying a custom abort handler through `--use abort=index/myAbort` \(here: a function named `myAbort` in the `index` file\) or the abort interface can be disabled completely \(just trapping with an `unreachable`\) through `--use abort=`.
 
 ## Manual tracing
 
