@@ -223,7 +223,7 @@ The following macros types provide access to related types that would otherwise 
 
 | Macro type | Description |
 | :--- | :--- |
-| `native<T>` | Obtains the underlying native type of `T`, e.g. `u32` if `T` is a class \(in WASM32\). |
+| `native<T>` | Obtains the underlying basic WebAssembly type of `T`, e.g. `usize` if `T` is a class. |
 | `indexof<T>` | Obtains the index type of a collection based on the indexed access overload. |
 | `valueof<T>` | Obtains the value type of a collection based on the indexed access overload. |
 
