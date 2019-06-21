@@ -43,7 +43,31 @@ The String API works very much like JavaScript's \([MDN](https://developer.mozil
 * String\#**trimStart**\(\): `string` _alias_  String\#**trimLeft** Removes white space characters from the start of the string, returning the resulting string.
 * String\#**trimEnd**\(\): `string` _alias_  String\#**trimRight** Removes white space characters from the end of the string, returning the resulting string.
 
-## UTF-16 vs UTF-8
+## Encoding API
+
+### UTF8
+
+When integrating with an environment that uses UTF-8, the following helpers can be used to quickly re-encode String data.
+
+* String.UTF8.**byteLength**\(str: `string`, nullTerminated?: `bool`\): `i32` Calculates the byte length of the specified string when encoded as UTF-8, optionally null terminated.
+* String.UTF8.**encode**\(str: `string`, nullTerminated?: `bool`\): `ArrayBuffer` Encodes the specified string to UTF-8 bytes, optionally null terminated.
+* String.UTF8.**decode**\(buf: `ArrayBuffer`, nullTerminated?: `bool`\): `string` Decodes the specified buffer from UTF-8 bytes to a string, optionally null terminated.
+* String.UTF8.**decodeUnsafe**\(buf: `usize`, len: `usize`, nullTerminated?: `bool`\): `string` Decodes raw UTF-8 bytes to a string, optionally null terminated.
+
+{% hint style="info" %}
+Note that any `ArrayBuffer` return value is a pointer to the buffer's data internally and thus can be passed to let's say a C-function directly. However, if the pointer is meant to live longer than the immediate external function call, the [lifetime of the buffer must be tracked](../details/runtime.md#managing-lifetimes) so it doesn't become collected prematurely with the data becoming invalid.
+{% endhint %}
+
+### UTF16
+
+The following mostly exist to have a safe way to copy between Strings and ArrayBuffers, but doesn't involve a re-encoding step.
+
+* String.UTF16.**byteLength**\(str: `string`\): `i32` Calculates the byte length of the specified string when encoded as UTF-16.
+* String.UTF16.**encode**\(str: `string`\): `ArrayBuffer` Encodes the specified string to UTF-16 bytes.
+* String.UTF16.**decode**\(buf: `ArrayBuffer`\): `string` Decodes the specified buffer from UTF-16 bytes to a string.
+* String.UTF16.**decodeUnsafe**\(buf: `usize`, len: `usize`\): `string` Decodes raw UTF-16 bytes to a string.
+
+### Considerations
 
 Like JavaScript, AssemblyScript stores strings in [UTF-16 encoding represented by the API as UCS-2](https://mathiasbynens.be/notes/javascript-encoding), where certain UTF-8 **code points** are represented by two UTF-16 **code units**, so called surrogate pairs. This is done to mimic JavaScript as closely as possible, and in an attempt that calling JavaScript APIs from WebAssembly does not have to convert between encodings constantly. Chances are that some parts of the WebAssembly API [will settle for UTF-8](https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md#binding-operators-and-expressions) exclusively, though, with [our objections](https://github.com/WebAssembly/webidl-bindings/issues/13) remaining unheard, and it is still to be decided how to proceed.
 
