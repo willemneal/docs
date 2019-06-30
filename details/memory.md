@@ -8,7 +8,7 @@ Similar to other languages that use linear memory, all data in AssemblyScript be
 
 ## Importing memory
 
-The [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory) instance used by your program can be imported from the host by using the `--importMemory` flag on the command line. The module will then expect an import named `memory` within the `env` module. Likewise, a module always exports its memory as `memory`.
+The [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory) instance used by your program can be imported from the host by using the `--importMemory` flag on the command line. The module will then expect an import named `memory` within the `env` module. An imported memory becomes the singleton memory of the module and can be accessed in the same way as a non-imported memory. One thing to take care of if that if the module defines `data` segments, it will place these into the imported memory upon instantiation of the module, which must be taken into account when pre-populating the memory externally \(i.e., utilize`--memoryBase` to reserve some space as described in [Memory Regions](memory.md#memory-regions) below\). Likewise, a module always exports its memory as `memory`.
 
 ## Accessing memory during instantiation
 
