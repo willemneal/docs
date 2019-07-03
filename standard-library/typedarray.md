@@ -27,10 +27,11 @@ The TypedArray API is exactly like JavaScript's \([MDN](https://developer.mozill
 ### Static
 
 * TypedArray.**BYTES\_PER\_ELEMENT**: `usize` _readonly_ Number of bytes per element.
+* TypedArray.**wrap**\(buffer: `ArrayBuffer`, byteOffset?: `i32`, length?: `i32`\): `TypedArray<T>` Wraps a raw buffer to be viewed as a sequence of values of the typed array's value type. This is equivalent to the respective alternative constructor signature in JS but exists because there is no function overloading \(yet\).
 
 ### Constructor
 
-* new **TypedArray**&lt;`T`&gt;\(length: `i32`\) Constructs a new typed array view with a new backing buffer and all values initialized to zero.
+* new **TypedArray**&lt;`T`&gt;\(length: `i32`\) Constructs a new typed array view with a new backing buffer and all values initialized to zero. See `TypedArray#wrap` for wrapping a raw buffer.
 
 ### Instance
 
