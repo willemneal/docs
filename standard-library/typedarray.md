@@ -22,7 +22,7 @@ description: An Array-like view on a raw binary buffer.
 
 ## API
 
-The TypedArray API is exactly like JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)\). The name `TypedArray` below represents one of the variants named above of type `T` and is not an actual class.
+The TypedArray API works very much like JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)\). The name `TypedArray` below represents one of the variants named above of type `T` and is not an actual class.
 
 ### Static
 
