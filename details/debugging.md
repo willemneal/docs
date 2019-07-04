@@ -59,6 +59,8 @@ function trace(
 ): void;
 ```
 
+One thing to note here is that calling `trace` in top-level statements can lead to situations where [memory is accessed during instantiation](memory.md#accessing-memory-during-instantiation), hence not being able to read the message without taking the respective precautions.
+
 ## Breakpoints
 
 Some JavaScript engines also support adding break points when running WebAssembly binaries. Please consult your engine's documentation.
