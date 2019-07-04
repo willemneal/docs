@@ -10,7 +10,7 @@ The first thing one is going to notice is that AssemblyScript's [type system](ty
 
 This means that **objects cannot yet flow in and out of WebAssembly natively**, making it necessary to read/write them from/to memory. To make this process more convenient, [the loader](loader.md) provides the utility necessary to translate between the WebAssembly and the JavaScript world.
 
-It must also be noted that WebAssembly has **no immediate access to the DOM** or other JavaScript APIs currently, sometimes making it necessary to create some custom glue code by means of importing and exporting functionality from/to JavaScript.
+It must also be noted that WebAssembly has **no immediate access to the DOM** or other JavaScript APIs currently, sometimes making it necessary to create some custom glue code by means of [exports and imports](exports-and-imports.md) to/from JavaScript.
 
 Combined, this makes it **unlikely that existing TypeScript code can be compiled** to WebAssembly without modifications, yet likely that already **reasonably strict TypeScript code can be made compatible** with the AssemblyScript compiler.
 
@@ -91,46 +91,7 @@ obj === obj // true
 obj == obj // true if there is no == overload doing something different
 ```
 
-### Imports
+### And the kitchen sink
 
-With [WebAssembly ES Module Integration](https://github.com/WebAssembly/esm-integration) still in the pipeline, imports utilize the ambient context currently. For example
-
-{% code-tabs %}
-{% code-tabs-item title="env.ts" %}
-```typescript
-export declare function doSomething(foo: i32): void;
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
-
-creates an import of a function named `doSomething` within the `env` module, because that's the name of the file it lives is. It is also possible to use namespaces:
-
-{% code-tabs %}
-{% code-tabs-item title="foo.ts" %}
-```typescript
-declare namespace console {
-  export function logi(i: i32): void;
-  export function logf(f: f64): void;
-}
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
-
-This will import the functions `console.logi` and `console.logf` within the `foo` module. Bonus: Don't forget `export`ing namespace members if you'd like to call them from outside the namespace.
-
-Where automatic naming is not sufficient, the `@external` decorator can be used to give an element another external name:
-
-{% code-tabs %}
-{% code-tabs-item title="bar.ts" %}
-```typescript
-@external("doSomethingElse")
-export declare function doSomething(foo: i32): void;
-// imports bar.doSomethingElse as doSomething
-
-@external("foo", "baz")
-export declare function doSomething(foo: i32): void;
-// imports foo.baz as doSomething
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+The examples above mainly exist so one can get an initial idea, but there is of course more, as explained on the following pages, to consider.
 
