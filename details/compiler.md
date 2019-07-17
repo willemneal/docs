@@ -59,6 +59,9 @@ OPTIONS
   --explicitStart       Exports an explicit start function to be called manually.
   --lib                 Adds one or multiple paths to custom library components and
                         uses exports of all top-level files at this path as globals.
+  --path                Adds one or multiple paths to package resolution, similar
+                        to node_modules. Prefers an 'ascMain' entry in a package's
+                        package.json and falls back to an inner 'assembly/' folder.
   --use, -u             Aliases a global object under another name, e.g., to switch
                         the default 'Math' implementation used: --use Math=JSMath
   --trapMode            Sets the trap mode to use.
@@ -78,6 +81,8 @@ OPTIONS
                          threads         Enables threading and atomic operations.
 
   --transform           Specifies the path to a custom transform to 'require'.
+  --traceResolution     Enables tracing of package resolution.
+  --listFiles           Lists files to be compiled and exits.
   --measure             Prints measuring information on I/O and compile times.
   --printrtti           Prints the module's runtime type information to stderr.
   --noColors            Disables terminal colors.

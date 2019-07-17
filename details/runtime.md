@@ -23,6 +23,8 @@ Previous versions of the compiler \(pre 0.7\) did not include any runtime functi
 
 ## Runtime interface
 
+The following paragraphs are relevant in low-level code respectively when working with objects externally only. In normal high-level code, the compiler utilizes these mechanisms automatically.
+
 ### Allocating managed objects
 
 When allocating a managed object, it is necessary to also provide its unique class id so the runtime can properly recognize it. The unique id of any managed type can be obtained via `idof<TheType>()`. Each concrete class \(like `String`, `Array<i32>`, `Array<f32>`\) has its own id. The ids of ArrayBuffer \(id=0\), String \(id=1\) and ArrayBufferView \(id=2\) are always the same, while all other ids are generated sequentially on first use of a class and differ between modules. Hence, it is usually necessary to `export Uint8Array_ID = idof<Uint8Array>()` for example when allocating one externally. The relevant interface is:
@@ -33,10 +35,10 @@ The [loader](../basics/loader.md) provides some additional functionality for con
 
 ### Managing lifetimes
 
-The concept is simple: If a reference to an object is established, its reference count is increased by 1 \(retained\), and when a reference is deleted, its reference count is decreased by 1 \(released\). If the reference count of an object reaches 0, it is collected and its memory returned to the memory manager for reuse. The relevant interface is:
+The concept is simple: If a reference to an object is established, the reference count of the object is increased by 1 \(a reference is retained\), and when a reference to an object is deleted, the reference count of the object is decreased by 1 \(a reference is released\). If the reference count of an object reaches 0, it is considered for collection and its memory ultimately returned to the memory manager for reuse. The relevant interface is:
 
-*  **\_\_retain**\(ref: `usize`\): `usize` Retains a reference to an object. The object doesn't become collected as long as there's at least one retained reference. Returns the retained reference.
-*  **\_\_release**\(ref: `usize`\): `void` Releases a reference to an object. The object is considered for collection once all references to it have been released.
+*  **\_\_retain**\(ptr: `usize`\): `usize` Retains a reference to the object pointed to by `ptr`. The object doesn't become collected as long as there's at least one retained reference to it. Returns the pointer.
+*  **\_\_release**\(ptr: `usize`\): `void` Releases a reference to the object pointer to by `ptr`. The object is considered for collection once all references to it have been released.
 
 The compiler inserts retain and release calls automatically and this is opaque to a user on a higher level. On a lower level, for instance when dealing with managed objects externally, it is necessary to understand and adhere to the rules the compiler applies.
 
@@ -46,32 +48,36 @@ Technically, both `__retain` and `__release` are nops when using the `stub`runti
 
 #### Rules
 
-1. A reference to an object **is retained** when assigning it to a target \(local, global, field or otherwise inserting it into a structure\), with the exceptions stated in \(3\).
-2. A reference to an object **is released** when assigning another object to a target previously retaining a reference to it, or if the lifetime of the local or structure currently retaining a reference to an object ends.
-3. A reference **is not released** but **remains retained** when returning it from a call \(function, getter, constructor or operator overload\). Instead, the caller is expected to perform the release. This also means: 
-   * If such a reference **would be immediately retained** by assigning it to a target, the compiler will not retain it twice, but skip retaining it on assignment.
-   * If such a reference **will not be immediately retained**, the compiler will insert a temporary local into the current scope that autoreleases the reference at the end of the scope.
+1. A reference to an object **is retained** when assigning it to a target \(local, global, field or otherwise inserting it into a structure\) of a reference type, with the exceptions stated in \(3\).
+2. A reference to an object **is released** when assigning another object to a target of a reference type previously retaining a reference to it, or if the lifetime of the local or structure currently retaining a reference to an object ends.
+3. A reference to an object **is not released** but **remains retained** when returning a reference typed object from a call \(function, getter, constructor or operator overload\). Instead, the caller is expected to perform the release. This also means: 
+   * If a reference to the object **would be immediately retained** by assigning the object to a target of a reference type, the compiler will not retain it twice, but skip retaining it on assignment.
+   * If a reference to the object **will not be immediately retained**, the compiler will insert a temporary local into the current scope that autoreleases the reference to the object at the end of the scope.
 
-{% hint style="warning" %}
+{% hint style="info" %}
 Objects created by calling `__alloc` start with a reference count of 0. This is not the case for constructors, these behave like calls. Built-ins like `store<T>` emit instructions directly and don't behave like calls.
 {% endhint %}
 
 ### Working with references externally
 
-Working with references through imports and exports, like when using [the loader](../basics/loader.md), is _relatively_ straight-forward. However, if not handled properly, the program will either leak memory, free objects prematurely or even break. So here's some advice:
+Working with objects through imports and exports, like when using [the loader](../basics/loader.md), is _relatively_ straight-forward. However, if not handled properly, the program will either leak memory, free objects prematurely or even break. So here's some advice:
 
-* Always `__retain` a reference to what is manually`__alloc`'ed and `__release` it again when done with it.
-* Always `__release` the reference to an object that was a return value of a call \(see above\) when done with it. It is not necessary to `__retain` return values.
-* Always `__retain` a reference to an object read from memory, and `__release` it again when done with it.
+* Always `__retain` a reference to manually`__alloc`'ed objects and `__release` the reference again when done with the object.
+* Always `__release` the reference to an object that was a return value of a call \(see above\) when done with it. It is not necessary to `__retain` a reference to returned objects.
+* Always `__retain` a reference to an object read from memory, and `__release` the reference again when done with the object.
 
 ### Working with references internally
 
-Working with references internally, like when creating custom standard library components or otherwise writing low-level code, requires special care because switching between pointers and reference types can become quite tricky. The internal interface also provides [additional utility](https://github.com/AssemblyScript/assemblyscript/tree/master/std/assembly/rt) that is only relevant in very specific cases.
+Working with objects internally, like when creating custom standard library components or otherwise writing low-level code, requires special care because switching between pointers and reference types can become quite tricky. The internal interface also provides [additional utility](https://github.com/AssemblyScript/assemblyscript/tree/master/std/assembly/rt) that is only relevant in very specific cases.
+
+{% hint style="info" %}
+One common point of confusion here is that the rules above **operate on types, not values**. Means: If the target is of a reference-type, the rules apply, but if the target is of an `usize` type, the rules do not apply, even if the value is a `changetype<usize>(..)`'d object.
+{% endhint %}
 
 ```typescript
 {
-  let ref = new ArrayBuffer(10); // retains on ref, skipping retaining twice
-  let buf = changetype<usize>(ref);
+  let ref = new ArrayBuffer(10); // retains (reference type)
+  let buf = changetype<usize>(ref); // does not retain (usize)
   ...
   // compiler will automatically __release(ref)
 }
@@ -79,7 +85,7 @@ Working with references internally, like when creating custom standard library c
 
 ```typescript
 {
-  let buf = changetype<usize>(new ArrayBuffer(10));
+  let buf = changetype<usize>(new ArrayBuffer(10)); // does not retain (usize)
   // inserts a temporary, because _the object_ is not immediately assigned
   ...
   // compiler will automatically __release(theTemp)
