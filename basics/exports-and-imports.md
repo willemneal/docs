@@ -107,3 +107,12 @@ export declare function doSomething(foo: i32): void;
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+## On values crossing the boundary
+
+More complex values than the native WebAssembly types `i32`, `i64`, `f32` and `f64` are represented by an index or pointer within the WebAssembly module. The compiler knows how to work with these because it also knows the concrete type associated with the value. On the outside, however, for example in JS-code interacting with a WebAssembly module, all that's seen is the `i32` index or pointer.
+
+* An **instance of a class** is a pointer to the structure in WebAssembly memory.
+* A **function reference** is the index of the function in the WebAssembly table.
+
+This is true in both directions, hence also applies when providing a value to a WebAssembly import. The most common structures like `String`, `ArrayBuffer` and the typed arrays are documented in [memory internals](../details/memory.md#internals), and custom classes adhere to [class layout](../details/interoperability.md#class-layout). Note that [the loader](loader.md) aims at making this more convenient, but, based on the layout information, one can of course also work with the memory and table directly as long as it's safe.
+
