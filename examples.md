@@ -4,9 +4,13 @@ description: A collection of examples that we and others have created over time.
 
 # Examples
 
-The repository contains a set of examples, mostly making use of AssemblyScript's low-level capabilities.
+## Wasm By Example
 
-## Plain examples
+> [Wasm By Example](https://wasmbyexample.dev/all-examples-list.html) is a concise, hands-on introduction to WebAssembly using code snippets and annotated example programs. If you "learn best by doing", or just need a good starting point for a concept, this is the place for you.
+
+## Example programs
+
+The repository contains a set of simple programs making use of AssemblyScript's low-level capabilities.
 
 ### [Conway's Game Of Life](https://github.com/AssemblyScript/assemblyscript/tree/master/examples/game-of-life) \([demo](https://assemblyscript.github.io/assemblyscript/examples/game-of-life/)\)
 
@@ -16,7 +20,9 @@ An implementation of the game of life with slight modifications. Updates an imag
 
 Computes 2048 offsets of a color gradient in memory, line by line, and presents the set using the gradient's actual colors, as computed on the JavaScript side, on a canvas.
 
-## Useful libraries
+## Example libraries
+
+The following libraries make use of WebAssembly features specifically in order to complement JavaScript.
 
 ### [i64](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/i64)
 
