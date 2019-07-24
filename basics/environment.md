@@ -52,6 +52,8 @@ By making use of statically evaluated type checks, especially in generic context
 * **isConstant**\(expression: `*`\): `bool` Tests if the specified expression evaluates to a constant value. Compiles to a constant.
 * **isManaged**&lt;`T`&gt;\(expression: `*`\): `bool` Tests if the specified type _or_ expression is of a managed type. Compiles to a constant. Usually only relevant when implementing custom collection-like classes.
 
+### Example
+
 ```typescript
 function add<T>(a: T, b: T): T {
   return a + b; // addition if numeric, string concatenation if a string
@@ -67,8 +69,10 @@ function add<T>(a: T, b: T): T {
 ```
 
 {% hint style="info" %}
-If you are not going to use low-level WebAssembly in the foreseeable future, feel free to come back to the following paragraphs at a later time and continue at [Loader ](loader.md)right away.
+If you are not going to use low-level WebAssembly in the foreseeable future, feel free to come back to the following paragraphs at a later time and continue at the next page[ ](loader.md)right away.
 {% endhint %}
+
+## Sizes and alignments
 
 * **sizeof**&lt;`T`&gt;\(\): `usize` Determines the byte size of the respective _basic type_. Means: If `T` is a class type, the size of `usize` is returned. To obtain the size of a class in memory, use `offsetof<T>()` instead. Compiles to a constant.
 * **offsetof**&lt;`T`&gt;\(fieldName?: `string`\): `usize` Determines the offset of the specified field within the given class type. Returns the class type's end offset \(means: where the next field would be located, before alignment\) if field name has been omitted. Compiles to a constant. The `fieldName` argument must be a compile-time constant `string` because there is no information about field names anymore in the final binary. Hence, the field's name must be known at the time the returned constant is computed.
