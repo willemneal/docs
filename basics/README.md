@@ -61,7 +61,7 @@ a.prop = "hello world";
 var a = new Map<string,string>();
 a.set("prop", "hello world");
 
-// 😏
+// 😊
 class A {
   constructor(public prop: string) {}
 }
