@@ -32,7 +32,7 @@ function foo(a?) {
 }
 
 // 😊
-function foo(a?: i32 = 0): i32 {
+function foo(a: i32 = 0): i32 {
   var b = a + 1;
   return b;
 }
