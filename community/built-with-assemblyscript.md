@@ -45,6 +45,7 @@ description: >-
 * [galois](https://github.com/GuildOfWeavers/galois) Arithmetic and polynomial operations in finite fields.
 * [merkle](https://github.com/GuildOfWeavers/merkle) Merkle tree and other data structures.
 * [xoroshiro128starstar](https://github.com/krisselden/xoroshiro128starstar) An AssemblyScript port of xoroshiro128starstar.c
+* [pixelmatch-asc](https://github.com/jamesmilneruk/pixelmatch-asc) Pixel level image comparison library
 
 ## Testing
 
