@@ -113,7 +113,7 @@ __op(): T { ... }
 | `"--"` | Prefix decrement | Instance overload reassigns |
 
 {% hint style="info" %}
-Note that increment and decrement overloads can have slightly different semantics. If the overload is declared as an instance method, on `a++` the compiler does emit code that reassigns the resulting value to `a` while if the overload is declared static, the overload behaves like any other overload, skipping the otherwise implicit assignment.
+Note that increment and decrement overloads can have slightly different semantics. If the overload is declared as an instance method, on `++a` the compiler does emit code that reassigns the resulting value to `a` while if the overload is declared static, the overload behaves like any other overload, skipping the otherwise implicit assignment.
 {% endhint %}
 
 ### Unary postfix operations
