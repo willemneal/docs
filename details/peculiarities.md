@@ -103,14 +103,18 @@ static __op(self: T): T { ... }
 __op(): T { ... }
 ```
 
-| OP | Description |
-| :--- | :--- |
-| `"!"` | Logical NOT |
-| `"~"` | Bitwise NOT |
-| `"+"` | Unary plus |
-| `"-"` | Unary negation |
-| `"++"` | Prefix increment |
-| `"--"` | Prefix decrement |
+| OP | Description | Notes |
+| :--- | :--- | :--- |
+| `"!"` | Logical NOT |  |
+| `"~"` | Bitwise NOT |  |
+| `"+"` | Unary plus |  |
+| `"-"` | Unary negation |  |
+| `"++"` | Prefix increment | Instance overload reassigns |
+| `"--"` | Prefix decrement | Instance overload reassigns |
+
+{% hint style="info" %}
+Note that increment and decrement overloads can have slightly different semantics. If the overload is declared as an instance method, on `a++` the compiler does emit code that reassigns the resulting value to `a` while if the overload is declared static, the overload behaves like any other overload, skipping the otherwise implicit assignment.
+{% endhint %}
 
 ### Unary postfix operations
 
@@ -122,10 +126,10 @@ static __op(self: T): T { ... }
 __op(): T { ... }
 ```
 
-| OP | Description |
-| :--- | :--- |
-| `"++"` | Postfix increment |
-| `"--"` | Postfix decrement |
+| OP | Description | Notes |
+| :--- | :--- | :--- |
+| `"++"` | Postfix increment | Instance overload reassigns |
+| `"--"` | Postfix decrement | Instance overload reassigns |
 
 {% hint style="info" %}
 Overloaded postfix operations do not preserve the original value automatically.
