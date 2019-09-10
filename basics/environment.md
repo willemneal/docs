@@ -166,6 +166,7 @@ The following instructions represent the [WebAssembly threads and atomics](https
   | 2 | TIMED\_OUT: Not woken before the timeout expired. |
 
 * atomic.**notify**\(ptr: `usize`, count: `i32`\): `i32` Performs a notify operation on an address in memory waking up suspended agents.
+* atomic.**fence**\(\): `void` Performs a fence operation, preserving synchronization guarantees of higher level languages.
 
 Again, the `immOffset` argument must be a compile time constant value.
 
@@ -235,6 +236,8 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 * v128.**ge**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of the first 128-bit vector are greater than or equal those of the second.
 * v128.**convert**&lt;`TFrom`&gt;\(a: `v128`\): `v128` _integer only_ Converts each lane of a 128-bit vector from integer to floating point.
 * v128.**trunc**&lt;`TTo`&gt;\(a: `v128`\): `v128` _float only_ Truncates each lane of a 128-bit vector from floating point to integer with saturation.
+* v128.**qfma**&lt;`T`&gt;\(a: `v128`, b: `v128`, c: `v128`\): `v128` _float only_ Computes `(a * b) + c` for each lane of the given 128-bit vectors.
+* v128.**qfms**&lt;`T`&gt;\(a: `v128`, b: `v128`, c: `v128`\): `v128` _float only_ Computes `(a * b) - c` for each lane of the given 128-bit vectors.
 
 In addition, the namespaces `i8x16`, `i16x8`, `i32x4`, `i64x2` , `f32x4` and `f64x2` provide their respective non-generic instructions, like `i32x4.splat` etc. Each of them can also be used to create a literal directly:
 
