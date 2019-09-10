@@ -49,6 +49,8 @@ OPTIONS
                          stub  Minimal stub implementation without free/GC support.
                          none  Same as 'stub', but not exported to the host.
 
+  --noUnsafe            Disallows the use of unsafe features in user code.
+                        Does not affect library files and external modules.
   --debug               Enables debug information in emitted binaries.
   --noAssert            Replaces assertions with just their value without trapping.
   --noEmit              Performs compilation as usual but does not emit code.
@@ -72,13 +74,17 @@ OPTIONS
 
   --runPasses           Specifies additional Binaryen passes to run after other
                         optimizations, if any. See: Binaryen/src/passes/pass.cpp
-  --enable              Enables additional (experimental) WebAssembly features.
+  --enable              Enables WebAssembly features that are disabled by default.
 
-                         sign-extension  Enables sign-extension operations
-                         mutable-global  Enables mutable global imports and exports
-                         bulk-memory     Enables bulk memory operations
-                         simd            Enables SIMD types and operations.
-                         threads         Enables threading and atomic operations.
+                         sign-extension      Sign-extension operations
+                         bulk-memory         Bulk memory operations.
+                         simd                SIMD types and operations.
+                         threads             Threading and atomic operations.
+                         reference-types     Reference types and operations.
+
+  --disable             Disables WebAssembly features that are enabled by default.
+
+                         mutable-globals     Mutable global imports and exports.
 
   --transform           Specifies the path to a custom transform to 'require'.
   --traceResolution     Enables tracing of package resolution.
