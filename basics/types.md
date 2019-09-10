@@ -136,6 +136,13 @@ Instead of using the `number` type for all sorts of numeric values, AssemblyScri
       <td style="text-align:left">Indicates no return value.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><code>anyref</code>
+      </td>
+      <td style="text-align:left"><code>anyref</code>
+      </td>
+      <td style="text-align:left">An opaque host reference &#x1F984;.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><em>Alias types</em>
       </td>
       <td style="text-align:left"></td>
