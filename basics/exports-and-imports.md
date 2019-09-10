@@ -26,11 +26,10 @@ export function add(a: i32, b: i32): i32 {
 {% code-tabs-item title="index.ts" %}
 ```typescript
 export const foo = 1;
+export var bar = 2;
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
-
-Exporting mutable globals, if supported by the host, can be enabled through `--enable mutable-global` and will otherwise result in a warning with the export being skipped. If mutable globals are not supported by the host, it is currently recommended to manually export a getter and a setter function instead.
 
 ### Classes
 
