@@ -101,6 +101,10 @@ One common point of confusion here is that the rules above **operate on types, n
 }
 ```
 
+### Collecting garbage
+
+By default, the full and half runtime will automatically try to collect cyclic garbage when memory must be grown. This behavior can be disabled by setting `gc.auto = false` in performance critical code. Likewise, if there is a good opportunity to collect cyclic garbage at a given point in time, like if the application is idle, `gc.collect()` can be called to force a full garbage collection cycle. Protip: If no cyclic structures are used, no garbage must be collected.
+
 ## Future options
 
 The reason for implementing our own runtime is that [WebAssembly GC](https://github.com/WebAssembly/gc) is still in the works without any ETA on it, unfortunately. So we decided to roll our own for the time being, but as soon as WebAssembly GC lands, it is likely that we are going to reconsider alternatives.

@@ -16,10 +16,6 @@ There is one special case to mention when it comes to accessing memory while top
 
 Using the `--explicitStart` option essentially delays all top-level statements until `__start` is called externally, which must happen before calling any other exports, so one can get a hold of the memory early, before top-level statements run, even if it has not been imported.
 
-## Collecting garbage
-
-By default, the full and half runtime will automatically try to collect cyclic garbage when memory must be grown. This behavior can be disabled by setting `gc.auto = false` in performance critical code. Likewise, if there is a good opportunity to collect cyclic garbage at a given point in time, like if the application is idle, `gc.collect()` can be called to force a full garbage collection cycle. Protip: If no cyclic structures are used, no garbage must be collected.
-
 ## Memory regions
 
 Internally, there are two regions of memory the compiler is aware of:
