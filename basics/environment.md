@@ -235,7 +235,10 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 * v128.**gt**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of the first 128-bit vector are greater than those of the second.
 * v128.**ge**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes of the first 128-bit vector are greater than or equal those of the second.
 * v128.**convert**&lt;`TFrom`&gt;\(a: `v128`\): `v128` _integer only_ Converts each lane of a 128-bit vector from integer to floating point.
-* v128.**trunc**&lt;`TTo`&gt;\(a: `v128`\): `v128` _float only_ Truncates each lane of a 128-bit vector from floating point to integer with saturation.
+* v128.**trunc\_sat**&lt;`TTo`&gt;\(a: `v128`\): `v128` _integer only_ Truncates each lane of a 128-bit vector from floating point to integer with saturation.
+* v128.**narrow**&lt;`TFrom`&gt;\(a: `v128`, b: `v128`\): `v128` _integer only_ Narrows each lane of two 128-bit vectors to their respective narrower lanes.
+* v128.**widen\_low**&lt;`TFrom`&gt;\(a: `v128`\): `v128` _integer only_ Widens the low lanes of a 128-bit vector to their respective wider lanes.
+* v128.**widen\_high**&lt;`TFrom`&gt;\(a: `v128`\): `v128` _integer only_ Widens the high lanes of a 128-bit vector to their respective wider lanes.
 * v128.**qfma**&lt;`T`&gt;\(a: `v128`, b: `v128`, c: `v128`\): `v128` _float only_ Computes `(a * b) + c` for each lane of the given 128-bit vectors.
 * v128.**qfms**&lt;`T`&gt;\(a: `v128`, b: `v128`, c: `v128`\): `v128` _float only_ Computes `(a * b) - c` for each lane of the given 128-bit vectors.
 
