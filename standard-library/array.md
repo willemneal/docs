@@ -6,40 +6,28 @@ description: A randomly accessible sequence of values of a generic type.
 
 ## API
 
-The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)\), with the notable difference that any operation on an Array of non-nullable reference type values \(like `string`\), that would result in a holey array \(containing `null` values not matching the element type anymore\), results in an error. Example:
+The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)\), with the notable difference that one must make sure that there are no `null`  values if `T` is a non-nullable reference type. Example:
 
 ```typescript
-// The Array constructor implicitly sets `.length = 10`, leading to an array of
-// ten times `null` not matching the value type `string`. So, this will error:
 var arr = new Array<string>(10);
-// arr.length == 10 -> ERROR
-
-// To account for this, the .create method has been introduced that initializes
-// the backing capacity normally but leaves `.length = 0`. So, this will work:
-var arr = Array.create<string>(10);
-// arr.length == 0 -> OK
-
-// When pushing to the latter array or subsequently inserting elements into it,
-// .length will automatically grow just like one would expect, with the backing
-// buffer already properly sized (no resize will occur). So, this is fine:
-for (let i = 0; i < 10; ++i) arr[i] = "notnull";
-// arr.length == 10 -> OK
+// arr[0]; // would error 😢
+for (let i = 0; i < arr.length; ++i) arr[i] = "";
+arr[0]; // now it works 😊
 ```
 
 ### Static
 
 * Array.**isArray**&lt;`U`&gt;\(value: `U`\): `bool` Tests if a value is an array.
-* Array.**create**&lt;`T`&gt;\(capacity?: `i32`\): `Array<T>` Creates a new array with the specified pre-allocated backing capacity, but leaves length at zero. Unlike `new Array`, this is safe for non-nullable reference type values because it does not create a holey array.
 
 ### Constructor
 
-* new **Array**&lt;`T`&gt;\(capacity?: `i32`\) Constructs a new array. Traps If `T` is a non-nullable reference type and `capacity`is greater than zero because the operation would create a holey array \(means: with `null` values not matching the non-nullable value type anymore, see `Array.create` instead\).
+* new **Array**&lt;`T`&gt;\(capacity?: `i32`\) Constructs a new array.
 
 ### Instance
 
 #### Fields
 
-* Array\#**length**: `i32` The length of this array. Setting the length to a value larger than internal capacity will automatically grow the array. Traps if `T` is of a non-nullable reference type and setting length would result in a holey array.
+* Array\#**length**: `i32` The length of this array. Setting the length to a value larger than internal capacity will automatically grow the array.
 
 #### Methods
 
