@@ -84,6 +84,7 @@ If you are not going to use low-level WebAssembly in the foreseeable future, fee
 * **instantiate**&lt;`T`&gt;\(...args: `*[]`\): `T` Instantiates a new instance of `T` using the specified constructor arguments.
 * **changetype**&lt;`T`&gt;\(value: `*`\): `T` Changes the type of a value to another one. Useful for casting class instances to their pointer values and vice-versa.
 * **idof**&lt;`T`&gt;\(\): `u32` Obtains the computed unique id of a class type. Usually only relevant when allocating objects or dealing with RTTI externally.
+* **nameof**&lt;`T`&gt;\(value?: `T`\): `string` Determines the name of a given type.
 
 ## Low-level WebAssembly operations
 

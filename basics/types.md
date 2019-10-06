@@ -233,4 +233,5 @@ The following macro types provide access to related types that would otherwise b
 | `native<T>` | Obtains the underlying native type of `T`, e.g. `u32` if `T` is a class \(in WASM32\). |
 | `indexof<T>` | Obtains the index type of a collection based on the indexed access overload. |
 | `valueof<T>` | Obtains the value type of a collection based on the indexed access overload. |
+| `returnof<T>` | Obtains the return type of a function type. |
 
