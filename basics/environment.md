@@ -148,8 +148,8 @@ Sign-agnostic endian conversions \(reverse bytes\).
 
 The following instructions represent the [WebAssembly threads and atomics](https://github.com/WebAssembly/threads) specification. Must be enabled with `--enable threads`.
 
-* atomic.**load**&lt;`T`&gt;\(offset: `usize`, immOffset?: `usize`\): `T` Atomically loads an integer value from memory and returns it.
-* atomic.**store**&lt;`T`&gt;\(offset: `usize`, value: `T`, immOffset?: `usize`\): `void` Atomically stores an integer value to memory.
+* atomic.**load**&lt;`T`&gt;\(ptr: `usize`, immOffset?: `usize`\): `T` Atomically loads an integer value from memory and returns it.
+* atomic.**store**&lt;`T`&gt;\(ptr: `usize`, value: `T`, immOffset?: `usize`\): `void` Atomically stores an integer value to memory.
 * atomic.**add**&lt;`T`&gt;\(ptr: `usize`, value: `T`, immOffset?: `usize`\): `T` Atomically adds an integer value in memory.
 * atomic.**sub**&lt;`T`&gt;\(ptr: `usize`, value: `T`, immOffset?: `usize`\): `T` Atomically subtracts an integer value in memory.
 * atomic.**and**&lt;`T`&gt;\(ptr: `usize`, value: `T`, immOffset?: `usize`\): `T` Atomically performs a bitwise AND operation on an integer value in memory.
@@ -180,8 +180,11 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 * v128.**extract\_lane**&lt;`T`&gt;\(x: `v128`, idx: `u8`\): `T` Extracts one lane from a 128-bit vector as a scalar.
 * v128.**replace\_lane**&lt;`T`&gt;\(x: `v128`, idx: `u8`, value: `T`\): `v128` Replaces one lane in a 128-bit vector.
 * v128.**shuffle**&lt;`T`&gt;\(a: `v128`, b: `v128`, ...lanes: `u8[]`\): `v128` Selects lanes from either 128-bit vector according to the specified lane indexes.
-* v128.**load**\(offset: `usize`, immOffset?: `usize`, immAlign?: `usize`\): `v128` Loads a 128-bit vector from memory.
-* v128.**store**\(offset: `usize`, value: `v128`, immOffset?: `usize`, immAlign?: `usize`\): `void` Stores a 128-bit vector to memory.
+* v128.**swizzle**\(a: `v128`, s: `v128`\): `v128` Selects 8-bit lanes from the first 128-bit vector according to the indexes \[0-15\] specified by the 8-bit lanes of the second 128-bit vector.
+* v128.**load**\(ptr: `usize`, immOffset?: `usize`, immAlign?: `usize`\): `v128` Loads a 128-bit vector from memory.
+* v128.**load\_splat**&lt;`T`&gt;\(ptr: `usize`, immOffset?: `usize`, immAlign?: `usize`\): `v128` Creates a 128-bit vector with identical lanes by loading the splatted value.
+* v128.**load\_ext**&lt;`TFrom`&gt;\(ptr: `usize`, immOffset?: `usize`, immAlign?: `usize`\): `v128` _integer only_ Creates a 128-bit vector by loading the lanes of the specified type and extending each to the next larger type.
+* v128.**store**\(ptr: `usize`, value: `v128`, immOffset?: `usize`, immAlign?: `usize`\): `void` Stores a 128-bit vector to memory.
 * v128.**add**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Adds each lane of two 128-bit vectors.
 * v128.**sub**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Subtracts each lane of two 128-bit vectors.
 * v128.**mul**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Multiplies each lane of two 128-bit vectors.
@@ -205,19 +208,20 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 
 * v128.**and**\(a: `v128`, b: `v128`\): `v128` _integer only_
 
-  Performs the bitwise AND operation on each lane of two 128-bit vectors.
+  Performs the bitwise AND operation on two 128-bit vectors.
 
 * v128.**or**\(a: `v128`, b: `v128`\): `v128` _integer only_
 
-  Performs the bitwise OR operation on each lane of two 128-bit vectors.
+  Performs the bitwise OR operation on two 128-bit vectors.
 
 * v128.**xor**\(a: `v128`, b: `v128`\): `v128` _integer only_
 
-  Performs the bitwise XOR operation on each lane of two 128-bit vectors.
+  Performs the bitwise XOR operation on two 128-bit vectors.
 
+* v128.**andnot**\(a: `v128`, b: `v128`\): `v128`  _integer only_ Performs the bitwise ANDNOT operation on two 128-bit vectors.
 * v128.**not**\(a: `v128`\): `v128` _integer only_
 
-  Performs the bitwise NOT operation on each lane of a 128-bit vector.
+  Performs the bitwise NOT operation on a 128-bit vector.
 
 * v128.**bitselect**\(a: `v128`, b: `v128`, mask: `v128`\): `v128`
 
@@ -251,4 +255,6 @@ In addition, the namespaces `i8x16`, `i16x8`, `i32x4`, `i64x2` , `f32x4` and `f6
 * **i64x2**\(a: `i64`, b: `i64`\): `v128` Initializes a 128-bit vector from two 64-bit integer values. Arguments must be compile-time constants.
 * **f32x4**\(a: `f32`, b: `f32`, c: `f32`, d: `f32`\): `v128` Initializes a 128-bit vector from four 32-bit float values. Arguments must be compile-time constants.
 * **f64x2**\(a: `f64`, b: `f64`\): `v128` Initializes a 128-bit vector from two 64-bit float values. Arguments must be compile-time constants.
+
+The namespaces `v8x16`, `v16x8`, `v32x4` and `v64x2` provide the respective sign agnostic instructions according to text format.
 
