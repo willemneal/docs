@@ -11,6 +11,7 @@ description: >-
 * [Wasm Mandelbrot](https://github.com/ColinEberhardt/wasm-mandelbrot) \([demo](https://colineberhardt.github.io/wasm-mandelbrot/#AssemblyScript)\) A mandelbrot rendered using a variety of WebAssembly tools \(emscripten, AssemblyScript, asm.js, etc ...\)
 * [WasmBoy Benchmark](https://wasmboy.app/benchmark/) Benchmarking WasmBoy emulator
 * [webassembly-wave](https://github.com/jtiscione/webassembly-wave) \([demo](https://jtiscione.github.io/webassembly-wave/index.html)\) JavaScript vs WebAssembly performance comparison - wave equation demo \(JS, C++, AssemblyScript\)
+* [Sort Colors Benchmark](https://github.com/manueldois/WebAssembly/tree/master/Sort%20Colors%20Benchmark/src) \([demo](https://manueldois.github.io/WebAssembly/Sort%20Colors%20Benchmark/dist/index.html)\) Bench of sorting random colors by hue component on 2d canvas
 
 ## Editors
 
