@@ -31,6 +31,7 @@ description: >-
 
 * [as2d](https://github.com/as2d/as2d) Bring the power of the CanvasRenderingContext2D prototype to AssemblyScript.
 * [as-smallpt](https://github.com/01alchemist/as-smallpt) Port of C++ smallpt, a path tracing renderer.
+* [Babylon.Font](https://github.com/ycw/Babylon.Font) Create 3d text in BabylonJS
 
 ## Libraries
 
