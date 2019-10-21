@@ -206,20 +206,20 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 
   Performs a bitwise right shift on each lane of a 128-bit vector by a scalar.
 
-* v128.**and**\(a: `v128`, b: `v128`\): `v128` _integer only_
+* v128.**and**\(a: `v128`, b: `v128`\): `v128`
 
   Performs the bitwise AND operation on two 128-bit vectors.
 
-* v128.**or**\(a: `v128`, b: `v128`\): `v128` _integer only_
+* v128.**or**\(a: `v128`, b: `v128`\): `v128`
 
   Performs the bitwise OR operation on two 128-bit vectors.
 
-* v128.**xor**\(a: `v128`, b: `v128`\): `v128` _integer only_
+* v128.**xor**\(a: `v128`, b: `v128`\): `v128`
 
   Performs the bitwise XOR operation on two 128-bit vectors.
 
-* v128.**andnot**\(a: `v128`, b: `v128`\): `v128`  _integer only_ Performs the bitwise ANDNOT operation on two 128-bit vectors.
-* v128.**not**\(a: `v128`\): `v128` _integer only_
+* v128.**andnot**\(a: `v128`, b: `v128`\): `v128` Performs the bitwise ANDNOT operation on two 128-bit vectors.
+* v128.**not**\(a: `v128`\): `v128`
 
   Performs the bitwise NOT operation on a 128-bit vector.
 
