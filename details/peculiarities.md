@@ -176,13 +176,47 @@ The following range limits are present as global constants for convenience:
 
 ## Tree-shaking
 
+### Module-level
+
 The compiler only compiles elements reachable from the entry file and ignores everything that remains unused. This is very similar to a JavaScript VM's behavior when running a JavaScript file, but unlike in TypeScript it also affects checking of types. Helps to reduce compilation times and binary sizes significantly.
+
+### Branch-level
+
+In addition to module-level tree-shaking, the compiler ignores branches that it can prove won't be taken. Works with constants, built-ins that compile to a constant, expressions that can be precomputed to a constant, plus the following globals to detect specific compiler flags or features:
+
+| Constant | Description |
+| :--- | :--- |
+| **ASC\_TARGET** | 0 = WASM32, 1 = WASM64, 2 = JS \(portable\) |
+| **ASC\_NO\_ASSERT** | Whether `--noAssert` is being set |
+| **ASC\_MEMORY\_BASE** | The value of `--memoryBase` |
+| **ASC\_OPTIMIZE\_LEVEL** | The value of `--optimizeLevel` \(0-3\) |
+| **ASC\_SHRINK\_LEVEL** | The value of `--shrinkLevel` \(0-2\) |
+| **ASC\_FEATURE\_SIGN\_EXTENSION** | Whether sign extension operations are enabled |
+| **ASC\_FEATURE\_MUTABLE\_GLOBALS** | Whether mutable globals are enabled |
+| **ASC\_FEATURE\_NONTRAPPING\_F2I** | Whether non-trapping float-to-int operations are enabled |
+| **ASC\_FEATURE\_BULK\_MEMORY** | Whether bulk memory operations are enabled |
+| **ASC\_FEATURE\_SIMD** | Whether SIMD operations are enabled |
+| **ASC\_FEATURE\_THREADS** | Whether threads are enabled |
+| **ASC\_FEATURE\_EXCEPTION\_HANDLING** | Whether exception handling is enabled |
+| **ASC\_FEATURE\_TAIL\_CALLS** | Whether tail-calls are enabled |
+| **ASC\_FEATURE\_REFERENCE\_TYPES** | Whether reference types are enabled |
+
+For example, if a library supports SIMD but also provides a fallback:
+
+```typescript
+if (ASC_FEATURE_SIMD) {
+  // compute with SIMD operations
+} else {
+  // fallback without SIMD operations
+}
+```
 
 ## Transforms
 
 The compiler frontend \(asc\) provides hooking into the compilation process by means of transforms. Specifying `--transform myTransform` on the command line will load the node module pointed to by `myTransform` and the compiler will call the following hooks during the compilation process:
 
 * **afterParse**\(parser: `Parser`\): `void` Called with the parsing result of all relevant files once parsing is complete. Useful to modify the AST before it becomes compiled, for example by looking for custom decorators and injecting actual logic.
+* **afterCompile**\(module: `Module`\): `void` Called with the resulting Binaryen module before it is being emitted. Useful to modify the IR before it becomes emitted, for example to replace imports with actual functionality or to add custom sections.
 
-The set of hooks is intentionally minimal at this point. If you need something special, please let us know about your use case.
+Also see the [transform examples](https://github.com/AssemblyScript/assemblyscript/tree/master/examples/transform). The set of hooks is intentionally minimal at this point. If you need something special, please let us know about your use case.
 
