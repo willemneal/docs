@@ -53,6 +53,10 @@ description: >-
 
 * [as-pect](https://github.com/jtenner/as-pect) A test library for AssemblyScript.
 
+## Project Templates
+
+* [worker-assemblyscript-template](https://github.com/JamesLMilner/worker-assemblyscript-template) A Cloudflare wrangler template for a AssemblyScript worker
+
 ## Other
 
 * [wasm-matrix](https://github.com/torch2424/wasm-matrix) A Matrix effect in your terminal using AssemblyScript and WASI, deployed to WAPM.
