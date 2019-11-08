@@ -10,6 +10,16 @@ AssemblyScript has a tiny [module loader](https://github.com/AssemblyScript/asse
 Note that some of the loader's functionality, like allocating strings, requires the [managed runtime](../details/runtime.md) interface to be exported to the host.
 {% endhint %}
 
+## Install
+
+For each version of the AssemblyScript compiler, there is a standalone version of the loader that can be installed from npm:
+
+```bash
+$> npm install @assemblyscript/loader
+```
+
+If you need a specific version, append the respective version number in the form `@VERSION` as usual.
+
 ## Example
 
 {% tabs %}
