@@ -24,6 +24,8 @@ For a better understanding of what to expect, let's start with a collection of o
 
 There is no `any` or `undefined` for obvious reasons:
 
+{% tabs %}
+{% tab title="" %}
 ```typescript
 // 😢
 function foo(a?) {
@@ -37,9 +39,13 @@ function foo(a: i32 = 0): i32 {
   return b;
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 There are no union types:
 
+{% tabs %}
+{% tab title="" %}
 ```typescript
 // 😢
 function foo(a: i32 | string): void {
@@ -49,9 +55,13 @@ function foo(a: i32 | string): void {
 function foo<T>(a: T): void {
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 Objects must be strictly typed as well:
 
+{% tabs %}
+{% tab title="" %}
 ```typescript
 // 😢
 var a = {};
@@ -67,6 +77,8 @@ class A {
 }
 var a = new A("hello. world");
 ```
+{% endtab %}
+{% endtabs %}
 
 ### The case of ===
 

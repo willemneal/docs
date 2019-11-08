@@ -4,10 +4,10 @@ description: Paving the way to what might be your first WebAssembly module.
 
 # Quick start
 
-To get started with AssemblyScript, switch to a new directory and point [npm](https://www.npmjs.com) at the GitHub repository \(for now\)
+To get started with AssemblyScript, switch to a new directory and install the compiler from npm
 
 ```text
-$> npm install --save-dev AssemblyScript/assemblyscript
+$> npm install assemblyscript
 ```
 
 followed by scaffolding a new project, for example in the current directory:

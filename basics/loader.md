@@ -12,6 +12,8 @@ Note that some of the loader's functionality, like allocating strings, requires 
 
 ## Example
 
+{% tabs %}
+{% tab title="" %}
 ```javascript
 const loader = require("assemblyscript/lib/loader");
 const myImports = { ... };
@@ -20,6 +22,8 @@ const myModule = await loader.instantiateStreaming(
   myImports
 );
 ```
+{% endtab %}
+{% endtabs %}
 
 What this basically does is instantiating the module normally, adding some utility to it and evaluating export names making a nice object structure of them. If one for example exports an entire class `Foo`, there will be a `myModule.Foo` constructor when using the loader.
 

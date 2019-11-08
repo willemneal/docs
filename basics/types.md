@@ -195,8 +195,8 @@ Assigning a value of one type to a target of another type can be performed witho
 
 Note that `isize` and `usize` are aliases of either `i32` and `u32` in WASM32 respectively `i64` and `u64` in WASM64 🦄.
 
-{% code-tabs %}
-{% code-tabs-item title="Example" %}
+{% tabs %}
+{% tab title="Example" %}
 ```typescript
 var i8val  : i8  = -128;  // 0x80
 var u8val  : u8  = i8val; // becomes 128 (0x80)
@@ -204,8 +204,8 @@ var i16val : i16 = i8val; // becomes -128 through sign-extension (0xFF80)
 var u16val : u16 = i8val; // becomes 65408 through masking (0xFF80)
 var f32val : f32 = i8val; // becomes -128.0
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Comparability
 
