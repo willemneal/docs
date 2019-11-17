@@ -27,7 +27,7 @@ If you need a [specific version](https://github.com/AssemblyScript/assemblyscrip
 {% tabs %}
 {% tab title="" %}
 ```javascript
-const loader = require("assemblyscript/lib/loader");
+const loader = require("@assemblyscript/lib/loader");
 const myImports = { ... };
 const myModule = await loader.instantiateStreaming(
   fetch("myModule.wasm"),

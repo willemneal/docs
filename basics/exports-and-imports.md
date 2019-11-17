@@ -10,26 +10,22 @@ Exports work very much like in TypeScript, with the notable difference that expo
 
 ### Functions
 
-{% tabs %}
-{% tab title="index.ts" %}
+{% code title="index.ts" %}
 ```typescript
 export function add(a: i32, b: i32): i32 {
   return a + b;
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ### Globals
 
-{% tabs %}
-{% tab title="index.ts" %}
+{% code title="index.ts" %}
 ```typescript
 export const foo = 1;
 export var bar = 2;
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ### Classes
 
@@ -65,26 +61,22 @@ For instance members, the `this` argument must be provided as an additional firs
 
 With [WebAssembly ES Module Integration](https://github.com/WebAssembly/esm-integration) still in the pipeline, imports utilize the ambient context currently. For example
 
-{% tabs %}
-{% tab title="env.ts" %}
+{% code title="env.ts" %}
 ```typescript
 export declare function doSomething(foo: i32): void;
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 creates an import of a function named `doSomething` within the `env` module, because that's the name of the file it lives is. It is also possible to use namespaces:
 
-{% tabs %}
-{% tab title="foo.ts" %}
+{% code title="foo.ts" %}
 ```typescript
 declare namespace console {
   export function logi(i: i32): void;
   export function logf(f: f64): void;
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 This will import the functions `console.logi` and `console.logf` from the `foo` module. Bonus: Don't forget `export`ing namespace members if you'd like to call them from outside the namespace.
 
@@ -92,8 +84,7 @@ This will import the functions `console.logi` and `console.logf` from the `foo` 
 
 Where automatic naming is not sufficient, the `@external` decorator can be used to give an element another external name:
 
-{% tabs %}
-{% tab title="bar.ts" %}
+{% code title="bar.ts" %}
 ```typescript
 @external("doSomethingElse")
 export declare function doSomething(foo: i32): void;
@@ -103,8 +94,7 @@ export declare function doSomething(foo: i32): void;
 export declare function doSomething(foo: i32): void;
 // imports foo.baz as doSomething
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## On values crossing the boundary
 
