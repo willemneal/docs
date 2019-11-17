@@ -118,6 +118,16 @@ Similarly, the following built-ins emit WebAssembly instructions accessing or ot
 * **memory.grow**\(value: `i32`\): `i32` Grows linear memory by a given unsigned delta of pages. One page is 64kb. Returns the previous size of the memory in units of pages or `-1` on failure. **Note** that calling `memory.grow`where a memory manager is present might break it.
 * **memory.copy**\(dst: `usize`, src: `usize`, n: `usize`\): `void` Copies `n` bytes from `src` to `dst` . Regions may overlap. Emits the respective instruction if bulk-memory is enabled, otherwise ships a polyfill.
 * **memory.fill**\(dst: `usize`, value: `u8`, n: `usize`\): `void` Fills `n` bytes at `dst` with the given byte `value`. Emits the respective instruction if bulk-memory is enabled, otherwise ships a polyfill.
+* **memory.repeat**\(dst: `usize`, src: `usize`, srcLength: `usize`, count: `usize`\): `void`
+
+  Repeat sequence of bytes from `src` with `srcLength` size `count` times in destination `dst`.
+
+* **memory.compare**\(lhs: `usize`, rhs: `usize`, n: `usize`\): `i32`
+
+  Compares the first `n` bytes of `left` and `rigth` and returns a value that indicates their relationship:  
+  - **Negative** value if the first differing byte \(reinterpreted as unsigned char\) in `lhs` is less than the corresponding byte in `rhs`.  
+  - **Positive** value if the first differing byte in `lhs` is greater than the corresponding byte in `rhs`.  
+  - **Zero​** if all `n` bytes of `lhs` and `rhs` are equal.
 
 The `immOffset` argument is a bit special here, because it becomes an actual immediate of the respective WebAssembly instruction instead of a normal operand. Thus it must be provided as a compile time constant value. This can be a literal or the value of a `const` variable that the compiler can precompute.
 

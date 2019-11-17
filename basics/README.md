@@ -40,7 +40,7 @@ function foo(a: i32 = 0): i32 {
 ```
 {% endcode %}
 
-There are no union types:
+There are no union types yet:
 
 {% code title="" %}
 ```typescript
@@ -70,7 +70,7 @@ a.set("prop", "hello world");
 class A {
   constructor(public prop: string) {}
 }
-var a = new A("hello. world");
+var a = new A("hello world");
 ```
 {% endcode %}
 
