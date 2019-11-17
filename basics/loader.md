@@ -19,7 +19,7 @@ $> npm install @assemblyscript/loader
 ```
 
 {% hint style="info" %}
-If you need a [specific version](https://github.com/AssemblyScript/assemblyscript/releases) of the loader, append the respective version number as usual.
+If you need a [specific version](https://github.com/AssemblyScript/assemblyscript/releases) of the loader, append the respective version number as usual. If using the standalone package isn't strictly necessary as a separate dependency, the loader also ships with the compiler as `assemblyscript/lib/loader`.
 {% endhint %}
 
 ## Example
@@ -27,7 +27,7 @@ If you need a [specific version](https://github.com/AssemblyScript/assemblyscrip
 {% tabs %}
 {% tab title="" %}
 ```javascript
-const loader = require("@assemblyscript/lib/loader");
+const loader = require("@assemblyscript/loader");
 const myImports = { ... };
 const myModule = await loader.instantiateStreaming(
   fetch("myModule.wasm"),
