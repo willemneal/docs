@@ -125,7 +125,7 @@ Similarly, the following built-ins emit WebAssembly instructions accessing or ot
 * **memory.compare**\(lhs: `usize`, rhs: `usize`, n: `usize`\): `i32`
 
   Compares the first `n` bytes of `left` and `rigth` and returns a value that indicates their relationship:  
-  - **Negative** value if the first differing byte \(reinterpreted as unsigned char\) in `lhs` is less than the corresponding byte in `rhs`.  
+  - **Negative** value if the first differing byte in `lhs` is less than the corresponding byte in `rhs`.  
   - **Positive** value if the first differing byte in `lhs` is greater than the corresponding byte in `rhs`.  
   - **Zero​** if all `n` bytes of `lhs` and `rhs` are equal.
 
