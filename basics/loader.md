@@ -25,7 +25,7 @@ If you need a [specific version](https://github.com/AssemblyScript/assemblyscrip
 ## Example
 
 {% tabs %}
-{% tab title="" %}
+{% tab title="index.js" %}
 ```javascript
 const loader = require("@assemblyscript/loader");
 const myImports = { ... };

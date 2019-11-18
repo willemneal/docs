@@ -6,7 +6,8 @@ description: 'Let''s attempt the unthinkable, shall we?'
 
 AssemblyScript compiles a **strict subset** of [TypeScript](https://www.typescriptlang.org) \(a typed superset of JavaScript\) to [WebAssembly](https://webassembly.org) using [Binaryen](https://github.com/WebAssembly/binaryen), looking like:
 
-{% code title="fib.ts" %}
+{% tabs %}
+{% tab title="fib.ts" %}
 ```typescript
 export function fib(n: i32): i32 {
   var a = 0, b = 1;
@@ -16,7 +17,8 @@ export function fib(n: i32): i32 {
   return b;
 }
 ```
-{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 ```text
 $> asc fib.ts -b fib.wasm -O3
