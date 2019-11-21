@@ -13,7 +13,7 @@ description: >-
 * [webassembly-wave](https://github.com/jtiscione/webassembly-wave) \([demo](https://jtiscione.github.io/webassembly-wave/index.html)\) JavaScript vs WebAssembly performance comparison - wave equation demo \(JS, C++, AssemblyScript\)
 * [Sort Colors Benchmark](https://github.com/manueldois/WebAssembly/tree/master/Sort%20Colors%20Benchmark/src) \([demo](https://manueldois.github.io/WebAssembly/Sort%20Colors%20Benchmark/dist/index.html)\) Bench of sorting random colors by hue component on 2d canvas
 
-## Blockchain-related
+## Blockchain
 
 * [eWasm / Biturbo](https://github.com/ewasm/biturbo) - Eth1 EE using Turboproofs
 * [ewasm / scout.ts ](https://github.com/ewasm/scout.ts)Scout is a Ethereum 2.0 Phase 2 execution prototyping engine \(AssemblyScript Port\)
