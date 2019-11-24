@@ -12,32 +12,32 @@ One of the most limiting factors at this point is the lack of closures, which ar
 
 ```typescript
 function computeSum(arr: i32[]): i32 {
-  var sum = 0;
-  myArray.forEach(value => {
+  var sum = 0
+  arr.forEach(value => {
     sum += value; // cannot find "sum"
-  });
-  return sum;
+  })
+  return sum
 }
 ```
 
 Quite a bummer, right? Of course there are ways to do it differently. One can, for example, make `sum` a global variable that can be accessed everywhere
 
 ```typescript
-var computeSum_sum = 0;
+var sum = 0 // now "sum" in global scope
 function computeSum(arr: i32[]): i32 {
-  myArray.forEach(value => {
-    computeSum_sum += value;
-  });
-  return computeSum_sum ;
+  arr.forEach(value => {
+    sum += value
+  })
+  return sum
 }
 ```
 
 or write this snippet differently:
 
 ```typescript
-let sum = 0;
-for (let i = 0, k = myArray.length; i < k; ++i) {
-  sum += myArray[i]; // works
+let sum = 0
+for (let i = 0; i < arr.length; ++i) {
+  sum += arr[i] // works
 }
 ```
 
@@ -49,7 +49,7 @@ It's still necessary to figure out how to go forward with these, like whether we
 
 ```typescript
 function doThrow(): void {
-  throw new Error(":(");
+  throw new Error(":(")
 }
 ```
 
@@ -68,16 +68,16 @@ class B extends A {
   foo(): void {}
 }
 
-var a: A = new B();
-a.foo(); // calls A#foo, not the overloaded B#foo
+var a: A = new B()
+a.foo() // calls A#foo, not the overloaded B#foo
 ```
 
 Again, there are ways to write code that does the right thing.
 
 ```typescript
 if (a instanceof B) {
-  let b = a as B;
-  b.foo();
+  let b = a as B
+  b.foo()
 }
 ```
 
