@@ -7,7 +7,7 @@ description: Paving the way to what might be your first WebAssembly module.
 To get started with AssemblyScript, switch to a new directory and install the compiler from npm
 
 ```text
-$> npm install assemblyscript
+$> npm i --save-dev assemblyscript
 ```
 
 {% hint style="info" %}
