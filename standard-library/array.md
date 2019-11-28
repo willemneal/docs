@@ -9,9 +9,11 @@ description: A randomly accessible sequence of values of a generic type.
 The Array API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)\), with the notable difference that one must make sure that there are no `null`  values if `T` is a non-nullable reference type. Example:
 
 ```typescript
-var arr = new Array<string>(10);
+var arr = new Array<string>(10)
 // arr[0]; // would error 😢
-for (let i = 0; i < arr.length; ++i) arr[i] = "";
+for (let i = 0; i < arr.length; ++i) {
+  arr[i] = ""
+}
 arr[0]; // now it works 😊
 ```
 

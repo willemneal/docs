@@ -9,13 +9,13 @@ description: A mapping of generic keys to generic values.
 The Map API is very similar to JavaScript's \([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)\), with the notable difference that a `.get` with a key that does not exist results in an error, because `undefined` cannot be represented. Example:
 
 ```typescript
-var map = new Map<i32,string>();
+var map = new Map<i32,string>()
 
 // Because `undefined` cannot be represented if a key is not found, this will error:
-var str = map.get(1); // ERROR
+var str = map.get(1) // ERROR
 
 // The error can be avoided by first making sure that the key exists, so this works:
-var str: string | null = map.has(1) ? map.get(1) : null; // OK
+var str: string | null = map.has(1) ? map.get(1) : null // OK
 ```
 
 ### Constructor

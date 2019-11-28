@@ -28,14 +28,14 @@ There is no `any` or `undefined` for obvious reasons:
 ```typescript
 // 😢
 function foo(a?) {
-  var b = a + 1;
-  return b;
+  var b = a + 1
+  return b
 }
 
 // 😊
 function foo(a: i32 = 0): i32 {
-  var b = a + 1;
-  return b;
+  var b = a + 1
+  return b
 }
 ```
 {% endcode %}
@@ -59,18 +59,18 @@ Objects must be strictly typed as well:
 {% code title="" %}
 ```typescript
 // 😢
-var a = {};
-a.prop = "hello world";
+var a = {}
+a.prop = "hello world"
 
 // 😊
-var a = new Map<string,string>();
-a.set("prop", "hello world");
+var a = new Map<string,string>()
+a.set("prop", "hello world")
 
 // 😊
 class A {
   constructor(public prop: string) {}
 }
-var a = new A("hello world");
+var a = new A("hello world")
 ```
 {% endcode %}
 
@@ -79,8 +79,8 @@ var a = new A("hello world");
 Also, AssemblyScript does some things differently. It uses `===` for identity comparisons \(means: the exact same object\) for example. Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons.
 
 ```typescript
-var s1 = "1";
-var s2 = "123".substring(0, 1);
+var s1 = "1"
+var s2 = "123".substring(0, 1)
 s1 === s1 // true
 s1 === s2 // false
 s2 === s2 // true

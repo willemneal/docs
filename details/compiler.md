@@ -112,7 +112,7 @@ asc.main([
   stderr: process.stderr
 }, function(err) {
   if (err)
-    throw err;
+    throw err
   ...
 });
 ```
@@ -120,14 +120,14 @@ asc.main([
 Available command line options can also be obtained programmatically:
 
 ```javascript
-const options = require("assemblyscript/cli/asc.json");
+const options = require("assemblyscript/cli/asc.json")
 ...
 ```
 
 You can also compile a source string directly, for example in a browser environment:
 
 ```javascript
-const { binary, text, stdout, stderr } = asc.compileString(`...`, { optimize: 2 });
+const { binary, text, stdout, stderr } = asc.compileString(`...`, { optimize: 2 })
 ...
 ```
 
