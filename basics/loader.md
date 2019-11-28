@@ -25,12 +25,36 @@ If you need a [specific version](https://github.com/AssemblyScript/assemblyscrip
 ## Example
 
 {% tabs %}
-{% tab title="index.js" %}
+{% tab title="browser.js" %}
 ```javascript
 const loader = require("@assemblyscript/loader");
 const myImports = { ... };
 const myModule = await loader.instantiateStreaming(
-  fetch("myModule.wasm"),
+  fetch("optimized.wasm"),
+  myImports
+);
+```
+{% endtab %}
+
+{% tab title="node.js \(sync\)" %}
+```javascript
+const fs = require("fs");
+const loader = require("@assemblyscript/loader");
+const myImports = { ... };
+const myModule = loader.instantiateSync(
+  fs.readFileSync("optimized.wasm"),
+  myImports
+);
+```
+{% endtab %}
+
+{% tab title="node.js \(async\)" %}
+```javascript
+const fs = require("fs");
+const loader = require("@assemblyscript/loader");
+const myImports = { ... };
+const myModule = await loader.instantiate(
+  fs.promises.readFile("optimized.wasm"),
   myImports
 );
 ```
