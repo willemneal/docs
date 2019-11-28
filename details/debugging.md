@@ -34,7 +34,7 @@ function abort(
   fileName: string | null,
   lineNumber: u32,
   columnNumber: u32
-): void;
+): void
 ```
 
 ## Manual tracing
@@ -42,7 +42,7 @@ function abort(
 The standard library provides a relatively basic `trace` utility function that is imported from the host and understood by the [loader](../basics/loader.md). For example
 
 ```typescript
-trace("HERE", 2, value, otherValue);
+trace("HERE", 2, value, otherValue)
 ```
 
 will, by default, call the `trace` function imported from the `env` module with a string message and two arbitrary values that can be anything convertible to an `f64`. The loader for example will log the output to console. Similar to [overriding abort](debugging.md#overriding-abort), the implementation can be overridden using the `--use` compiler option. Signature of the trace function is:
@@ -56,7 +56,7 @@ function trace(
   a2?: f64,
   a3?: f64,
   a4?: f64
-): void;
+): void
 ```
 
 One thing to note here is that calling `trace` in top-level statements can lead to situations where [memory is accessed during instantiation](memory.md#accessing-memory-during-instantiation), hence not being able to read the message without taking the respective precautions.

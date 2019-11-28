@@ -8,7 +8,7 @@ description: How to talk to AssemblyScript from C or other languages.
 
 Layout of objects in memory resembles that of non-packed C structs, and `@unmanaged` classes \(not tracked by GC\) can be used to describe them:
 
-```c
+```cpp
 struct Foo {
   uint32_t bar;
 }
@@ -16,15 +16,15 @@ struct Foo {
 
 ```typescript
 @unmanaged class Foo {
-  bar: u32;
+  bar: u32
 }
 
-var foo = changetype<Foo>(ptrToFoo);
+var foo = changetype<Foo>(ptrToFoo
 ```
 
 More complex structures usually require manual offset calculation, though, mostly for the reason that it is not feasible to implement something more specific into AssemblyScript as it does not use such structures on its own:
 
-```text
+```cpp
 struct Foo {
   int32_t bar;
   uint32_t baz[10];
@@ -33,12 +33,12 @@ struct Foo {
 
 ```typescript
 @unmanaged class Foo {
-  bar: i32;
+  bar: i32
   getBaz(i: i32): u32 {
     return load<u32>(
       changetype<usize>(this) + (<usize>i << alignof<u32>()),
       4 // or use offsetof, sizeof etc. to calculate the base offset incl. alignment
-    );
+    )
   }
 }
 ```
@@ -49,7 +49,7 @@ Exported functions will properly wrap return values, but functions not visible e
 
 ```typescript
 export function getU8(): u8 {
-  return someU8; // will wrap to someU8 & 0xff
+  return someU8 // will wrap to someU8 & 0xff
 }
 ```
 

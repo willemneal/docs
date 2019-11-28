@@ -56,14 +56,14 @@ By making use of statically evaluated type checks, especially in generic context
 
 ```typescript
 function add<T>(a: T, b: T): T {
-  return a + b; // addition if numeric, string concatenation if a string
+  return a + b // addition if numeric, string concatenation if a string
 }
 
 function add<T>(a: T, b: T): T {
   if (isString<T>()) { // eliminated if T is not a string
-    return parseInt(a) + parseInt(b);
+    return parseInt(a) + parseInt(b)
   } else { // eliminated if T is a string
-    return a + b;
+    return a + b
   }
 }
 ```

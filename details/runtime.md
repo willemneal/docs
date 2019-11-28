@@ -76,8 +76,8 @@ One common point of confusion here is that the rules above **operate on types, n
 
 ```typescript
 {
-  let ref = new ArrayBuffer(10); // retains (reference type)
-  let buf = changetype<usize>(ref); // does not retain (usize)
+  let ref = new ArrayBuffer(10) // retains (reference type)
+  let buf = changetype<usize>(ref) // does not retain (usize)
   ...
   // compiler will automatically __release(ref)
 }
@@ -85,7 +85,7 @@ One common point of confusion here is that the rules above **operate on types, n
 
 ```typescript
 {
-  let buf = changetype<usize>(new ArrayBuffer(10)); // does not retain (usize)
+  let buf = changetype<usize>(new ArrayBuffer(10)) // does not retain (usize)
   // inserts a temporary, because _the object_ is not immediately assigned
   ...
   // compiler will automatically __release(theTemp)
@@ -94,7 +94,7 @@ One common point of confusion here is that the rules above **operate on types, n
 
 ```typescript
 {
-  let ref = changetype<ArrayBuffer>(__alloc(10, idof<ArrayBuffer>());
+  let ref = changetype<ArrayBuffer>(__alloc(10, idof<ArrayBuffer>())
   // retains on ref, because after changetype an object is assigned
   ...
   // compiler will automatically __release(ref)

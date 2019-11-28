@@ -27,36 +27,36 @@ If you need a [specific version](https://github.com/AssemblyScript/assemblyscrip
 {% tabs %}
 {% tab title="browser.js" %}
 ```javascript
-const loader = require("@assemblyscript/loader");
-const myImports = { ... };
+const loader = require("@assemblyscript/loader")
+const myImports = { ... }
 const myModule = await loader.instantiateStreaming(
   fetch("optimized.wasm"),
   myImports
-);
+)
 ```
 {% endtab %}
 
 {% tab title="node.js \(sync\)" %}
 ```javascript
-const fs = require("fs");
-const loader = require("@assemblyscript/loader");
-const myImports = { ... };
+const fs = require("fs")
+const loader = require("@assemblyscript/loader")
+const myImports = { ... }
 const myModule = loader.instantiateSync(
   fs.readFileSync("optimized.wasm"),
   myImports
-);
+)
 ```
 {% endtab %}
 
 {% tab title="node.js \(async\)" %}
 ```javascript
-const fs = require("fs");
-const loader = require("@assemblyscript/loader");
-const myImports = { ... };
+const fs = require("fs")
+const loader = require("@assemblyscript/loader")
+const myImports = { ... }
 const myModule = await loader.instantiate(
   fs.promises.readFile("optimized.wasm"),
   myImports
-);
+)
 ```
 {% endtab %}
 {% endtabs %}
@@ -67,35 +67,41 @@ One thing the loader does not do, however, is to implicitly translate between po
 
 ```typescript
 export class Foo {
-  constructor(public s: string) {}
-  getString(): string { return this.s; }
+  constructor(public str: string) {}
+  getString(): string { return this.str }
 }
 ```
 
 and then wants to call `new myModule.Foo(theString)` externally, the `theString` argument cannot just be a JavaScript string but must first be allocated and its [lifetime tracked](../details/runtime.md#managing-lifetimes), like so:
 
 ```javascript
-var str = myModule.__retain(myModule.__allocString("my string"));
-var foo = new myModule.Foo(str);
-// do something with foo
-myModule.__release(foo);
-myModule.__release(str);
+const { Foo, __allocString, __retain, __release } = myModule
+
+const str = __retain(__allocString("my string"))
+const foo = new Foo(str)
+
+// do something with foo here //
+
+__release(foo)
+__release(str)
 ```
 
 Likewise, when calling the following function externally
 
 ```typescript
 export function getFoo(): Foo {
-  return new Foo("my string");
+  return new Foo("my string")
 }
 ```
 
 the resulting pointer must first be wrapped in a `myModule.Foo` instance:
 
 ```javascript
-var foo = myModule.Foo.wrap(myModule.getFoo());
-console.log(myModule.__getString(foo.getString()));
-myModule.__release(foo);
+const { Foo, getFoo, __getString, __release } = myModule
+
+const foo = Foo.wrap(getFoo())
+console.log(__getString(foo.getString()))
+__release(foo)
 ```
 
 ## Why not more convenient?

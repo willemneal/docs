@@ -13,7 +13,7 @@ Besides the full standard library, AssemblyScript provides a portable variant of
 To use the portable library, add the following somewhere along your build step so the portable features are present in the environment
 
 ```typescript
-require("assemblyscript/std/portable");
+require("assemblyscript/std/portable")
 ```
 
 and extend `assemblyscript/std/portable.json` instead of `assemblyscript/std/assembly.json` within your `tsconfig.json`. The AssemblyScript compiler itself is an example of how this can be done.
@@ -32,32 +32,32 @@ While `asc` understands the meaning of
 
 ```typescript
 // non-portable
-let someFloat: f32 = 1.5;
-let someInt: i32 = <i32>someFloat;
+let someFloat: f32 = 1.5
+let someInt: i32 = <i32>someFloat
 ```
 
 and then inserts the correct conversion steps, `tsc` does not because all numeric types are just aliases of `number`. Hence, when targeting JavaScript with `tsc`, the above will result in
 
 ```javascript
 // js
-var someFloat = 1.5;
-var someInt = someFloat;
+var someFloat = 1.5
+var someInt = someFloat
 ```
 
 which is obviously wrong. To account for this, portable conversions can be used, resulting in actually portable code. For example
 
 ```typescript
 // portable
-let someFloat: f32 = 1.5;
-let someInt: i32 = i32(someFloat);
+let someFloat: f32 = 1.5
+let someInt: i32 = i32(someFloat)
 ```
 
 will essentially result in
 
 ```javascript
 // js
-var someFloat = 1.5;
-var someInt = someFloat | 0;
+var someFloat = 1.5
+var someInt = someFloat | 0
 ```
 
 which is correct. The best way of dealing with this is asking yourself the question: What would this code do when compiled to JavaScript?
@@ -68,21 +68,21 @@ Likewise, again because `asc` knows the meaning but `tsc` does not, overflows mu
 
 ```typescript
 // non-portable
-let someU8: u8 = 255;
-let someOtherU8: u8 = someU8 + 1;
+let someU8: u8 = 255
+let someOtherU8: u8 = someU8 + 1
 ```
 
 ```typescript
 // portable
-let someU8: u8 = 255;
-let someOtherU8: u8 = u8(someU8 + 1);
+let someU8: u8 = 255
+let someOtherU8: u8 = u8(someU8 + 1)
 ```
 
 essentially resulting in
 
 ```javascript
-let someU8 = 255;
-let someOtherU8 = (someU8 + 1) & 0xff;
+let someU8 = 255
+let someOtherU8 = (someU8 + 1) & 0xff
 ```
 
 ### API features

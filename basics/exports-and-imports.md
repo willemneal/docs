@@ -14,7 +14,7 @@ Exports work very much like in TypeScript, with the notable difference that expo
 {% tab title="index.ts" %}
 ```typescript
 export function add(a: i32, b: i32): i32 {
-  return a + b;
+  return a + b
 }
 ```
 {% endtab %}
@@ -25,8 +25,8 @@ export function add(a: i32, b: i32): i32 {
 {% tabs %}
 {% tab title="index.ts" %}
 ```typescript
-export const foo = 1;
-export var bar = 2;
+export const foo = 1
+export var bar = 2
 ```
 {% endtab %}
 {% endtabs %}
@@ -38,8 +38,8 @@ If an entire class \(possibly part of a namespace\) is exported from an entry fi
 ```typescript
 export namespace foo {
   export class Bar {
-    a: i32 = 1;
-    getA(): i32 { return this.a; }
+    a: i32 = 1
+    getA(): i32 { return this.a }
   }
 }
 ```
@@ -54,9 +54,9 @@ will yield the function exports
 which can be used externally just like:
 
 ```javascript
-var thisBar = myModule["foo.Bar#constructor"]();
-myModule["foo.Bar#set:a"](thisBar, 2);
-console.log(myModule["foo.Bar#getA"](thisBar));
+var thisBar = myModule["foo.Bar#constructor"]()
+myModule["foo.Bar#set:a"](thisBar, 2)
+console.log(myModule["foo.Bar#getA"](thisBar))
 ```
 
 For instance members, the `this` argument must be provided as an additional first argument. No argument or `0` as the first argument to a constructor indicates that the constructor is expected to allocate on its own - this is a mechanism in place to also be able to inherit memory from a subclass's allocation. One usually doesn't have to deal with this manually, though, since the loader will already take care of it. See the [loader documentation](loader.md) for more information.
@@ -68,7 +68,7 @@ With [WebAssembly ES Module Integration](https://github.com/WebAssembly/esm-inte
 {% tabs %}
 {% tab title="env.ts" %}
 ```typescript
-export declare function doSomething(foo: i32): void;
+export declare function doSomething(foo: i32): void
 ```
 {% endtab %}
 {% endtabs %}
@@ -79,8 +79,8 @@ creates an import of a function named `doSomething` within the `env` module, bec
 {% tab title="foo.ts" %}
 ```typescript
 declare namespace console {
-  export function logi(i: i32): void;
-  export function logf(f: f64): void;
+  export function logi(i: i32): void
+  export function logf(f: f64): void
 }
 ```
 {% endtab %}
@@ -96,11 +96,11 @@ Where automatic naming is not sufficient, the `@external` decorator can be used 
 {% tab title="bar.ts" %}
 ```typescript
 @external("doSomethingElse")
-export declare function doSomething(foo: i32): void;
+export declare function doSomething(foo: i32): void
 // imports bar.doSomethingElse as doSomething
 
 @external("foo", "baz")
-export declare function doSomething(foo: i32): void;
+export declare function doSomething(foo: i32): void
 // imports foo.baz as doSomething
 ```
 {% endtab %}
