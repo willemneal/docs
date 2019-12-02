@@ -40,6 +40,7 @@
 * [Built with AssemblyScript](community/built-with-assemblyscript.md)
 * [AssemblyScript Twitter](https://twitter.com/AssemblyScript)
 * [AssemblyScript Slack](http://assemblyscript.slack.com)
+* [WebAssembly Discord / AssemblyScript channel](https://discordapp.com/invite/nEFErF8)
 * [Q&A on StackOverflow](https://stackoverflow.com/search?tab=newest&q=assemblyscript)
 
 ## Resources
