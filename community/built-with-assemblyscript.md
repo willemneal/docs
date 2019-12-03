@@ -32,6 +32,7 @@ description: >-
 ## Emulators
 
 * [wasmBoy](https://github.com/torch2424/wasmBoy) \([demo](https://wasmboy.app/)\) Game Boy / Game Boy Color Emulator Library, written for WebAssembly using AssemblyScript.
+* [Atari 2600](https://github.com/ColinEberhardt/atari2600-wasm) An Atari 2600 emulator written in AssemblyScript compiled to WebAssembly.
 
 ## Games
 
