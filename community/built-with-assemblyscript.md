@@ -24,10 +24,10 @@ description: >-
 
 ## Editors
 
-* [Assembleash](https://maxgraey.github.io/Assembleash) A playground for WebAssembly and Typescript-like languages.
 * [Fastly Terrarium](https://wasm.fastlylabs.com/) A compilation toolchain and sandbox to run WebAssembly server-side, with native support for AssemblyScript.
 * [NEAR Studio](https://studio.nearprotocol.com/) Develop and deploy distributed web apps using smart contracts authored in AssemblyScript.
 * [WebAssembly Studio](https://github.com/wasdk/WebAssemblyStudio) Learn, Teach, Work and Play in the WebAssembly Studio.
+* [~~Assembleash~~](https://maxgraey.github.io/Assembleash) ~~A playground for WebAssembly and Typescript-like languages.~~ _\(Deprecated\)_
 
 ## Emulators
 
