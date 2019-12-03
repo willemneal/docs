@@ -52,7 +52,7 @@ description: >-
 * [bignum.wasm](https://github.com/MaxGraey/bignum.wasm) Fixed length big numbers like `u128`, `i256`, `fp128` and etc for AssemblyScript
 * [Levenshtein Wasm](https://github.com/kyranet/levenshtein-wasm) An experimental lightning-fast Wasm-compiled levenshtein library.
 * [superfasthash](https://github.com/mjethani/superfasthash) An implementation of the SuperFastHash non-cryptographic hashing algorithm in JavaScript and WebAssembly.
-* [WASA](https://github.com/jedisct1/wasa) An AssemblyScript API layer for WASI system calls \[WIP\].
+* [as-wasi](https://github.com/jedisct1/as-wasi) An AssemblyScript API layer for WASI system calls.
 * [WASM-Crypto](https://github.com/jedisct1/wasm-crypto) An AssemblyScript set of cryptographic primitives for building authentication and key exchange protocols.
 * [galois](https://github.com/GuildOfWeavers/galois) Arithmetic and polynomial operations in finite fields.
 * [merkle](https://github.com/GuildOfWeavers/merkle) Merkle tree and other data structures.
