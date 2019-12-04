@@ -35,6 +35,8 @@ export var bar = 2
 
 If an entire class \(possibly part of a namespace\) is exported from an entry file, its visible members will become distinct module exports using a JSDoc-like naming scheme that [the loader](loader.md) understands to make a nice object structure of. For example
 
+{% tabs %}
+{% tab title="index.ts" %}
 ```typescript
 export namespace foo {
   export class Bar {
@@ -43,6 +45,8 @@ export namespace foo {
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 will yield the function exports
 
@@ -53,11 +57,15 @@ will yield the function exports
 
 which can be used externally just like:
 
+{% tabs %}
+{% tab title="index.js" %}
 ```javascript
 var thisBar = myModule["foo.Bar#constructor"]()
 myModule["foo.Bar#set:a"](thisBar, 2)
 console.log(myModule["foo.Bar#getA"](thisBar))
 ```
+{% endtab %}
+{% endtabs %}
 
 For instance members, the `this` argument must be provided as an additional first argument. No argument or `0` as the first argument to a constructor indicates that the constructor is expected to allocate on its own - this is a mechanism in place to also be able to inherit memory from a subclass's allocation. One usually doesn't have to deal with this manually, though, since the loader will already take care of it. See the [loader documentation](loader.md) for more information.
 

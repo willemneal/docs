@@ -12,7 +12,7 @@ Please see our [contribution guidelines](https://github.com/AssemblyScript/assem
 
 The following sets up a development environment of the compiler where editing the sources applies changes immediately without having to go through a build step:
 
-```text
+```bash
 $> git clone https://github.com/AssemblyScript/assemblyscript.git
 $> cd assemblyscript
 $> npm install
@@ -25,31 +25,31 @@ Note that a development environment runs the sources directly by default, but wi
 
 To build an UMD bundle to `dist/assemblyscript.js` \(depends on [binaryen.js](https://github.com/AssemblyScript/binaryen.js)\), including a browser version of asc to `dist/asc.js` \(depends on assemblyscript.js\):
 
-```text
+```bash
 $> npm run build
 ```
 
 Cleaning the distribution files \(again\):
 
-```text
+```bash
 $> npm run clean
 ```
 
 Linting potential changes:
 
-```text
+```bash
 $> npm run check
 ```
 
  Running the [tests](https://github.com/AssemblyScript/assemblyscript/blob/master/tests):
 
-```text
+```bash
 $> npm test
 ```
 
 Running everything in order \(check, clean, test, build, test\):
 
-```text
+```bash
 $> npm run all
 ```
 

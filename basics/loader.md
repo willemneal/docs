@@ -14,7 +14,7 @@ Note that some of the loader's functionality, like allocating strings, requires 
 
 For each version of the AssemblyScript compiler, there is a standalone version of the loader that can be installed from npm:
 
-```text
+```bash
 $> npm install @assemblyscript/loader
 ```
 

@@ -20,7 +20,7 @@ export function fib(n: i32): i32 {
 {% endtab %}
 {% endtabs %}
 
-```text
+```bash
 $> asc fib.ts -b fib.wasm -O3
 ```
 

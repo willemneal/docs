@@ -12,9 +12,13 @@ Besides the full standard library, AssemblyScript provides a portable variant of
 
 To use the portable library, add the following somewhere along your build step so the portable features are present in the environment
 
+{% tabs %}
+{% tab title="index.js" %}
 ```typescript
 require("assemblyscript/std/portable")
 ```
+{% endtab %}
+{% endtabs %}
 
 and extend `assemblyscript/std/portable.json` instead of `assemblyscript/std/assembly.json` within your `tsconfig.json`. The AssemblyScript compiler itself is an example of how this can be done.
 
@@ -30,35 +34,49 @@ There are a few semantics differences that must be taken care of.
 
 While `asc` understands the meaning of
 
+{% tabs %}
+{% tab title="index.ts" %}
 ```typescript
 // non-portable
 let someFloat: f32 = 1.5
 let someInt: i32 = <i32>someFloat
 ```
+{% endtab %}
+{% endtabs %}
 
 and then inserts the correct conversion steps, `tsc` does not because all numeric types are just aliases of `number`. Hence, when targeting JavaScript with `tsc`, the above will result in
 
+{% tabs %}
+{% tab title="index.js" %}
 ```javascript
-// js
 var someFloat = 1.5
 var someInt = someFloat
 ```
+{% endtab %}
+{% endtabs %}
 
 which is obviously wrong. To account for this, portable conversions can be used, resulting in actually portable code. For example
 
+{% tabs %}
+{% tab title="index.ts" %}
 ```typescript
 // portable
 let someFloat: f32 = 1.5
 let someInt: i32 = i32(someFloat)
 ```
+{% endtab %}
+{% endtabs %}
 
 will essentially result in
 
+{% tabs %}
+{% tab title="index.js" %}
 ```javascript
-// js
 var someFloat = 1.5
 var someInt = someFloat | 0
 ```
+{% endtab %}
+{% endtabs %}
 
 which is correct. The best way of dealing with this is asking yourself the question: What would this code do when compiled to JavaScript?
 
@@ -66,24 +84,36 @@ which is correct. The best way of dealing with this is asking yourself the quest
 
 Likewise, again because `asc` knows the meaning but `tsc` does not, overflows must be handled explicitly:
 
+{% tabs %}
+{% tab title="index.ts" %}
 ```typescript
 // non-portable
 let someU8: u8 = 255
 let someOtherU8: u8 = someU8 + 1
 ```
+{% endtab %}
+{% endtabs %}
 
+{% tabs %}
+{% tab title="index.ts" %}
 ```typescript
 // portable
 let someU8: u8 = 255
 let someOtherU8: u8 = u8(someU8 + 1)
 ```
+{% endtab %}
+{% endtabs %}
 
 essentially resulting in
 
+{% tabs %}
+{% tab title="index.js" %}
 ```javascript
 let someU8 = 255
 let someOtherU8 = (someU8 + 1) & 0xff
 ```
+{% endtab %}
+{% endtabs %}
 
 ### API features
 
