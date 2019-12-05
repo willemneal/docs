@@ -29,8 +29,8 @@ If you need a [specific version](https://github.com/AssemblyScript/assemblyscrip
 ```javascript
 const loader = require("@assemblyscript/loader")
 const myImports = { ... }
-/*`loader.instantiate` will use WebAssembly.instantiateStreaming 
-   if possible. Overwise fallback to WebAssembly.instantiate */
+/*`loader.instantiate` will use `WebAssembly.instantiateStreaming`
+   if possible. Overwise fallback to `WebAssembly.instantiate`. */
 const myModule = await loader.instantiate(
   fetch("optimized.wasm"),
   myImports
