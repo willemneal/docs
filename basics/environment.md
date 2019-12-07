@@ -150,10 +150,6 @@ Sign-agnostic endian conversions \(reverse bytes\).
 * **select**&lt;`T`&gt;\(ifTrue: `T`, ifFalse: `T`, condition: `bool`\): `T` Selects one of two pre-evaluated values depending on the condition. Differs from an `if/else` in that both arms are always executed and the final value is picked based on the condition afterwards. Performs better than an `if/else` only if the condition is random \(means: branch prediction is not going to perform well\) and both alternatives are cheap. It is also worth to note that Binaryen will do relevant optimizations like switching to a `select` automatically, so using a ternary `? :` for example is just fine.
 * **unreachable**\(\): `*` Emits an unreachable instruction that results in a runtime error \(trap\) when executed. Both a statement and an expression of any type. Beware that trapping in managed code will most likely lead to memory leaks or even break the program because it ends execution prematurely.
 
-### Calls
-
-* **call\_indirect**&lt;`T`&gt;\(target: `u32`, ...args: `*[]`\): `T` Emits a `call_indirect` instruction, calling the specified function in the function table by index with the specified arguments. Does result in a runtime error if the arguments do not match the called function.
-
 ### Atomics 🦄
 
 The following instructions represent the [WebAssembly threads and atomics](https://github.com/WebAssembly/threads) specification. Must be enabled with `--enable threads`.
