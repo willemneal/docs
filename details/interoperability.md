@@ -19,7 +19,7 @@ struct Foo {
   bar: u32
 }
 
-var foo = changetype<Foo>(ptrToFoo
+var foo = changetype<Foo>(ptrToFoo)
 ```
 
 More complex structures usually require manual offset calculation, though, mostly for the reason that it is not feasible to implement something more specific into AssemblyScript as it does not use such structures on its own:
