@@ -36,13 +36,14 @@ description: >-
 
 ## Games
 
-* [Gomoku WASM](https://github.com/jolestar/gomoku-wasm) \([play](http://jolestar.com/gomoku-wasm)\) A Gomoku game implements with WebAssembly using [as2d](https://github.com/as2d/as2d)
+* [Chess](https://github.com/mhonert/chess) \([play](https://mhonert.github.io/chess)\) A free and open source chess game using AssemblyScript and React.
+* [Gomoku WASM](https://github.com/jolestar/gomoku-wasm) \([play](http://jolestar.com/gomoku-wasm)\) A Gomoku game implements with WebAssembly using [as2d](https://github.com/as2d/as2d).
 
 ## Graphics
 
 * [as2d](https://github.com/as2d/as2d) Bring the power of the CanvasRenderingContext2D prototype to AssemblyScript.
 * [as-smallpt](https://github.com/01alchemist/as-smallpt) Port of C++ smallpt, a path tracing renderer.
-* [Babylon.Font](https://github.com/ycw/Babylon.Font) Create 3d text in BabylonJS
+* [Babylon.Font](https://github.com/ycw/Babylon.Font) Create 3d text in BabylonJS.
 
 ## Libraries
 
