@@ -27,6 +27,7 @@ description: >-
 * [WebAssembly Studio](https://github.com/wasdk/WebAssemblyStudio) Learn, Teach, Work and Play in the WebAssembly Studio.
 * [Fastly Terrarium](https://wasm.fastlylabs.com/) A compilation toolchain and sandbox to run WebAssembly server-side, with native support for AssemblyScript.
 * [NEAR Studio](https://studio.nearprotocol.com/) Develop and deploy distributed web apps using smart contracts authored in AssemblyScript.
+* [Iodide Notebook](https://alpha.iodide.io/notebooks/1234) Experimental tool for scientific communication and exploration on the web \([more](https://hacks.mozilla.org/2019/03/iodide-an-experimental-tool-for-scientific-communicatiodide-for-scientific-communication-exploration-on-the-web)\).
 * [~~Assembleash~~](https://maxgraey.github.io/Assembleash) ~~A playground for WebAssembly and Typescript-like languages.~~ _\(Deprecated\)_
 
 ## Emulators
