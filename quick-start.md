@@ -11,7 +11,7 @@ $> npm install --save-dev assemblyscript
 ```
 
 {% hint style="info" %}
-If you need a [specific version](https://github.com/AssemblyScript/assemblyscript/releases) of the compiler, append the respective version number as usual. The latest nightly version can be obtained via `assemblyscript@nightly`.
+If you need a [specific version](https://github.com/AssemblyScript/assemblyscript/releases) of the compiler, append the respective version number as usual. The latest nightly version can be obtained via `--save-exact assemblyscript@nightly`.
 {% endhint %}
 
 followed by scaffolding a new project, for example in the current directory:

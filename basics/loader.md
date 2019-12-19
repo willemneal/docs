@@ -19,7 +19,7 @@ $> npm install @assemblyscript/loader
 ```
 
 {% hint style="info" %}
-If you need a [specific version](https://github.com/AssemblyScript/assemblyscript/releases) of the loader, append the respective version number as usual. If using the standalone package isn't strictly necessary as a separate dependency, the loader also ships with the compiler as `assemblyscript/lib/loader`.
+If you need a [specific version](https://github.com/AssemblyScript/assemblyscript/releases) of the loader, append the respective version number as usual. For each nightly version of the compiler there is a respective nightly of the loader as well. If using the standalone package isn't strictly necessary as a separate dependency, the loader also ships with the compiler as `assemblyscript/lib/loader`.
 {% endhint %}
 
 ## Example
