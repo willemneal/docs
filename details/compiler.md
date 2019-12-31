@@ -32,6 +32,7 @@ OPTIONS
 
   --optimizeLevel       How much to focus on optimizing code. [0-3]
   --shrinkLevel         How much to focus on shrinking code size. [0-2, s=1, z=2]
+  --converge            Re-optimizes until no further improvements can be made.
   --validate, -c        Validates the module using Binaryen. Exits if invalid.
   --baseDir             Specifies the base directory of input and output files.
   --outFile, -o         Specifies the output file. File extension indicates format.
@@ -54,10 +55,11 @@ OPTIONS
   --debug               Enables debug information in emitted binaries.
   --noAssert            Replaces assertions with just their value without trapping.
   --noEmit              Performs compilation as usual but does not emit code.
-  --importMemory        Imports the memory instance provided by the embedder.
+  --importMemory        Imports the memory provided as 'env.memory'.
   --sharedMemory        Declare memory as shared by settings the max shared memory.
   --memoryBase          Sets the start offset of compiler-generated static memory.
-  --importTable         Imports the function table instance provided by the embedder.
+  --importTable         Imports the function table provided as 'env.table'.
+  --exportTable         Exports the function table as 'table'.
   --explicitStart       Exports an explicit start function to be called manually.
   --lib                 Adds one or multiple paths to custom library components and
                         uses exports of all top-level files at this path as globals.

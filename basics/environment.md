@@ -238,7 +238,6 @@ Likewise, these represent the [WebAssembly SIMD](https://github.com/WebAssembly/
 * v128.**max**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes the maximum of each lane.
 * v128.**min**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes the minimum of each lane.
 * v128.**dot**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` _i16 only_ Computes the dot product of two lanes each, yielding lanes one size wider than the input.
-* v128.**avgr**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128`\) _u8/u16 only_ Computes the rounding average of each lane.
 * v128.**abs**&lt;`T`&gt;\(a: `v128`\): `v128` _float only_ Computes the absolute value of each lane.
 * v128.**sqrt**&lt;`T`&gt;\(a: `v128`\): `v128` _float only_ Computes the square root of each lane.
 * v128.**eq**&lt;`T`&gt;\(a: `v128`, b: `v128`\): `v128` Computes which lanes are equal.

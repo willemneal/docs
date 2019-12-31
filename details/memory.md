@@ -14,7 +14,7 @@ The [WebAssembly.Memory](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 There is one special case to mention when it comes to accessing memory while top-level statements are still executing. Instantiation must return first so one can get a hold of the exported memory instance, hence it is not possible to print a string externally before this happens, _unless_ memory has been imported or an explicit start function has been exported using the `--explicitStart` option.
 
-Using the `--explicitStart` option essentially delays all top-level statements until `__start` is called externally, which must happen before calling any other exports, so one can get a hold of the memory early, before top-level statements run, even if it has not been imported.
+Using the `--explicitStart` option essentially delays all top-level statements until `_start` is called externally, which must happen before calling any other exports, so one can get a hold of the memory early, before top-level statements run, even if it has not been imported.
 
 ## Memory regions
 
