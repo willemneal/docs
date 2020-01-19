@@ -60,6 +60,7 @@ description: >-
 * [merkle](https://github.com/GuildOfWeavers/merkle) Merkle tree and other data structures.
 * [xoroshiro128starstar](https://github.com/krisselden/xoroshiro128starstar) An AssemblyScript port of xoroshiro128starstar.c
 * [pixelmatch-asc](https://github.com/jamesmilneruk/pixelmatch-asc) Pixel level image comparison library
+* [as-bind](https://github.com/torch2424/as-bind) Isomorphic library to handle passing high-level data structures between AssemblyScript and JavaScript 🤝🚀. Built on top of the AssemblyScript loader.
 
 ## Testing
 

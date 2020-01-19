@@ -10,6 +10,10 @@ AssemblyScript has a tiny [module loader](https://github.com/AssemblyScript/asse
 Note that some of the loader's functionality, like allocating strings, requires the [managed runtime](../details/runtime.md) interface to be exported to the host.
 {% endhint %}
 
+{% hint style="info" %}
+If you want an even more convenient way of passing high-level data types between Javascript and AssemblyScript modules, take a look at [as-bind](https://github.com/torch2424/as-bind)
+{% endhint %}
+
 ## Install
 
 For each version of the AssemblyScript compiler, there is a standalone version of the loader that can be installed from npm:
@@ -108,7 +112,7 @@ __release(foo)
 
 ## Why not more convenient?
 
-Making it any more convenient than that has its trade-offs. One would either have to include extended type information with the module itself or generate an additional JavaScript file of glue code that does all the lifting. Both seem to be out of scope for a tiny loader, and hiding the fact that something actually needs to do an allocation can even be detrimental in performance-oriented scenarios.
+Making it any more convenient than that has its trade-offs. One would either have to include extended type information with the module itself or generate an additional JavaScript file of glue code that does all the lifting. Both seem to be out of scope for a tiny loader, and hiding the fact that something actually needs to do an allocation can even be detrimental in performance-oriented scenarios. That being said, libraries like [as-bind](https://github.com/torch2424/as-bind) can be used if you do not mind these performance implications.
 
 ## Further resources
 
