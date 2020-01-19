@@ -4,14 +4,10 @@ description: How to make working with an AssemblyScript module more convenient.
 
 # Loader
 
-AssemblyScript has a tiny [module loader](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/loader) that makes working with AssemblyScript modules more convenient. It mirrors the relevant parts of the WebAssembly API while also providing utility to load and store numbers as well as to allocate and read strings, arrays and classes.
+AssemblyScript has a tiny [module loader](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/loader) that makes working with AssemblyScript modules as convenient as it gets without sacrificing efficiency \([see also / alternatives](loader.md#why-not-more-convenient)\). It mirrors the relevant parts of the WebAssembly API while also providing utility to load and store numbers as well as to allocate and read strings, arrays and classes.
 
 {% hint style="info" %}
 Note that some of the loader's functionality, like allocating strings, requires the [managed runtime](../details/runtime.md) interface to be exported to the host.
-{% endhint %}
-
-{% hint style="info" %}
-If you want an even more convenient way of passing high-level data types between Javascript and AssemblyScript modules, take a look at [as-bind](https://github.com/torch2424/as-bind)
 {% endhint %}
 
 ## Install
@@ -112,7 +108,11 @@ __release(foo)
 
 ## Why not more convenient?
 
-Making it any more convenient than that has its trade-offs. One would either have to include extended type information with the module itself or generate an additional JavaScript file of glue code that does all the lifting. Both seem to be out of scope for a tiny loader, and hiding the fact that something actually needs to do an allocation can even be detrimental in performance-oriented scenarios. That being said, libraries like [as-bind](https://github.com/torch2424/as-bind) can be used if you do not mind these performance implications.
+Making it any more convenient has its trade-offs. One would either have to include extended type information with the module itself or generate an additional JavaScript file of glue code that does \(and hides\) all the lifting. One can consider the loader as a small and efficient building block that can do it all, yet does not sacrifice efficiency for convenience. If that's not exactly what you are looking for, you might like to take a look at higher level tools below.
+
+### Higher level tools
+
+* [as-bind](https://github.com/torch2424/as-bind) is a library, built on top of the loader, to make passing high-level data structures between AssemblyScript and JavaScript more convenient.
 
 ## Further resources
 
