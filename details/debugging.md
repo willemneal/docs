@@ -26,7 +26,7 @@ By default, the compiler will preserve any `assert(expression)`s in a module, le
 
 ## Overriding `abort`
 
-As mentioned above, assertions require that an implementation of the `abort` interface is present, which by default is imported as `abort` from within the `env` module, handling aborts externally. This can be overridden by specifying a custom abort handler through `--use abort=index/myAbort` \(here: a function named `myAbort` in the `index` file\) or the abort interface can be disabled completely \(just trapping with an `unreachable`\) through `--use abort=`. The signature of the abort function, if overridden, is:
+As mentioned above, assertions require that an implementation of the `abort` interface is present, which by default is imported as `abort` from within the `env` module, handling aborts externally. This can be overridden by specifying a custom abort handler through `--use abort=assembly/index/myAbort` \(here: a function named `myAbort` in `assembly/index.ts`\) or the abort interface can be disabled completely \(just trapping with an `unreachable`\) through `--use abort=`. The signature of the abort function, if overridden, is:
 
 ```typescript
 function abort(
