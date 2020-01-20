@@ -24,7 +24,7 @@ description: >-
 
 ## Build Tools
 
-* [Zwitterion](https://github.com/lastmjs/zwitterion) A web dev server that lets you import anything* 
+* [Zwitterion](https://github.com/lastmjs/zwitterion) A web dev server that lets you import anything\* 
 
 ## Editors
 
@@ -65,6 +65,13 @@ description: >-
 * [xoroshiro128starstar](https://github.com/krisselden/xoroshiro128starstar) An AssemblyScript port of xoroshiro128starstar.c
 * [pixelmatch-asc](https://github.com/jamesmilneruk/pixelmatch-asc) Pixel level image comparison library
 * [as-bind](https://github.com/torch2424/as-bind) Isomorphic library to handle passing high-level data structures between AssemblyScript and JavaScript 🤝🚀. Built on top of the AssemblyScript loader.
+* [wasmer-as](https://github.com/onsails/wasmer-as) Helpers for dealing with assemblyscript memory inside wasmer-runtime.
+
+
+
+## Embedded
+
+* [wasm3-arduino](https://github.com/wasm3/wasm3-arduino/tree/master/wasm_apps) Usage example with **wasm3** which run on Arduino, PlatformIO, Particle.
 
 ## Testing
 
