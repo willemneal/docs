@@ -60,7 +60,7 @@ description: >-
 * [superfasthash](https://github.com/mjethani/superfasthash) An implementation of the SuperFastHash non-cryptographic hashing algorithm in JavaScript and WebAssembly.
 * [as-wasi](https://github.com/jedisct1/as-wasi) An AssemblyScript API layer for WASI system calls.
 * [WASM-Crypto](https://github.com/jedisct1/wasm-crypto) An AssemblyScript set of cryptographic primitives for building authentication and key exchange protocols.
-* [rabin-wasm](https://github.com/hugomrdias/rabin-wasm) Rabin fingerprinting implemented in WASM. _\(used by js-ipfs\)_**.**
+* [rabin-wasm](https://github.com/hugomrdias/rabin-wasm) Rabin fingerprinting implemented in WASM _\(used by js-ipfs\)_**.**
 * [galois](https://github.com/GuildOfWeavers/galois) Arithmetic and polynomial operations in finite fields.
 * [merkle](https://github.com/GuildOfWeavers/merkle) Merkle tree and other data structures.
 * [xoroshiro128starstar](https://github.com/krisselden/xoroshiro128starstar) An AssemblyScript port of xoroshiro128starstar.c
