@@ -55,7 +55,7 @@ description: >-
 * [AS-LZMA](https://github.com/01alchemist/AS-LZMA) LZMA Decoder written in AssemblyScript.
 * [assemblyscript-bson](https://github.com/nearprotocol/assemblyscript-bson) BSON encoder / decoder
 * [assemblyscript-json](https://github.com/nearprotocol/assemblyscript-json) JSON encoder / decoder
-* [bignum.wasm](https://github.com/MaxGraey/bignum.wasm) Fixed length big numbers like `u128`, `i256`, `fp128` and etc for AssemblyScript
+* [as-bignum](https://github.com/MaxGraey/as-bignum) \(formerly bignum.wasm\) Fixed length big numbers like `u128`, `i256`, `fp128` and etc for AssemblyScript
 * [Levenshtein Wasm](https://github.com/kyranet/levenshtein-wasm) An experimental lightning-fast Wasm-compiled levenshtein library.
 * [superfasthash](https://github.com/mjethani/superfasthash) An implementation of the SuperFastHash non-cryptographic hashing algorithm in JavaScript and WebAssembly.
 * [as-wasi](https://github.com/jedisct1/as-wasi) An AssemblyScript API layer for WASI system calls.
