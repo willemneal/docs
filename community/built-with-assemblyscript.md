@@ -68,8 +68,6 @@ description: >-
 * [as-bind](https://github.com/torch2424/as-bind) Isomorphic library to handle passing high-level data structures between AssemblyScript and JavaScript 🤝🚀. Built on top of the AssemblyScript loader.
 * [wasmer-as](https://github.com/onsails/wasmer-as) Helpers for dealing with assemblyscript memory inside wasmer-runtime.
 
-
-
 ## Embedded
 
 * [wasm3-arduino](https://github.com/wasm3/wasm3-arduino/tree/master/wasm_apps) Usage example with **wasm3** which run on Arduino, PlatformIO, Particle.
