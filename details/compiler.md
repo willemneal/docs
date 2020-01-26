@@ -89,6 +89,7 @@ OPTIONS
                          mutable-globals     Mutable global imports and exports.
 
   --transform           Specifies the path to a custom transform to 'require'.
+  --pedantic            Make yourself sad for no good reason.
   --traceResolution     Enables tracing of package resolution.
   --listFiles           Lists files to be compiled and exits.
   --measure             Prints measuring information on I/O and compile times.
@@ -129,7 +130,11 @@ const options = require("assemblyscript/cli/asc.json")
 You can also compile a source string directly, for example in a browser environment:
 
 ```javascript
-const { binary, text, stdout, stderr } = asc.compileString(`...`, { optimize: 2 })
+const { binary, text, stdout, stderr } = asc.compileString(`...`, {
+  optimizeLevel: 3,
+  exportTable: true
+  ...
+})
 ...
 ```
 
