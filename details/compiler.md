@@ -6,135 +6,159 @@ description: How to use the compiler from the command line or as an API.
 
  Similar to TypeScript's `tsc` compiling to JavaScript, AssemblyScript's `asc` compiles to WebAssembly.
 
-## Options
+## Command line options
+
+### Entry file\(s\)
+
+Non-option arguments are treated as the names of entry files. A single program can have multiple entries, with the exports of each entry becoming the exports of the WebAssembly module. Exports of imported files that are not entry files do not become WebAssembly module exports.
 
 ```text
-SYNTAX
-  asc [entryFile ...] [options]
+asc entryFile.ts
+```
 
-EXAMPLES
-  asc hello.ts
-  asc hello.ts -b hello.wasm -t hello.wat
-  asc hello1.ts hello2.ts -b -O > hello.wasm
+### Optimization
 
-OPTIONS
-  --version, -v         Prints just the compiler's version and exits.
-  --help, -h            Prints this message and exits.
-  --optimize, -O        Optimizes the module. Also has the usual shorthands:
+The compiler can optimize for both speed and size. `--optimizeLevel` \(0-3\) indicates how much the compiler focuses on optimizing the code with `--shrinkLevel` \(0-2, 1=s, 2=z\) indicating how much it focuses on keeping the size low during code generation and while optimizing. A convenient shorthand is `-O[optimizeLevel][shrinkLevel]` , with shrink level indicated by appending the letter `s` \(1\) or `z` \(2\) to the optimize level.
 
-                         -O     Uses defaults. Equivalent to -O3s
-                         -O0    Equivalent to --optimizeLevel 0
-                         -O1    Equivalent to --optimizeLevel 1
-                         -O2    Equivalent to --optimizeLevel 2
-                         -O3    Equivalent to --optimizeLevel 3
-                         -Oz    Equivalent to -O but with --shrinkLevel 2
-                         -O3s   Equivalent to -O3 with --shrinkLevel 1 etc.
+```text
+--optimize, -O        Optimizes the module. Typical shorthands are:
 
-  --optimizeLevel       How much to focus on optimizing code. [0-3]
-  --shrinkLevel         How much to focus on shrinking code size. [0-2, s=1, z=2]
-  --converge            Re-optimizes until no further improvements can be made.
-  --validate, -c        Validates the module using Binaryen. Exits if invalid.
-  --baseDir             Specifies the base directory of input and output files.
-  --outFile, -o         Specifies the output file. File extension indicates format.
-  --binaryFile, -b      Specifies the binary output file (.wasm).
-  --textFile, -t        Specifies the text output file (.wat).
-  --asmjsFile, -a       Specifies the asm.js output file (.js).
-  --idlFile, -i         Specifies the WebIDL output file (.webidl).
-  --tsdFile, -d         Specifies the TypeScript definition output file (.d.ts).
-  --sourceMap           Enables source map generation. Optionally takes the URL
-                        used to reference the source map from the binary file.
-  --runtime             Specifies the runtime variant to include in the program.
+                       Default optimizations   -O / -O3s
+                       Make a release build    -O --noAssert
+                       Make a debug build      --debug
+                       Optimize for speed      -O3
+                       Optimize for size       -O3z --converge
 
-                         full  Default runtime based on TLSF and reference counting.
-                         half  Same as 'full', but not exported to the host.
-                         stub  Minimal stub implementation without free/GC support.
-                         none  Same as 'stub', but not exported to the host.
+--optimizeLevel       How much to focus on optimizing code. [0-3]
+--shrinkLevel         How much to focus on shrinking code size. [0-2, s=1, z=2]
+--converge            Re-optimizes until no further improvements can be made.
+--noAssert            Replaces assertions with just their value without trapping.
+```
 
-  --noUnsafe            Disallows the use of unsafe features in user code.
-                        Does not affect library files and external modules.
-  --debug               Enables debug information in emitted binaries.
-  --noAssert            Replaces assertions with just their value without trapping.
-  --noEmit              Performs compilation as usual but does not emit code.
-  --importMemory        Imports the memory provided as 'env.memory'.
-  --sharedMemory        Declare memory as shared by settings the max shared memory.
-  --memoryBase          Sets the start offset of compiler-generated static memory.
-  --importTable         Imports the function table provided as 'env.table'.
-  --exportTable         Exports the function table as 'table'.
-  --explicitStart       Exports an explicit start function to be called manually.
-  --lib                 Adds one or multiple paths to custom library components and
-                        uses exports of all top-level files at this path as globals.
-  --path                Adds one or multiple paths to package resolution, similar
-                        to node_modules. Prefers an 'ascMain' entry in a package's
-                        package.json and falls back to an inner 'assembly/' folder.
-  --use, -u             Aliases a global object under another name, e.g., to switch
-                        the default 'Math' implementation used: --use Math=JSMath
-  --trapMode            Sets the trap mode to use.
+Also noteworthy: The standard library provides [memory manager and garbage collector variants](runtime.md#runtime-variants) for various use cases. From largest/most sophisticated to smallest/simplest:
 
-                         allow  Allow trapping operations. This is the default.
-                         clamp  Replace trapping operations with clamping semantics.
-                         js     Replace trapping operations with JS semantics.
+```text
+--runtime             Specifies the runtime variant to include in the program.
 
-  --runPasses           Specifies additional Binaryen passes to run after other
-                        optimizations, if any. See: Binaryen/src/passes/pass.cpp
-  --enable              Enables WebAssembly features that are disabled by default.
+                       full  Default runtime based on TLSF and reference counting.
+                       half  Same as 'full', but not exported to the host.
+                       stub  Minimal stub implementation without free/GC support.
+                       none  Same as 'stub', but not exported to the host.
+```
 
-                         sign-extension      Sign-extension operations
-                         bulk-memory         Bulk memory operations.
-                         simd                SIMD types and operations.
-                         threads             Threading and atomic operations.
-                         reference-types     Reference types and operations.
+If external allocation is not required, choosing either `half` or `none` can significantly reduce the module's size.
 
-  --disable             Disables WebAssembly features that are enabled by default.
+### Output
 
-                         mutable-globals     Mutable global imports and exports.
+Typical output formats are WebAssembly binary \(.wasm\) and/or text format \(.wat\). Often, both are used in tandem to run and also inspect generated code.
 
-  --transform           Specifies the path to a custom transform to 'require'.
-  --pedantic            Make yourself sad for no good reason.
-  --traceResolution     Enables tracing of package resolution.
-  --listFiles           Lists files to be compiled and exits.
-  --measure             Prints measuring information on I/O and compile times.
-  --printrtti           Prints the module's runtime type information to stderr.
-  --noColors            Disables terminal colors.
-  -- ...                Specifies node.js options (CLI only). See: node --help
+```text
+--outFile, -o         Specifies the output file. File extension indicates format.
+--binaryFile, -b      Specifies the binary output file (.wasm).
+--textFile, -t        Specifies the text output file (.wat).
+```
+
+There are several other output formats as well for tooling purposes with varying levels of maturity.
+
+```text
+--asmjsFile, -a       Specifies the asm.js output file (.js).
+--idlFile, -i         Specifies the WebIDL output file (.webidl).
+--tsdFile, -d         Specifies the TypeScript definition output file (.d.ts).
+```
+
+### Debugging
+
+For easier debugging a [source map](debugging.md#source-maps) can be emitted alongside the WebAssembly binary.
+
+```text
+--sourceMap           Enables source map generation. Optionally takes the URL
+                      used to reference the source map from the binary file.
+```
+
+It is also often useful to emit debug information, like function names, alongside the binary.
+
+```text
+--debug               Enables debug information in emitted binaries.
+```
+
+### Features
+
+There are several flags that enable or disable specific WebAssembly or compiler features. By default, only the bare minimum is exposed, and fully standardized WebAssembly features will be used.
+
+```text
+--importMemory        Imports the memory provided as 'env.memory'.
+--sharedMemory        Declare memory as shared by settings the max shared memory.
+--importTable         Imports the function table provided as 'env.table'.
+--exportTable         Exports the function table as 'table'.
+--explicitStart       Exports an explicit '_start' function to call.
+--enable              Enables WebAssembly features being disabled by default.
+
+                       sign-extension      Sign-extension operations
+                       bulk-memory         Bulk memory operations.
+                       simd                SIMD types and operations.
+                       threads             Threading and atomic operations.
+                       reference-types     Reference types and operations.
+
+--disable             Disables WebAssembly features being enabled by default.
+
+                       mutable-globals     Mutable global imports and exports.
+
+--use, -u             Aliases a global object under another name, e.g., to switch
+                      the default 'Math' implementation used: --use Math=JSMath
+                      Can also be used to introduce an integer constant.
+--memoryBase          Sets the start offset of compiler-generated static memory.
+```
+
+### API
+
+To integrate with the compiler, for example to post-process the AST, one or multiple custom transforms can be specified.
+
+```text
+--transform           Specifies the path to a custom transform to 'require'.
+```
+
+### Other
+
+Other options include those forwarded to Binaryen and various flags useful in certain situations.
+
+#### Binaryen
+
+```text
+--validate, -c        Validates the module using Binaryen. Exits if invalid.
+--trapMode            Sets the trap mode to use.
+
+                       allow  Allow trapping operations. This is the default.
+                       clamp  Replace trapping operations with clamping semantics.
+                       js     Replace trapping operations with JS semantics.
+
+--runPasses           Specifies additional Binaryen passes to run after other
+                      optimizations, if any. See: Binaryen/src/passes/pass.cpp
+```
+
+#### And the kitchen sink
+
+```text
+--baseDir             Specifies the base directory of input and output files.
+--noUnsafe            Disallows the use of unsafe features in user code.
+                      Does not affect library files and external modules.
+--noEmit              Performs compilation as usual but does not emit code.
+--measure             Prints measuring information on I/O and compile times.
+--pedantic            Make yourself sad for no good reason.
+--lib                 Adds one or multiple paths to custom library components and
+                      uses exports of all top-level files at this path as globals.
+--path                Adds one or multiple paths to package resolution, similar
+                      to node_modules. Prefers an 'ascMain' entry in a package's
+                      package.json and falls back to an inner 'assembly/' folder.
+--traceResolution     Enables tracing of package resolution.
+--listFiles           Lists files to be compiled and exits.
+--printrtti           Prints the module's runtime type information to stderr.
+-- ...                Specifies node.js options (CLI only). See: node --help
 ```
 
 ## API
 
-The compiler can also be used programmatically. Its API accepts the same options as the CLI but also lets you override stdout and stderr and/or provide a callback:
+The compiler can also be used programmatically.
 
-```javascript
-const asc = require("assemblyscript/cli/asc");
-asc.main([
-  "myModule.ts",
-  "--binaryFile", "myModule.wasm",
-  "--optimize",
-  "--sourceMap",
-  "--measure"
-], {
-  stdout: process.stdout,
-  stderr: process.stderr
-}, function(err) {
-  if (err)
-    throw err
-  ...
-});
-```
-
-Available command line options can also be obtained programmatically:
-
-```javascript
-const options = require("assemblyscript/cli/asc.json")
-...
-```
-
-You can also compile a source string directly, for example in a browser environment:
-
-```javascript
-const { binary, text, stdout, stderr } = asc.compileString(`...`, {
-  optimizeLevel: 3,
-  exportTable: true
-  ...
-})
-...
-```
+* [Compiler frontend API](https://github.com/AssemblyScript/assemblyscript/tree/master/cli#api)
+* [Browser SDK](https://github.com/AssemblyScript/assemblyscript/tree/master/lib/sdk) \([example](https://github.com/AssemblyScript/assemblyscript/tree/master/examples/sdk)\)
 
