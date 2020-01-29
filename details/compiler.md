@@ -106,7 +106,15 @@ There are several flags that enable or disable specific WebAssembly or compiler 
 --use, -u             Aliases a global object under another name, e.g., to switch
                       the default 'Math' implementation used: --use Math=JSMath
                       Can also be used to introduce an integer constant.
---memoryBase          Sets the start offset of compiler-generated static memory.
+```
+
+### Linking
+
+Specifying the base offsets of compiler-generated memory respectively the table leaves some space for other data in front. In its current form this is mostly useful to link additional data into an AssemblyScript binary after compilation, be it by populating the binary itself or initializing the data externally upon initialization. One good example is leaving some scratch space for a frame buffer.
+
+```text
+--memoryBase          Sets the start offset of emitted memory segments.
+--tableBase           Sets the start offset of emitted table elements.
 ```
 
 ### API
