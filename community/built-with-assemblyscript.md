@@ -64,13 +64,16 @@ description: >-
 * [galois](https://github.com/GuildOfWeavers/galois) Arithmetic and polynomial operations in finite fields.
 * [merkle](https://github.com/GuildOfWeavers/merkle) Merkle tree and other data structures.
 * [xoroshiro128starstar](https://github.com/krisselden/xoroshiro128starstar) An AssemblyScript port of xoroshiro128starstar.c
-* [pixelmatch-asc](https://github.com/jamesmilneruk/pixelmatch-asc) Pixel level image comparison library
+* [pixelmatch-asc](https://github.com/jamesmilneruk/pixelmatch-asc) Pixel level image comparison library.
 * [as-bind](https://github.com/torch2424/as-bind) Isomorphic library to handle passing high-level data structures between AssemblyScript and JavaScript 🤝🚀. Built on top of the AssemblyScript loader.
 * [wasmer-as](https://github.com/onsails/wasmer-as) Helpers for dealing with assemblyscript memory inside wasmer-runtime.
+* [wasmbind](https://github.com/miracle2k/wasmbind) Work with AssemblyScript memory and classes from Python.
 
-## Embedded
+## Embedded / IoT
 
 * [wasm3-arduino](https://github.com/wasm3/wasm3-arduino/tree/master/wasm_apps) Usage example with **wasm3** which run on Arduino, PlatformIO, Particle.
+* [Wasm3\_RGB\_Lamp](https://github.com/vshymanskyy/Wasm3_RGB_Lamp) Animating an RGB lamp, using WebAssembly \(AssemblyScript\).
+* [wasm-arduino-wifi](https://github.com/alvarowolfx/wasm-arduino-wifi) Example how update WebAssembly via WiFi on arduino.
 
 ## Testing
 
