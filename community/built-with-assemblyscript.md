@@ -12,7 +12,7 @@ description: >-
 * [WasmBoy Benchmark](https://wasmboy.app/benchmark/) Benchmarking WasmBoy emulator
 * [webassembly-wave](https://github.com/jtiscione/webassembly-wave) \([demo](https://jtiscione.github.io/webassembly-wave/index.html)\) JavaScript vs WebAssembly performance comparison - wave equation demo \(JS, C++, AssemblyScript\)
 * [Sort Colors Benchmark](https://github.com/manueldois/WebAssembly/tree/master/Sort%20Colors%20Benchmark/src) \([demo](https://manueldois.github.io/WebAssembly/Sort%20Colors%20Benchmark/dist/index.html)\) Bench of sorting random colors by hue component on 2d canvas
-* [wasm-n-body](https://github.com/w8r/wasm-n-body) WebAssembly N-body simulation benchmark \(use 1000 bodies compare to original\)
+* [wasm-n-body](https://github.com/w8r/wasm-n-body) WebAssembly N-body simulation benchmark _\(use 1000 bodies compare to original\)_
 
 ## Blockchain
 
