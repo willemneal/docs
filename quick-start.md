@@ -28,5 +28,5 @@ The `asinit` command automatically creates the recommended directory structure a
 
 Afterwards, edit the sources in `assembly/`, maybe tweak the build steps in `package.json` to fit your needs, and run `npm run asbuild` to compile your program to WebAssembly.
 
-Using `index.js` in the root directory of your package to instantiate and export the WebAssembly module you'll then be able to `require`it just like any other node module, with the notable difference that the only values your module's exports understand being integers and floats. Read on to learn more!
+Using `index.js` in the root directory of your package to instantiate and export the WebAssembly module you'll then be able to `require`it just like any other node module, with the notable difference that the only values your module's exports understand being integers and floats. So far, so good.
 
