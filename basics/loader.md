@@ -63,9 +63,9 @@ const myModule = await loader.instantiate(
 {% endtab %}
 {% endtabs %}
 
-What this basically does is instantiating the module normally, adding some utility to it and evaluating export names making a nice object structure of them. If one for example exports an entire class `Foo`, there will be a `myModule.Foo` constructor when using the loader.
+What this basically does is to instantiate the module normally, adding some utility to it and evaluating export names making a nice object structure of them. If one for example exports an entire class `Foo`, there will be a `myModule.Foo` constructor when using the loader.
 
-One thing the loader does not do, however, is to implicitly translate between pointers and objects. For example, if one has
+One talk the loader does not perform, however, is to implicitly translate between pointers and objects. For example, if one has
 
 ```typescript
 export class Foo {
@@ -102,7 +102,9 @@ the resulting pointer must first be wrapped in a `myModule.Foo` instance:
 const { Foo, getFoo, __getString, __release } = myModule
 
 const foo = Foo.wrap(getFoo())
-console.log(__getString(foo.getString()))
+const str = foo.getString();
+console.log(__getString(str))
+__release(str)
 __release(foo)
 ```
 

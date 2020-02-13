@@ -4,7 +4,7 @@ description: Reinventing the wheel. Again. But with a notch.
 
 # Environment
 
-WebAssembly runs in a sandbox, making its environment more limited than a usual browser environment. AssemblyScript tries to fill the gaps by reimplementing commonly known functionality, besides providing direct access to WebAssembly instructions through built-ins.
+A WebAssembly environment is more limited than a usual browser environment. AssemblyScript tries to fill the gaps by reimplementing commonly known functionality, besides providing direct access to WebAssembly instructions through built-ins.
 
 ## Standard library
 
@@ -34,11 +34,11 @@ AssemblyScript comes with its own standard library very much resembling what dev
 
 {% page-ref page="../standard-library/typedarray.md" %}
 
-Depending on how \(fast\) the relevant WebAssembly specifications for [reference types](https://github.com/WebAssembly/reference-types), [WebIDL bindings](https://github.com/WebAssembly/webidl-bindings) and [GC](https://github.com/WebAssembly/gc) develop, there might be additional features in the future, like importing parts of the standard library from the host. Additional rather low-level WebAssembly functionality that the standard library makes extensive use of is described below.
+Additional rather low-level WebAssembly functionality that the standard library makes extensive use of is described below.
 
 ## Static type checks
 
-By making use of statically evaluated type checks, especially in generic contexts, untaken branches can be eliminated statically, leading to concrete WebAssembly functions that handle one type specificially.
+By making use of the following special type checks, especially in generic contexts, untaken branches can be eliminated statically, leading to concrete WebAssembly functions that handle one type specificially.
 
 * **isInteger**&lt;`T`&gt;\(value?: `T`\): `bool` Tests if the specified type _or_ expression is of an integer type and not a reference. Compiles to a constant.
 * **isFloat**&lt;`T`&gt;\(value?: `T`\): `bool` Tests if the specified type _or_ expression is of a float type. Compiles to a constant.

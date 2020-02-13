@@ -4,25 +4,21 @@ description: 'There is something appealing to it, isn''t it?'
 
 # The Basics
 
-Unlike TypeScript, which targets a JavaScript environment with all of its dynamic features, AssemblyScript targets WebAssembly, and intentionally **avoids the dynamicness of JavaScript** where it cannot be compiled ahead of time _efficiently_.
+WebAssembly is fundamentally different from JavaScript, ultimately enabling entirely new use cases not only on the web. Consequently, AssemblyScript is much more similar to a static compiler than it is to a JavaScript VM. One can think of it as if TypeScript and C had a somewhat special child.
 
-The first thing one is going to notice is that AssemblyScript's [type system](types.md) differs from TypeScript's in that it uses WebAssembly's **more specific integer and floating point types**, with `number` merely an alias of `f64`. These types are enough to implement other numerical types and higher level structures like strings and arrays as provided by the [standard library](environment.md#standard-library), yet the relevant specifications \(like [reference types](https://github.com/WebAssembly/reference-types) and [GC](https://github.com/WebAssembly/gc)\) to describe higher level structures to JavaScript are not yet available.
+## Strictness
 
-This means that **objects cannot yet flow in and out of WebAssembly natively**, making it necessary to read/write them from/to memory. To make this process more convenient, [the loader](loader.md) provides the utility necessary to translate between the WebAssembly and the JavaScript world.
+Unlike TypeScript, which targets a JavaScript environment with all of its dynamic features, AssemblyScript targets WebAssembly with all of its static guarantees, hence intentionally **avoids the dynamicness of JavaScript** where it cannot be compiled ahead of time _efficiently_.
 
-It must also be noted that WebAssembly has **no immediate access to the DOM** or other JavaScript APIs currently, sometimes making it necessary to create some custom glue code by means of [exports and imports](exports-and-imports.md) to/from JavaScript.
+Limiting ourselves to where WebAssembly excels, for example by assigning or inferring definite types, eliminates the need to ship a JIT doing the heavy lifting at runtime, yielding **predictable performance** right from the start of execution while guaranteeing that the resulting WebAssembly **modules are small**.
 
-Combined, this makes it **unlikely that existing TypeScript code can be compiled** to WebAssembly without modifications, yet likely that already **reasonably strict TypeScript code can be made compatible** with the AssemblyScript compiler.
+## Static typing
 
-But what does this mean _exactly_? Well, let there be...
+The first peculiarity one is going to notice when writing AssemblyScript is that its [basic types](types.md) are a bit different from TypeScript's in that it uses WebAssembly's **more specific integer and floating point types**, with JavaScript's `number` merely an alias of WebAssembly's `f64`.
 
-## Differences
+A JavaScript JIT would try to figure out the best representation of a numeric value while the code is executing, making assumptions as values flow around, potentially recompiling code multiple times, while AssemblyScript lets the developer **specify the ideal type in advance** with all its pros and cons. To give a few examples:
 
-For a better understanding of what to expect, let's start with a collection of obviously "not so strictly typed" code snippets, and how to fix them.
-
-### Strict typing
-
-There is no `any` or `undefined` for obvious reasons:
+### No any or undefined
 
 {% code title="" %}
 ```typescript
@@ -40,7 +36,7 @@ function foo(a: i32 = 0): i32 {
 ```
 {% endcode %}
 
-There are no union types yet:
+### No union types
 
 {% code title="" %}
 ```typescript
@@ -54,7 +50,7 @@ function foo<T>(a: T): void {
 ```
 {% endcode %}
 
-Objects must be strictly typed as well:
+### Strictly typed objects
 
 {% code title="" %}
 ```typescript
@@ -74,9 +70,23 @@ var a = new A("hello world")
 ```
 {% endcode %}
 
-### The case of ===
+## Sandbox
 
-Also, AssemblyScript does some things differently. It uses `===` for identity comparisons \(means: the exact same object\) for example. Idea is that its special JavaScript semantics for strings \(same type and value\) become irrelevant in a strict type context anyway. Some like this better, some hate it for portability reasons.
+WebAssembly modules execute in a sandbox, providing **strong security guarantees** for all sorts of use cases not necessarily limited to the browser. As such, a module has **no immediate access to the DOM** or other external APIs out of the box, making it necessary to translate and exchange data either through the module's [exports and imports](exports-and-imports.md) or reading from respectively writing to the module's linear memory.
+
+## Low-level
+
+Currently, values WebAssembly can exchange out of the box are **limited to basic numeric values**, and one can think of objects as a clever composition of basic values stored in linear memory. As such, whole **objects cannot yet flow in and out of WebAssembly** natively, making it necessary to translate between their representations in WebAssembly memory and JavaScript objects. This is typically the first real bummer one is going to run into.
+
+For now, there is [the loader](loader.md) that provides the utility necessary to exchange strings and arrays for example, but it is somewhat edgy on its own due to its garbage collection primitives. It's a great starting point however for learning more about how the higher level structures _actually_ work.
+
+In the near to distant future, the [reference types](https://github.com/WebAssembly/reference-types) 🦄, [interface types](https://github.com/WebAssembly/interface-types) 🦄 and ultimately [GC](https://github.com/WebAssembly/gc) 🦄 proposals will make much of this a lot easier and will allow us to implement [currently limited language features](limitations.md) more easily.
+
+## Diverging semantics
+
+Overall, there are a few differences that make it **unlikely that existing TypeScript code can be compiled** to WebAssembly without modifications, yet likely that already **reasonably strict TypeScript code can be made compatible** with the AssemblyScript compiler.
+
+One prominent and admittedly controversial example of a semantic difference is that `===` performs an identity comparison \(the exact same object\) since part of its special JavaScript semantics \(same value and _same type_\) are irrelevant in a strict type context.
 
 ```typescript
 var s1 = "1"
@@ -88,16 +98,13 @@ s1 === 1 // compile error
 s1 == s2 // true
 ```
 
-For all other types than `string` and operator-overloaded objects with a `==` overload, `===` is equivalent to `==`.
+For all other types than `string` and operator-overloaded objects with a `==` overload, `===` is equivalent to `==`. This is likely to change once we figure out a better alternative.
 
-```typescript
-1 === 1 // true
-1 == 1 // true
-obj === obj // true
-obj == obj // true if there is no == overload doing something different
-```
+## Frequently asked questions
 
-### And the kitchen sink
+We've also dedicated a section to answering general questions that may arise before, at or after this point. so if you're wondering about one thing or another, make sure to pay it a visit \(and let us know if there's something important we forgot to answer\):
 
-The examples above mainly exist so one can get an initial idea, but there is of course more, as explained on the following pages, to consider.
+{% page-ref page="../faq.md" %}
+
+That being said, the following sections cover what AssemblyScript can or cannot do already, one piece at a time. Enjoy!
 

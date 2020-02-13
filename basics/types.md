@@ -165,7 +165,7 @@ Instead of using the `number` type for all sorts of numeric values, AssemblyScri
   </tbody>
 </table>## Type rules
 
-With just one numeric type, a JavaScript VM tries to determine the best fitting machine-level instruction automatically, doing conversions silently, possibly leading to code not performing as well as expected. AssemblyScript, on the other hand, lets the developer declare the correct type in advance, and will complain when it sees an implicit conversion that might not actually be intended, quite similar to what a C compiler would do.
+AssemblyScript will complain when it sees an implicit conversion that might not actually be intended, quite similar to what a C compiler would do.
 
 ### Casting
 

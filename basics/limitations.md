@@ -81,7 +81,5 @@ if (a instanceof B) {
 }
 ```
 
-The OOP limitations are something on our end, not necessarily WebAssembly's, and we are working on it as we speak.
-
-
+Most of this can be implemented without the respective WebAssembly features being ready, yet is a lot of work, not as efficient as one might expect and will be thrown away again once there is something better, but we are working on it.
 

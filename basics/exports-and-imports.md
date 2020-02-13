@@ -91,7 +91,7 @@ export declare function doSomething(foo: i32): void
 {% endtab %}
 {% endtabs %}
 
-creates an import of a function named `doSomething` within the `env` module, because that's the name of the file it lives is. It is also possible to use namespaces:
+creates an import of a function named `doSomething` from the `env` module, because that's the name of the file it lives is. It is also possible to use namespaces:
 
 {% tabs %}
 {% tab title="foo.ts" %}
