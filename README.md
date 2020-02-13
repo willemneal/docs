@@ -39,7 +39,7 @@ var view = new Int32Array(12)
 view[2] = view[0] + view[1]
 ```
 
-The compiler still has its limitations and we are waiting for WebAssembly features that are currently undergoing specification \(marked as 🦄 throughout the documentation\) to unleash its full potential. But it is open source and everyone can contribute, so we are getting there.
+The compiler still has its limitations and we are still waiting for WebAssembly features that are currently undergoing specification \(marked as 🦄 throughout the documentation\) to unleash its full potential. But it is open source and everyone can contribute, so we are getting there.
 
 Sounds appealing to you? Read on!
 

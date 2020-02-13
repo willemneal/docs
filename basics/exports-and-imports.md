@@ -96,7 +96,7 @@ creates an import of a function named `doSomething` within the `env` module, bec
 {% tabs %}
 {% tab title="foo.ts" %}
 ```typescript
-declare namespace console {
+export declare namespace console {
   export function logi(i: i32): void
   export function logf(f: f64): void
 }
@@ -105,6 +105,13 @@ declare namespace console {
 {% endtabs %}
 
 This will import the functions `console.logi` and `console.logf` from the `foo` module. Bonus: Don't forget `export`ing namespace members if you'd like to call them from outside the namespace.
+
+A typical pattern is to `declare` the interface of each external module in its own file, using the name of the module as its file name, so the external module can be imported as if it was just another source file:
+
+```typescript
+import { doSomething } from "./env";
+import { console } from "./foo";
+```
 
 ### Custom naming
 
