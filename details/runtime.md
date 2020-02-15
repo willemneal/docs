@@ -4,7 +4,7 @@ description: 'Because nobody enjoys being bullied by malloc, free and friends.'
 
 # Runtime
 
-AssemblyScript's runtime takes care of all the ins and outs of memory management and garbage collection, yet the compiler lets a developer chose the ideal runtime variant for their use case.
+AssemblyScript's runtime takes care of all the ins and outs of memory management and garbage collection, yet the compiler lets a developer choose the ideal runtime variant for their use case.
 
 ## Runtime variants
 
