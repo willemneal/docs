@@ -146,5 +146,3 @@ Due to the lack of random access to WebAssembly's execution stack \(remember: As
 
 The compiler also utilizes a concept of so called autorelease locals. Essentially, if a reference enters a block of code from somewhere else, is pre-retained but not immediately assigned, such a local is added to the current scope to postpone the necessary release until the scope is exited.
 
-One thing not particularly ideal at this point is that each function is expected to retain the reference-type arguments it is given, and release them again at the end. This is necessary because the compiler does just a single pass and doesn't know whether a variable becomes reassigned beforehand \(no SSA or similar, that's left to Binaryen in an attempt to avoid duplicating its code\). It does already skip this for certain variables like `this` that cannot be reassigned, but there are definitely more optimization opportunities along the way. Due to AssemblyScript essentially being a compiler on top of another compiler, it is somewhat unclear however where to perform such optimizations.
-
