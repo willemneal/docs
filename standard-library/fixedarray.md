@@ -34,6 +34,5 @@ The FixedArray API is similar to the [Array API](array.md), with the important d
 * FixedArray\#**join**\(separator?: `string`\): `string` Concatenates all values of the array to a string, separated by the specified separator \(default: `,`\).
 * FixedArray\#**lastIndexOf**\(value: `T`, fromIndex?: `i32`\): `i32` Gets the last index where the specified value can be found in the array. Returns `-1` if not found.
 * FixedArray\#**slice**\(start?: `i32`, end?: `i32`\): `Array<T>` Returns a shallow copy of the array's values from `begin` inclusive to `end` exclusive, as a new array. If omitted, `end` defaults to the end of the array.
-* FixedArray\#**toArray**\(\): `Array<T>` Creates a normal array from this fixed array.
 * FixedArray\#**toString**\(\): `string` Returns the result of `FixedArray#join()`.
 
