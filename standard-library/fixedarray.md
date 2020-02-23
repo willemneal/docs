@@ -12,11 +12,11 @@ The FixedArray API is similar to the [Array API](array.md), with the important d
 
 ### Constructor
 
-* new **FixedArray**&lt;`T`&gt;\(source: `i32`\) Constructs a new fixed array.
+* new **FixedArray**&lt;`T`&gt;\(length: `i32`\) Constructs a new fixed array.
 
 ### Static
 
-* FixedArray.**fromArray**&lt;`T`&gt;\(value: `Array<T>`\): `FixedArray<T>` Creates a fixed array from a normal array.
+* FixedArray.**fromArray**&lt;`T`&gt;\(source: `Array<T>`\): `FixedArray<T>` Creates a fixed array from a normal array.
 
 ### Instance
 
