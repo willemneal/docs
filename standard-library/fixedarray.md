@@ -8,7 +8,7 @@ description: >-
 
 ## API
 
-The FixedArray API is similar to the [Array API](array.md), with the important difference that a FixedArray has a fixed length that cannot change. Unlike an Array, a FixedArray does not have a separate backing buffer, so no level of indirection, and as such can have performance characteristics very similar to arrays in C when used with `unchecked(...)`. As a side-effect, fixed arrays exclusively composed of static data compile to a single WebAssembly data segment.
+The FixedArray API is similar to the [Array API](array.md), with the important difference that a FixedArray has a fixed length that cannot change. Unlike an Array, a FixedArray does not have a separate backing buffer, so no level of indirection, and as such can have performance characteristics very similar to arrays in C.
 
 ### Constructor
 
@@ -17,6 +17,8 @@ The FixedArray API is similar to the [Array API](array.md), with the important d
 ### Static
 
 * FixedArray.**fromArray**&lt;`T`&gt;\(source: `Array<T>`\): `FixedArray<T>` Creates a fixed array from a normal array.
+* FixedArray.**concat**&lt;`T`&gt;\(source: `FixedArray<T>`, other: `FixedArray<T>`\): `FixedArray<T>` Concatenates the values of the source and the other array to a new fixed array, in this order. Like `FixedArray#concat`, but taking and returning a `FixedArray`.
+* FixedArray.**slice**&lt;`T`&gt;\(source: `FixedArray<T>`, start?: `i32`, end?: `i32`\): `FixedArray<T>` Returns a shallow copy of the source array's values from `begin` inclusive to `end` exclusive, as a new fixed array. If omitted, `end` defaults to the end of the array. Like `FixedArray#slice`, but returning a `FixedArray`.
 
 ### Instance
 
