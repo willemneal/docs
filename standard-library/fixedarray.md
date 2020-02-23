@@ -12,7 +12,7 @@ The FixedArray API is similar to the [Array API](array.md), with the important d
 
 ### Constructor
 
-* new **FixedArray**&lt;`T`&gt;\(length: `i32`\) Constructs a new fixed array.
+* new **FixedArray**&lt;`T`&gt;\(source: `i32`\) Constructs a new fixed array.
 
 ### Static
 
