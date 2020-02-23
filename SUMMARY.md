@@ -28,6 +28,7 @@
 * [DataView](standard-library/dataview.md)
 * [Date](standard-library/date.md)
 * [Error](standard-library/error.md)
+* [FixedArray](standard-library/fixedarray.md)
 * [Map](standard-library/map.md)
 * [Math](standard-library/math.md)
 * [Number](standard-library/number.md)
