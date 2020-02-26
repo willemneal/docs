@@ -29,7 +29,7 @@ The following paragraphs are relevant in low-level code respectively when workin
 
 When allocating a managed object, it is necessary to also provide its unique class id so the runtime can properly recognize it. The unique id of any managed type can be obtained via `idof<TheType>()`. Each concrete class \(like `String`, `Array<i32>`, `Array<f32>`\) has its own id. The ids of ArrayBuffer \(id=0\), String \(id=1\) and ArrayBufferView \(id=2\) are always the same, while all other ids are generated sequentially on first use of a class and differ between modules. Hence, it is usually necessary to `export Uint8Array_ID = idof<Uint8Array>()` for example when allocating one externally. The relevant interface is:
 
-*  **\_\_alloc**\(size: `usize`, id: `u32`\): `usize` Dynamically allocates a chunk of memory for an object represented by the specified id of at least the given size in bytes and returns its address. Alignment is guaranteed to be 16 bytes to fit up to v128 values naturally. Does not zero memory.
+* **\_\_alloc**\(size: `usize`, id: `u32`\): `usize` Dynamically allocates a chunk of memory for an object represented by the specified id of at least the given size in bytes and returns its address. Alignment is guaranteed to be 16 bytes to fit up to v128 values naturally. Does not zero memory.
 
 The [loader](../basics/loader.md) provides some additional functionality for convenience, like `__allocString`.
 
@@ -37,8 +37,8 @@ The [loader](../basics/loader.md) provides some additional functionality for con
 
 The concept is simple: If a reference to an object is established, the reference count of the object is increased by 1 \(a reference is retained\), and when a reference to an object is deleted, the reference count of the object is decreased by 1 \(a reference is released\). If the reference count of an object reaches 0, it is considered for collection and its memory ultimately returned to the memory manager for reuse. The relevant interface is:
 
-*  **\_\_retain**\(ptr: `usize`\): `usize` Retains a reference to the object pointed to by `ptr`. The object doesn't become collected as long as there's at least one retained reference to it. Returns the pointer.
-*  **\_\_release**\(ptr: `usize`\): `void` Releases a reference to the object pointer to by `ptr`. The object is considered for collection once all references to it have been released.
+* **\_\_retain**\(ptr: `usize`\): `usize` Retains a reference to the object pointed to by `ptr`. The object doesn't become collected as long as there's at least one retained reference to it. Returns the pointer.
+* **\_\_release**\(ptr: `usize`\): `void` Releases a reference to the object pointer to by `ptr`. The object is considered for collection once all references to it have been released.
 
 The compiler inserts retain and release calls automatically and this is opaque to a user on a higher level. On a lower level, for instance when dealing with managed objects externally, it is necessary to understand and adhere to the rules the compiler applies.
 

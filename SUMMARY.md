@@ -28,13 +28,16 @@
 * [DataView](standard-library/dataview.md)
 * [Date](standard-library/date.md)
 * [Error](standard-library/error.md)
-* [FixedArray](standard-library/fixedarray.md)
 * [Map](standard-library/map.md)
 * [Math](standard-library/math.md)
 * [Number](standard-library/number.md)
 * [Set](standard-library/set.md)
 * [String](standard-library/string.md)
 * [TypedArray](standard-library/typedarray.md)
+
+## Extended library
+
+* [StaticArray](extended-library/staticarray.md)
 
 ## Community
 

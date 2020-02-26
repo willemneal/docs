@@ -34,6 +34,12 @@ AssemblyScript comes with its own standard library very much resembling what dev
 
 {% page-ref page="../standard-library/typedarray.md" %}
 
+## Extended Library
+
+The following specialized classes exist in AssemblyScript only, tackling very specific problems.
+
+{% page-ref page="../extended-library/staticarray.md" %}
+
 Additional rather low-level WebAssembly functionality that the standard library makes extensive use of is described below.
 
 ## Static type checks
