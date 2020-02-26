@@ -36,7 +36,7 @@ For example, on the lowest level, memory can be accessed using the `load<T>(offs
 store<i32>(8, load<i32>(0) + load<i32>(4))
 ```
 
-while the standard library not only provides optimized native [Math](standard-library/math.md) implementations \(both double and single precision\) but also implementations of [ArrayBuffer](standard-library/arraybuffer.md) , [Uint8Array](standard-library/typedarray.md) , [String](standard-library/string.md) , [Map](standard-library/map.md) etc. on a higher level:
+while the standard library not only provides optimized native [Math](standard-library/math.md) implementations \(both double and single precision\) but also implementations of [ArrayBuffer](standard-library/arraybuffer.md), [Uint8Array](standard-library/typedarray.md), [String](standard-library/string.md), [Map](standard-library/map.md) etc. on a higher level:
 
 ```typescript
 var view = new Int32Array(12)
@@ -45,7 +45,7 @@ view[2] = view[0] + view[1]
 
 In turn it also comes with a bunch of features JavaScript doesn't have out of necessity, like the ability to declare [operator overloads](details/peculiarities.md#operator-overloads) that arrays for example use as an implementation helper, yet is really more a subset with bonuses than a superset.
 
-As of today, the compiler still has its [limitations](basics/limitations.md) and we are waiting for WebAssembly features that are currently undergoing specification \(marked as 🦄 throughout the documentation, especially [Reference Types](https://github.com/WebAssembly/reference-types), [Interface Types](https://github.com/WebAssembly/interface-types) and [Wasm GC](https://github.com/WebAssembly/gc) which also covers closures\) to unleash its full potential. But it is open source, built upon an [open specification](https://webassembly.github.io/spec/) and everyone can contribute, so we are getting there.
+As of today, the compiler still has its [limitations](basics/limitations.md) and we are waiting for WebAssembly features that are currently undergoing specification \(marked as 🦄 throughout the documentation, especially [Reference Types](https://github.com/WebAssembly/reference-types) 🦄, [Interface Types](https://github.com/WebAssembly/interface-types) 🦄 and [Wasm GC](https://github.com/WebAssembly/gc) 🦄 which also covers [closures](basics/limitations.md#closures)\) to unleash its full potential. But it is open source, built upon an [open specification](https://webassembly.github.io/spec/) and everyone can contribute, so we are getting there.
 
 Sounds appealing to you? Read on!
 
