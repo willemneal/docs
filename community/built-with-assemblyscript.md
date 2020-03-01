@@ -9,23 +9,24 @@ description: >-
 ## Benchmarks
 
 * [Wasm Mandelbrot](https://github.com/ColinEberhardt/wasm-mandelbrot) \([demo](https://colineberhardt.github.io/wasm-mandelbrot/#AssemblyScript)\) A mandelbrot rendered using a variety of WebAssembly tools \(emscripten, AssemblyScript, asm.js, etc ...\)
-* [WasmBoy Benchmark](https://wasmboy.app/benchmark/) Benchmarking WasmBoy emulator
-* [webassembly-wave](https://github.com/jtiscione/webassembly-wave) \([demo](https://jtiscione.github.io/webassembly-wave/index.html)\) JavaScript vs WebAssembly performance comparison - wave equation demo \(JS, C++, AssemblyScript\)
-* [Sort Colors Benchmark](https://github.com/manueldois/WebAssembly/tree/master/Sort%20Colors%20Benchmark/src) \([demo](https://manueldois.github.io/WebAssembly/Sort%20Colors%20Benchmark/dist/index.html)\) Bench of sorting random colors by hue component on 2d canvas
-* [wasm-n-body](https://github.com/w8r/wasm-n-body) WebAssembly N-body simulation benchmark _\(use 1000 bodies compare to original\)_
+* [WasmBoy Benchmark](https://wasmboy.app/benchmark/) Benchmarking WasmBoy emulator.
+* [webassembly-wave](https://github.com/jtiscione/webassembly-wave) \([demo](https://jtiscione.github.io/webassembly-wave/index.html)\) JavaScript vs WebAssembly performance comparison - wave equation demo \(JS, C++, AssemblyScript\).
+* [Sort Colors Benchmark](https://github.com/manueldois/WebAssembly/tree/master/Sort%20Colors%20Benchmark/src) \([demo](https://manueldois.github.io/WebAssembly/Sort%20Colors%20Benchmark/dist/index.html)\) Bench of sorting random colors by hue component on 2d canvas.
+* [wasm-n-body](https://github.com/w8r/wasm-n-body) WebAssembly N-body simulation benchmark _\(use 1000 bodies compare to original\)._
 
 ## Blockchain
 
-* [eWasm / Biturbo](https://github.com/ewasm/biturbo) Eth1 EE using Turboproofs
-* [ewasm / scout.ts ](https://github.com/ewasm/scout.ts)Scout is a Ethereum 2.0 Phase 2 execution prototyping engine \(AssemblyScript Port\)
-* [NearProtocol / near-runtime-ts](https://github.com/nearprotocol/near-runtime-ts) Typescript library for writing near smart contracts for NearProtocol
-* [GraphProtocol / graph-ts](https://github.com/graphprotocol/graph-ts) TypeScript/AssemblyScript library for writing mappings for The Graph [https://thegraph.com](https://thegraph.com)
-* [ChainSafe / as-sha256](https://github.com/ChainSafe/as-sha256) AssemblyScript implementation of SHA256 for [Lodestar](https://github.com/ChainSafe/lodestar)
-* [ParityTech / srml-contracts-waterfall](https://github.com/paritytech/srml-contracts-waterfall) Collection of simple Substrate smart contract examples written in Rust and AssemblyScript and tests for Substrates SRML Contracts module
+* [eWasm / Biturbo](https://github.com/ewasm/biturbo) Eth1 EE using Turboproofs.
+* [ewasm / scout.ts ](https://github.com/ewasm/scout.ts)Scout is a Ethereum 2.0 Phase 2 execution prototyping engine \(AssemblyScript Port\).
+* [NearProtocol / near-runtime-ts](https://github.com/nearprotocol/near-runtime-ts) Typescript library for writing near smart contracts for NearProtocol.
+* [GraphProtocol / graph-ts](https://github.com/graphprotocol/graph-ts) TypeScript/AssemblyScript library for writing mappings for The Graph [https://thegraph.com](https://thegraph.com).
+* [ChainSafe / as-sha256](https://github.com/ChainSafe/as-sha256) AssemblyScript implementation of SHA256 for [Lodestar](https://github.com/ChainSafe/lodestar).
+* [ParityTech / srml-contracts-waterfall](https://github.com/paritytech/srml-contracts-waterfall) Collection of simple Substrate smart contract examples written in Rust and AssemblyScript and tests for Substrates SRML Contracts module.
 
 ## Build Tools
 
-* [Zwitterion](https://github.com/lastmjs/zwitterion) A web dev server that lets you import anything\* 
+* [Zwitterion](https://github.com/lastmjs/zwitterion) A web dev server that lets you import anything\*.
+* [rollup-plugin-assemblyscript](https://github.com/surma/rollup-plugin-assemblyscript) A Rollup plugin that allows you to import AssemblyScript files and compiles them on-the-fly.
 
 ## Editors
 
@@ -54,9 +55,9 @@ description: >-
 ## Libraries
 
 * [AS-LZMA](https://github.com/01alchemist/AS-LZMA) LZMA Decoder written in AssemblyScript.
-* [assemblyscript-bson](https://github.com/nearprotocol/assemblyscript-bson) BSON encoder / decoder
-* [assemblyscript-json](https://github.com/nearprotocol/assemblyscript-json) JSON encoder / decoder
-* [as-bignum](https://github.com/MaxGraey/as-bignum) \(formerly bignum.wasm\) Fixed length big numbers like `u128`, `i256`, `fp128` and etc for AssemblyScript
+* [assemblyscript-bson](https://github.com/nearprotocol/assemblyscript-bson) BSON encoder / decoder.
+* [assemblyscript-json](https://github.com/nearprotocol/assemblyscript-json) JSON encoder / decoder.
+* [as-bignum](https://github.com/MaxGraey/as-bignum) \(formerly bignum.wasm\) Fixed length big numbers like `u128`, `i256`, `fp128` and etc for AssemblyScript.
 * [Levenshtein Wasm](https://github.com/kyranet/levenshtein-wasm) An experimental lightning-fast Wasm-compiled levenshtein library.
 * [superfasthash](https://github.com/mjethani/superfasthash) An implementation of the SuperFastHash non-cryptographic hashing algorithm in JavaScript and WebAssembly.
 * [as-wasi](https://github.com/jedisct1/as-wasi) An AssemblyScript API layer for WASI system calls.
@@ -69,7 +70,7 @@ description: >-
 * [as-bind](https://github.com/torch2424/as-bind) Isomorphic library to handle passing high-level data structures between AssemblyScript and JavaScript 🤝🚀. Built on top of the AssemblyScript loader.
 * [wasmer-as](https://github.com/onsails/wasmer-as) Helpers for dealing with assemblyscript memory inside wasmer-runtime.
 * [wasmbind](https://github.com/miracle2k/wasmbind) Work with AssemblyScript memory and classes from Python.
-* [io-devices-lib](https://github.com/wasmerio/io-devices-lib) Library for interacting with the Wasmer Experimental IO Devices
+* [io-devices-lib](https://github.com/wasmerio/io-devices-lib) Library for interacting with the Wasmer Experimental IO Devices.
 
 ## Embedded / IoT
 
@@ -83,7 +84,7 @@ description: >-
 
 ## Project Templates
 
-* [worker-assemblyscript-template](https://github.com/JamesLMilner/worker-assemblyscript-template) A Cloudflare wrangler template for a AssemblyScript worker
+* [worker-assemblyscript-template](https://github.com/JamesLMilner/worker-assemblyscript-template) A Cloudflare wrangler template for a AssemblyScript worker.
 
 ## Other
 
