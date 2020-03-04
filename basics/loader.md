@@ -28,7 +28,7 @@ If you need a [specific version](https://github.com/AssemblyScript/assemblyscrip
 {% tab title="browser.js" %}
 ```javascript
 const loader = require("@assemblyscript/loader")
-const myImports = { ... }
+const myImports = { /* ... */ }
 /*`loader.instantiate` will use `WebAssembly.instantiateStreaming`
    if possible. Overwise fallback to `WebAssembly.instantiate`. */
 const myModule = await loader.instantiate(
@@ -42,7 +42,7 @@ const myModule = await loader.instantiate(
 ```javascript
 const fs = require("fs")
 const loader = require("@assemblyscript/loader")
-const myImports = { ... }
+const myImports = { /* ... */ }
 const myModule = loader.instantiateSync(
   fs.readFileSync("optimized.wasm"),
   myImports
@@ -54,7 +54,7 @@ const myModule = loader.instantiateSync(
 ```javascript
 const fs = require("fs")
 const loader = require("@assemblyscript/loader")
-const myImports = { ... }
+const myImports = { /* ... */ }
 const myModule = await loader.instantiate(
   fs.promises.readFile("optimized.wasm"),
   myImports
