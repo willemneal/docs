@@ -18,7 +18,7 @@ description: >-
 
 * [eWasm / Biturbo](https://github.com/ewasm/biturbo) Eth1 EE using Turboproofs.
 * [ewasm / scout.ts ](https://github.com/ewasm/scout.ts)Scout is a Ethereum 2.0 Phase 2 execution prototyping engine \(AssemblyScript Port\).
-* [NearProtocol / near-runtime-ts](https://github.com/nearprotocol/near-runtime-ts) Typescript library for writing near smart contracts for NearProtocol.
+* [NearProtocol / near-sdk-as](https://github.com/near/near-sdk-as) AssemblyScript tools for writing smart contracts for NearProtocol.
 * [GraphProtocol / graph-ts](https://github.com/graphprotocol/graph-ts) TypeScript/AssemblyScript library for writing mappings for The Graph [https://thegraph.com](https://thegraph.com).
 * [ChainSafe / as-sha256](https://github.com/ChainSafe/as-sha256) AssemblyScript implementation of SHA256 for [Lodestar](https://github.com/ChainSafe/lodestar).
 * [ParityTech / srml-contracts-waterfall](https://github.com/paritytech/srml-contracts-waterfall) Collection of simple Substrate smart contract examples written in Rust and AssemblyScript and tests for Substrates SRML Contracts module.
@@ -27,12 +27,14 @@ description: >-
 
 * [Zwitterion](https://github.com/lastmjs/zwitterion) A web dev server that lets you import anything\*.
 * [rollup-plugin-assemblyscript](https://github.com/surma/rollup-plugin-assemblyscript) A Rollup plugin that allows you to import AssemblyScript files and compiles them on-the-fly.
+* [visitor-as](https://github.com/willemneal/visitor-as) Tools for creating compiler transformers.
 
 ## Editors
 
 * [WebAssembly Studio](https://github.com/wasdk/WebAssemblyStudio) Learn, Teach, Work and Play in the WebAssembly Studio.
 * [Fastly Terrarium](https://wasm.fastlylabs.com/) A compilation toolchain and sandbox to run WebAssembly server-side, with native support for AssemblyScript.
-* [NEAR Studio](https://studio.nearprotocol.com/) Develop and deploy distributed web apps using smart contracts authored in AssemblyScript.
+* [NEAR Protocol Examples](https://examples.nearprotocol.com/?q=assembly) Examples that use [GitPod](https://gitpod.io/) to develop and deploy distributed web apps using NEAR smart contracts authored in AssemblyScript.
+* [~~NEAR Studio~~](https://studio.nearprotocol.com/) ~~Develop and deploy distributed web apps using smart contracts authored in AssemblyScript.~~ _\(Deprecated\)_ [See above Near Examples](https://examples.nearprotocol.com/?q=assembly)
 * [Iodide Notebook](https://alpha.iodide.io/notebooks/1234) Experimental tool for scientific communication and exploration on the web \([more](https://hacks.mozilla.org/2019/03/iodide-an-experimental-tool-for-scientific-communicatiodide-for-scientific-communication-exploration-on-the-web)\).
 * [~~Assembleash~~](https://maxgraey.github.io/Assembleash) ~~A playground for WebAssembly and Typescript-like languages.~~ _\(Deprecated\)_
 
@@ -80,7 +82,7 @@ description: >-
 
 ## Testing
 
-* [as-pect](https://github.com/jtenner/as-pect) A test library for AssemblyScript.
+* [as-pect](https://github.com/jtenner/as-pect) A test framework for AssemblyScript inspired by jest.
 
 ## Project Templates
 
@@ -91,5 +93,3 @@ description: >-
 * [wasm-matrix](https://github.com/torch2424/wasm-matrix) A Matrix effect in your terminal using AssemblyScript and WASI, deployed to WAPM.
 * [WebAssembly music experiment](https://petersalomonsen.com) A live coding environment in the browser for sequencing music with javascript and synthesizing instruments in AssemblyScript. Demonstrates compiling AssemblyScript directly in the browser, and live hot-swapping of webassembly modules.
 * [WireWorld](https://github.com/dested/WireWorld) \([demo](https://dested.com/projects/wire/)\) The Wireworld Computer in Javascript/Canvas.
-* [NEAR Protocol Examples](https://examples.nearprotocol.com/) Examples on using AssemblyScript with NEAR. Allows modifying / building examples from a GitPod instance.
-
